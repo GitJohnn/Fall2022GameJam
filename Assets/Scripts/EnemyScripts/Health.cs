@@ -32,6 +32,7 @@ public class Health : MonoBehaviour
         if (currentHealth > 0)
         {
             OnHitWithReference?.Invoke(sender);
+            Debug.Log("hit!");
         }
         else
         {
