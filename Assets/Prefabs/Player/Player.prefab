@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 451029314546915037}
   - component: {fileID: 451029314546915026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,8 @@ GameObject:
   - component: {fileID: 451029314743656769}
   - component: {fileID: 451029314743656768}
   - component: {fileID: 451029314743656771}
-  m_Layer: 0
+  - component: {fileID: 9096050361651342448}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,6 +117,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 451029315929807394}
+  - {fileID: 3942308022201200934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -173,9 +175,45 @@ MonoBehaviour:
   _showCenterOfMass: 0
   _centerOfMass: {x: 0, y: 0, z: 0}
   _isMoving: 0
-  _onAttack:
+  _onPrimaryAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9096050361651342448}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: DetectColliders
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onSecondaryAttack:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9096050361651342448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451029314743656770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c19aad70360eff4199722c28d464564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useCustomAttackSettings: 0
+  _settings: {fileID: 11400000, guid: 0263598d6b76dfd4ca55e57d7003c526, type: 2}
+  _meleeDamage: 0
+  _timeBetweenAttacks: 0
+  _includeLayers:
+    serializedVersion: 2
+    m_Bits: 384
+  _attackRange: 0
+  _attackPosition: {fileID: 3942308022201200934}
 --- !u!1 &451029315137961264
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,8 +224,8 @@ GameObject:
   m_Component:
   - component: {fileID: 451029315137961265}
   - component: {fileID: 451029315137961270}
-  m_Layer: 0
-  m_Name: Weapon
+  m_Layer: 6
+  m_Name: Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 451029315929807394}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,4 +330,35 @@ Transform:
   - {fileID: 451029315137961265}
   m_Father: {fileID: 451029314743656774}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5326360976512165299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3942308022201200934}
+  m_Layer: 6
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3942308022201200934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326360976512165299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 451029314743656774}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

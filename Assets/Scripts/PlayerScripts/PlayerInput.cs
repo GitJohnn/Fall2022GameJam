@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
     public static bool IsMouseOverUi
     {
@@ -19,7 +19,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool _showCenterOfMass;
     [SerializeField, ShowIf("_showCenterOfMass")] Vector3 _centerOfMass;
     [SerializeField, ReadOnly] bool _isMoving;
-    [SerializeField] UnityEvent _onAttack;
+    [SerializeField] UnityEvent _onPrimaryAttack;
+    [SerializeField] UnityEvent _onSecondaryAttack;
     public bool IsMoving => _isMoving;
 
 
@@ -50,7 +51,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && !IsMouseOverUi)
         {
-            _onAttack?.Invoke(); 
+            _onPrimaryAttack?.Invoke(); 
+        }
+        if (Input.GetMouseButtonDown(1) && !IsMouseOverUi)
+        {
+            _onSecondaryAttack?.Invoke();
         }
 
         _moveDirection = new Vector2(moveX, moveY).normalized;

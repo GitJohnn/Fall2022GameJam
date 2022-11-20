@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PlayerStat { MaxHealth, AttackPower, Defense, Speed, AttackSpeed }
 
-[CreateAssetMenu (menuName = "PlayerStats")]
+[CreateAssetMenu (menuName = "Player/PlayerStats")]
 public class PlayerStats : ScriptableObject {
 
     [SerializeField] private float maxHealthBase;
