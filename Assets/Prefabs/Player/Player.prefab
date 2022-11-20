@@ -156,7 +156,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &451029314743656771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7984830431271331363}
         m_TargetAssemblyTypeName: WeaponParent, Assembly-CSharp
-        m_MethodName: Attack
+        m_MethodName: AnimateAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -192,6 +192,7 @@ MonoBehaviour:
   _onSecondaryAttack:
     m_PersistentCalls:
       m_Calls: []
+  weaponParent: {fileID: 7984830431271331363}
 --- !u!114 &9096050361651342448
 MonoBehaviour:
   m_ObjectHideFlags: 0

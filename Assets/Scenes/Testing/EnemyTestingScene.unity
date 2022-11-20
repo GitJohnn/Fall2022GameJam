@@ -464,5 +464,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyObject
       objectReference: {fileID: 0}
+    - target: {fileID: 2141408231823800408, guid: 7ff256edfb9d10947b80501f0b7f2aa1, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ff256edfb9d10947b80501f0b7f2aa1, type: 3}

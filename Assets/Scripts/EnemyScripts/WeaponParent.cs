@@ -6,7 +6,7 @@ using UnityEngine;
 public class WeaponParent : MonoBehaviour
 {
     public SpriteRenderer characterRenderer, weaponRenderer;
-    //public Vector2 PointerPosition { get; set; }
+    public Vector2 PointerPosition { get; set; }
     public AttackSettings _attackSettings;
 
     public Animator animator;
@@ -28,8 +28,8 @@ public class WeaponParent : MonoBehaviour
         //if (IsAttacking)
         //    return;
 
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
+        //Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 
         Vector2 scale = transform.localScale;
@@ -51,7 +51,7 @@ public class WeaponParent : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public void AnimateAttack()
     {
         if (attackBlocked)
             return;

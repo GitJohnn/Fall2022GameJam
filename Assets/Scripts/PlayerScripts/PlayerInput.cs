@@ -21,9 +21,8 @@ public class PlayerInput : MonoBehaviour
     [SerializeField, ReadOnly] bool _isMoving;
     [SerializeField] UnityEvent _onPrimaryAttack;
     [SerializeField] UnityEvent _onSecondaryAttack;
+    [SerializeField] WeaponParent weaponParent;
     public bool IsMoving => _isMoving;
-
-
 
     public float MoveSpeed 
     {
@@ -61,8 +60,10 @@ public class PlayerInput : MonoBehaviour
         _moveDirection = new Vector2(moveX, moveY).normalized;
 
         if (_moveDirection.magnitude > 0.01f) _isMoving = true;
-        else _isMoving = false; 
+        else _isMoving = false;
 
+        _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        weaponParent.PointerPosition = _mousePosition;
     }
 
     void OnDrawGizmosSelected()
@@ -75,9 +76,7 @@ public class PlayerInput : MonoBehaviour
         // _rb.velocity = new Vector2(_moveDirection.x * _moveSpeed, _moveDirection.y * _moveSpeed );
         _rb.MovePosition(new Vector2((transform.position.x + _moveDirection.x * _moveSpeed * Time.deltaTime),
             transform.position.y + _moveDirection.y * _moveSpeed * Time.deltaTime));
-
-        
-        _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                
         //Vector2 aimDirection = _mousePosition - _rb.position;
         //float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         //_rb.rotation = aimAngle;

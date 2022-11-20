@@ -23,14 +23,24 @@ public class EnemyAI : MonoBehaviour
     private float attackDistance = 0.5f;
 
     //Inputs sent from the Enemy AI to the Enemy controller
-    //public UnityEvent OnAttackPressed;
-    public UnityEvent<Vector2> OnMovementInput;//, OnPointerInput;
+    public UnityEvent OnAttackPressed;
+    public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
 
     [SerializeField]
     private Vector2 movementInput;
 
     [SerializeField]
     private ContextSolver movementDirectionSolver;
+
+    [SerializeField]
+    private WeaponParent weaponParent;
+
+    public WeaponParent WeaponParent
+    {
+        get {
+            return weaponParent;
+        }
+    }
 
     bool following = false;
 
@@ -62,7 +72,7 @@ public class EnemyAI : MonoBehaviour
         if (aiData.currentTarget != null)
         {
             //Looking at the Target
-            //OnPointerInput?.Invoke(aiData.currentTarget.position);
+            OnPointerInput?.Invoke(aiData.currentTarget.position);
             if (following == false)
             {
                 following = true;
@@ -92,11 +102,11 @@ public class EnemyAI : MonoBehaviour
         {
             float distance = Vector2.Distance(aiData.currentTarget.position, transform.position);
 
-            if (distance < attackDistance)
+            if (distance <= attackDistance)
             {
                 //Attack logic
                 movementInput = Vector2.zero;
-                //OnAttackPressed?.Invoke();
+                OnAttackPressed?.Invoke();
                 yield return new WaitForSeconds(attackDelay);
                 StartCoroutine(ChaseAndAttack());
             }
