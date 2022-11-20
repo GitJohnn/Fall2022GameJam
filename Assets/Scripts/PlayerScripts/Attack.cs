@@ -7,10 +7,13 @@ public class Attack : MonoBehaviour
 {
    [SerializeField] bool _useCustomAttackSettings = false; 
    [SerializeField] AttackSettings _settings;
+   
    [SerializeField, ShowIf("_useCustomAttackSettings")] int _meleeDamage;
    [SerializeField, ShowIf("_useCustomAttackSettings")] float _timeBetweenAttacks;
    [SerializeField, ShowIf("_useCustomAttackSettings")] LayerMask _includeLayers;
    [SerializeField, ShowIf("_useCustomAttackSettings")] float _attackRange;
+   [SerializeField] UnityEvent _onPrimaryAttack;
+   [SerializeField] UnityEvent _onSecondaryAttack;
    [SerializeField] Transform _attackPosition;
 
    int MeleeDamage 
@@ -78,6 +81,7 @@ public class Attack : MonoBehaviour
 
    void HandlePrimaryAttack()
    {
+      _onPrimaryAttack?.Invoke();
       Collider2D[] targets = Physics2D.OverlapCircleAll(_attackPosition.position, AttackRange, IncludeLayers);
       foreach (Collider2D collider in targets)
       {
@@ -86,15 +90,15 @@ public class Attack : MonoBehaviour
       }
    }
 
+   void HandleSecondaryAttack()
+   {
+      _onSecondaryAttack?.Invoke();
+   }
    void HandleHitLogic(Collider2D collider)
    {
       var targetHealth = collider.GetComponent<Health>();
       if (!targetHealth) return;
 
       targetHealth.GetHit(MeleeDamage, gameObject);
-   }
-   void HandleSecondaryAttack()
-   {
-      //REEE
    }
 }
