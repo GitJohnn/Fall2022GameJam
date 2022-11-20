@@ -224,8 +224,8 @@ GameObject:
   m_Component:
   - component: {fileID: 451029315137961265}
   - component: {fileID: 451029315137961270}
-  m_Layer: 6
-  m_Name: Direction
+  m_Layer: 0
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

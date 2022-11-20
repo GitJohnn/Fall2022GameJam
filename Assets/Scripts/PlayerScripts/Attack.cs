@@ -50,12 +50,6 @@ public class Attack : MonoBehaviour
    }
    [SerializeField, ReadOnly] float _timeBetweenAttack;
 
-   void OnDrawGizmosSelected()
-   {
-      Gizmos.color = Color.red;
-      Gizmos.DrawWireSphere(_attackPosition.position, AttackRange);
-   }
-
    void Update()
    {
       if (_timeBetweenAttack <= 0)
@@ -101,4 +95,10 @@ public class Attack : MonoBehaviour
 
       targetHealth.GetHit(MeleeDamage, gameObject);
    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_attackPosition.position, AttackRange);
+    }
 }
