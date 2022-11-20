@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DefaultPlayerAttackSettings
   m_EditorClassIdentifier: 
   _meleeDamage: 1
-  _startTimeBetweenAttack: 1
+  _attackDelay: 0.15
   _includeLayers:
     serializedVersion: 2
     m_Bits: 384
-  _attackRange: 1
+  _attackRange: 0.5

@@ -78,9 +78,9 @@ public class PlayerInput : MonoBehaviour
 
         
         _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 aimDirection = _mousePosition - _rb.position;
-        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        _rb.rotation = aimAngle;
+        //Vector2 aimDirection = _mousePosition - _rb.position;
+        //float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        //_rb.rotation = aimAngle;
         
        
     }

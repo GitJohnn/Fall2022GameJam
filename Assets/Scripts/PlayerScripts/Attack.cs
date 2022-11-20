@@ -24,14 +24,16 @@ public class Attack : MonoBehaviour
          else return _settings.MeleeDamage;
       }
    }
+
    float TimeBetweenAttacks 
    {
       get 
       {
          if (_useCustomAttackSettings) return _timeBetweenAttacks;
-         else return _settings.StartTimeBetweenAttack;
+         else return _settings.AttackDelay;
       }
    }
+
    LayerMask IncludeLayers 
    {
       get 
@@ -40,6 +42,7 @@ public class Attack : MonoBehaviour
          else return _settings.IncludeLayers;
       }
    }
+
    float AttackRange 
    {
       get 
@@ -48,6 +51,7 @@ public class Attack : MonoBehaviour
          else return _settings.AttackRange;
       }
    }
+
    [SerializeField, ReadOnly] float _timeBetweenAttack;
 
    void Update()
@@ -96,7 +100,7 @@ public class Attack : MonoBehaviour
       targetHealth.GetHit(MeleeDamage, gameObject);
    }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_attackPosition.position, AttackRange);
