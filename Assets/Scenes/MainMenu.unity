@@ -6957,7 +6957,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f249fa3027753bb4c8b8c2d157945e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roomData: {fileID: 11400000, guid: 5b4fbc1aec756ac4b8dd126f51c7d4ae, type: 2}
+  _spawnRoomData: {fileID: 11400000, guid: 8b05dc4c3c61db940aee8a066c7af607, type: 2}
+  _chestSpawnLocations:
+  - {x: 0, y: 1}
+  - {x: 0, y: 2}
+  - {x: 0, y: 3}
 --- !u!1001 &1183650578
 PrefabInstance:
   m_ObjectHideFlags: 0

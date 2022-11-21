@@ -5,15 +5,25 @@ using UnityEngine;
 
 public class ObjectSpawning : MonoBehaviour
 {
-    [SerializeField] private RoomData _roomData = null;
+    [SerializeField] private SpawnRoomData _spawnRoomData = null;
+    [SerializeField] public List<Vector2> _chestSpawnLocations = new List<Vector2>();
 
     // Start is called before the first frame update
     void Start()
     {
-        if (_roomData)
+        _spawnRoomData.SpawnRoomObjects(_chestSpawnLocations);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (_spawnRoomData)
         {
-            _roomData.SpawnObjects(this.transform);
-            _roomData.SpawnDoors();
+            foreach (var location in _chestSpawnLocations)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawSphere(location, .5f);
+            }
         }
+
     }
 }
