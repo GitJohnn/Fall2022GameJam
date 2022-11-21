@@ -21,6 +21,10 @@ public class PlayerInput : MonoBehaviour
     [SerializeField, ReadOnly] bool _isMoving;
     [SerializeField] UnityEvent _onPrimaryAttack;
     [SerializeField] UnityEvent _onSecondaryAttack;
+    [SerializeField] UnityEvent _onThirdAbility;
+    [SerializeField] KeyCode thirdAbilityKey;
+    [SerializeField] UnityEvent _onFourthAbility;
+    [SerializeField] KeyCode fourthAbilityKey;
     [SerializeField] UnityEvent<Vector2> _onPointerPosition;
     [SerializeField] UnityEvent<float> _ondashcooldown;
     [SerializeField] WeaponParent weaponParent;
@@ -35,12 +39,21 @@ public class PlayerInput : MonoBehaviour
         set { _moveSpeed = value; }
     }
 
+    [Header("Dash")]
     [SerializeField] bool dashUnlocked = true;
+    [SerializeField] ButtonCoolDownHandler dashButton;
     [SerializeField] float startDashTime = 1f;
     [SerializeField] float dashSpeed = 1f;
     [SerializeField] float dashCoolDown = 1f;
 
-    public float CurrentDashCoolDown { get { return currentCooldownTime; } }
+    [Header("RangeAttack")]
+    [SerializeField] bool rangeUnlocked = true;
+    [SerializeField] ButtonCoolDownHandler rangeButton;
+    [SerializeField] float totalRangeCooldown;
+    [SerializeField] bool rangeCooldown;    
+
+    public float CurrentDashCoolDown { get { return currentDashCooldownTime; } }
+    public float CurrentRangeCoolDown { get { return currentRangeCooldown; } }
 
     private Vector2 _moveDirection;
     private Vector2 _mousePosition;
@@ -61,17 +74,22 @@ public class PlayerInput : MonoBehaviour
         if (dashUnlocked)
             DashUnlocked();
         else
-            DashLocked();        
+            DashLocked();
+
+        if (rangeUnlocked)
+            RangeUnlocked();
+        else
+            RangeLocked();
     }
 
     private void OnEnable()
     {
-        _onSecondaryAttack.AddListener(HandleDash);
+        _onThirdAbility.AddListener(HandleDash);
     }
 
     private void OnDisable()
     {
-        _onSecondaryAttack.RemoveListener(HandleDash);
+        _onThirdAbility.RemoveListener(HandleDash);
     }
 
     void Update()
@@ -80,17 +98,30 @@ public class PlayerInput : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
+        //Neutral attack
         if (Input.GetMouseButtonDown(0) && !IsMouseOverUi)
         {
             _onPrimaryAttack?.Invoke(); 
         }
-        if (Input.GetMouseButtonDown(1) && !IsMouseOverUi && canDash)
-        {
+        //Right mouse click is range attack
+        if (Input.GetMouseButtonDown(1) && !IsMouseOverUi && canRangeAttack)
+        {            
             _onSecondaryAttack?.Invoke();
+            StartCoroutine(Range());
+        }
+        //Dash attack
+        if (Input.GetKeyDown(thirdAbilityKey) && canDash)
+        {
+            _onThirdAbility?.Invoke();
+        }
+        //Bomb placing
+        if (Input.GetKeyDown(fourthAbilityKey))
+        {
+            _onFourthAbility?.Invoke();
         }
 
         if (isDashing)
-            _ondashcooldown?.Invoke(currentCooldownTime);
+            _ondashcooldown?.Invoke(currentDashCooldownTime);
 
         _moveDirection = new Vector2(moveX, moveY).normalized;
 
@@ -129,7 +160,7 @@ public class PlayerInput : MonoBehaviour
     }
 
     float currentDashTime;
-    float currentCooldownTime;
+    float currentDashCooldownTime;
 
     bool canMove = true;
     bool canDash = true; //Start as true for testing
@@ -144,6 +175,7 @@ public class PlayerInput : MonoBehaviour
     public void DashUnlocked()
     {
         canDash = true;
+        dashButton.SetTotalcooldown(dashCoolDown);
     }
 
     IEnumerator Dash(Vector2 direction)
@@ -153,7 +185,7 @@ public class PlayerInput : MonoBehaviour
         isDashing = true;
         playerCollision = false;
         currentDashTime = startDashTime; // Reset the dash timer.
-        currentCooldownTime = 0;
+        currentDashCooldownTime = 0;
 
         while (currentDashTime > 0f)
         {
@@ -169,15 +201,40 @@ public class PlayerInput : MonoBehaviour
         canMove = true;        
         playerCollision = true;
 
-        while (currentCooldownTime <= dashCoolDown)
+        while (currentDashCooldownTime <= dashCoolDown)
         {
-            currentCooldownTime += Time.deltaTime;
+            currentDashCooldownTime += Time.deltaTime;
 
             yield return null;
         }
         
         canDash = true;
         isDashing = false;
+    }
+
+    private float currentRangeCooldown;
+    private bool canRangeAttack;
+
+    public void RangeUnlocked()
+    {
+        canRangeAttack = true;
+    }
+
+    private void RangeLocked()
+    {
+        canRangeAttack = false;
+    }
+
+    IEnumerator Range()
+    {
+        rangeCooldown = true;
+        currentRangeCooldown = 0;
+        while(currentRangeCooldown <= totalRangeCooldown)
+        {
+            currentRangeCooldown += Time.deltaTime;
+            yield return null;
+        }
+        rangeCooldown = false;
     }
 
     private void AnimateCharacter()

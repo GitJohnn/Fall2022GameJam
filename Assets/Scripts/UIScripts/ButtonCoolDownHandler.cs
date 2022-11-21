@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class ButtonCoolDownHandler : MonoBehaviour
 {
     public float CurrentAbilityCooldown { get; set; }
-    public float totalcooldown;
+    private float totalcooldown;
 
     [SerializeField] Image cooldownImage;
 
@@ -20,5 +20,11 @@ public class ButtonCoolDownHandler : MonoBehaviour
     void Update()
     {
         cooldownImage.fillAmount = (CurrentAbilityCooldown / totalcooldown);
+    }
+
+    public void SetTotalcooldown(float value)
+    {
+        totalcooldown = value;
+        CurrentAbilityCooldown = totalcooldown;
     }
 }

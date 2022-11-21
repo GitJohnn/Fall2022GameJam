@@ -5,10 +5,11 @@ using UnityEngine.Events;
 
 public class RangedAttack : Attack
 {
-    //EnemyAI enemyAI;
+    public float CurrentAttackCooldown { get; set; }    
     public GameObject projectilePrefab;
 
     public float projectileSpeed;
+    public float totalDashcooldown;
 
 
     public void Awake()
