@@ -17,6 +17,7 @@ public class PlayerHealth : HealthBase {
     }
 
     public override void ResetHealth() {
+        playerStats.InitializeStats(); //TODO: move this somewhere else!
         InitializeHealth(playerStats.MaxHealth);
     }
 
