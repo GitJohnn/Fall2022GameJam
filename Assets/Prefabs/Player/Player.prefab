@@ -97,6 +97,8 @@ GameObject:
   - component: {fileID: 451029314743656768}
   - component: {fileID: 451029314743656771}
   - component: {fileID: 9096050361651342448}
+  - component: {fileID: 1200418660}
+  - component: {fileID: 1200418661}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -221,6 +223,40 @@ MonoBehaviour:
       m_Calls: []
   _attackPosition: {fileID: 9068170065388500724}
   _timeBetweenAttack: 0
+--- !u!114 &1200418660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451029314743656770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a15669ecf5c7e40a445a4dfc7369bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 100
+  OnHitWithReference:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathWithReference:
+    m_PersistentCalls:
+      m_Calls: []
+  isDead: 0
+--- !u!114 &1200418661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451029314743656770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6b59f863c200d14396d408c53e75d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationScaleMultipler: 1.25
 --- !u!1 &2359453401861223982
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8933177289061141972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

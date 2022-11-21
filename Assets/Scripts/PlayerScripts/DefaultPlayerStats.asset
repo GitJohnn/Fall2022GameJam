@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9f9489f17d57e845bd562da205bbeac, type: 3}
-  m_Name: PlayerStats
+  m_Name: DefaultPlayerStats
   m_EditorClassIdentifier: 
-  maxHealthBase: 0
+  maxHealthBase: 100
   maxHealth: 0
-  attackPowerBase: 0
+  attackPowerBase: 10
   attackPower: 0
-  defenseBase: 0
+  defenseBase: 5
   defense: 0
-  speedBase: 0
+  speedBase: 5
   speed: 0
-  attackSpeedBase: 0
+  attackSpeedBase: 0.25
   attackSpeed: 0

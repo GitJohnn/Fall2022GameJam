@@ -22,6 +22,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] UnityEvent _onPrimaryAttack;
     [SerializeField] UnityEvent _onSecondaryAttack;
     [SerializeField] WeaponParent weaponParent;
+
+    AgentAnimations agentAnimations;
+
     public bool IsMoving => _isMoving;
 
     public float MoveSpeed 
@@ -37,8 +40,9 @@ public class PlayerInput : MonoBehaviour
     {
         if (_rb == null) _rb = GetComponent<Rigidbody2D>();    
     }
-    void Start()
+    void Awake()
     {
+        agentAnimations = GetComponent<AgentAnimations>();
         _rb.centerOfMass = _centerOfMass;
     }
     
@@ -64,6 +68,8 @@ public class PlayerInput : MonoBehaviour
 
         _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         weaponParent.PointerPosition = _mousePosition;
+
+        AnimateCharacter();
     }
 
     void OnDrawGizmosSelected()
@@ -79,8 +85,12 @@ public class PlayerInput : MonoBehaviour
                 
         //Vector2 aimDirection = _mousePosition - _rb.position;
         //float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        //_rb.rotation = aimAngle;
-        
-       
+        //_rb.rotation = aimAngle;              
+    }
+
+    private void AnimateCharacter()
+    {
+        Vector2 lookDirection = (_mousePosition - (Vector2)transform.position);
+        agentAnimations.RotateToPointer(lookDirection, weaponParent.characterRenderer);
     }
 }

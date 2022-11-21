@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c34ed7e9031124f9d7e320458e19c5, type: 3}
   m_Name: DefaultPlayerAttackSettings
   m_EditorClassIdentifier: 
-  _meleeDamage: 1
+  _meleeDamage: 10
+  _userType: 0
   _attackDelay: 0.15
   _includeLayers:
     serializedVersion: 2
