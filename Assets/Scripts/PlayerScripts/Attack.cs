@@ -80,8 +80,8 @@ public class Attack : MonoBehaviour
          }
          else // But if the user isn't a player
          {
-            HandlePrimaryAttack(); // it'll only run the primary attack logic
-            _timeBetweenAttack = TimeBetweenAttacks; // and then reset the clock
+            // HandlePrimaryAttack(); // it'll only run the primary attack logic
+            // _timeBetweenAttack = TimeBetweenAttacks; // and then reset the clock
          }
       }
       else
@@ -91,7 +91,7 @@ public class Attack : MonoBehaviour
 
    }
 
-   void HandlePrimaryAttack()
+   public void HandlePrimaryAttack()
    {
       _onPrimaryAttack?.Invoke();
       Collider2D[] targets = Physics2D.OverlapCircleAll(_attackPosition.position, AttackRange, IncludeLayers);

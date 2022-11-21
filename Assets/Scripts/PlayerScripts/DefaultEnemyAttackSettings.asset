@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: DefaultEnemyAttackSettings
   m_EditorClassIdentifier: 
   _meleeDamage: 1
+  _userType: 1
   _attackDelay: 0.4
   _includeLayers:
     serializedVersion: 2
     m_Bits: 320
-  _attackRange: 0.1
+  _attackRange: 0.6
