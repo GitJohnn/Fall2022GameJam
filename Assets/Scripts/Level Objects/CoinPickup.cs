@@ -1,20 +1,10 @@
 using UnityEngine;
 
-public class CoinPickup : MonoBehaviour
+public class CoinPickup : PickupBase
 {
-    [SerializeField] private SfxReference _pickupSound;
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        // TODO: Collider is Player
-        Pickup();
-    }
-
     [Button]
-    private void Pickup()
+    protected override void Pickup(GameObject player)
     {
-        _pickupSound.PlayAtPosition(transform.position);
-        // TODO: Increase Player Score?
-        Destroy(gameObject);
+        //TODO: add coin system to player
     }
 }
