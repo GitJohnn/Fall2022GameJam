@@ -22,6 +22,8 @@ public class Attack : MonoBehaviour
    [SerializeField] protected UnityEvent _onSecondaryAttack;
    [SerializeField] protected Transform _attackPosition;
 
+    private Rigidbody2D _rigidbody2D;
+
    int MeleeDamage 
    {
       get 
@@ -60,23 +62,28 @@ public class Attack : MonoBehaviour
 
    [SerializeField, ReadOnly] float _timeBetweenAttack;
 
-   void Update()
-   {
+    private void Awake()
+    {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
         if (_timeBetweenAttack <= 0)
         {
             if (_settings.UserType == UserType.Player) // If the user is a player
             {
-                if (Input.GetMouseButtonDown(0))// and if the player presses the left mouse button
-                {
-                    // Debug.Log("REE");
-                    HandlePrimaryAttack(); // it will do the attack
-                    _timeBetweenAttack = TimeBetweenAttacks; // and reset the clock
+                //if (Input.GetMouseButtonDown(0))// and if the player presses the left mouse button
+                //{
+                //    // Debug.Log("REE");
+                //    HandlePrimaryAttack(); // it will do the attack
+                //    _timeBetweenAttack = TimeBetweenAttacks; // and reset the clock
 
-                }
-                else if (Input.GetMouseButtonDown(1)) // if the player presses the left mouse button
-                {
-                    HandleSecondaryAttack(); // it'll do the secondary attack
-                }
+                //}
+                //else if (Input.GetMouseButtonDown(1)) // if the player presses the left mouse button
+                //{
+                //    HandleSecondaryAttack(); // it'll do the secondary attack
+                //}
             }
             else // But if the user isn't a player
             {
@@ -88,31 +95,32 @@ public class Attack : MonoBehaviour
         {
             _timeBetweenAttack -= Time.deltaTime;
         }
+    }    
+
+    public virtual void HandlePrimaryAttack()
+    {
+        _onPrimaryAttack?.Invoke();
+        Collider2D[] targets = Physics2D.OverlapCircleAll(_attackPosition.position, AttackRange, IncludeLayers);
+        foreach (Collider2D collider in targets)
+        {
+            // Debug.Log(collider.name); 
+            HandleHitLogic(collider);
+        }
     }
 
-   public virtual void HandlePrimaryAttack()
-   {
-      _onPrimaryAttack?.Invoke();
-      Collider2D[] targets = Physics2D.OverlapCircleAll(_attackPosition.position, AttackRange, IncludeLayers);
-      foreach (Collider2D collider in targets)
-      {
-         // Debug.Log(collider.name); 
-         HandleHitLogic(collider);
-      }
-   }
+    //Dash mechanic
+    public virtual void HandleSecondaryAttack()
+    {
+        _onSecondaryAttack?.Invoke();
+    }
 
-   public virtual void HandleSecondaryAttack()
-   {
-      _onSecondaryAttack?.Invoke();
-   }
-
-   public virtual void HandleHitLogic(Collider2D collider)
-   {
+    public virtual void HandleHitLogic(Collider2D collider)
+    {
       var targetHealth = collider.GetComponent<Health>();
       if (!targetHealth) return;
 
       targetHealth.GetHit(MeleeDamage, gameObject);
-   }
+    }
 
     void OnDrawGizmos()
     {

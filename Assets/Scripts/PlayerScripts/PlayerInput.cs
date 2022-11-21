@@ -21,6 +21,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField, ReadOnly] bool _isMoving;
     [SerializeField] UnityEvent _onPrimaryAttack;
     [SerializeField] UnityEvent _onSecondaryAttack;
+    [SerializeField] UnityEvent<Vector2> _onPointerPosition;
     [SerializeField] WeaponParent weaponParent;
 
     AgentAnimations agentAnimations;
@@ -45,7 +46,17 @@ public class PlayerInput : MonoBehaviour
         agentAnimations = GetComponent<AgentAnimations>();
         _rb.centerOfMass = _centerOfMass;
     }
-    
+
+    private void OnEnable()
+    {
+        _onSecondaryAttack.AddListener(HandleDash);
+    }
+
+    private void OnDisable()
+    {
+        _onSecondaryAttack.RemoveListener(HandleDash);
+    }
+
     void Update()
     {
         Cursor.visible = true;
@@ -67,7 +78,8 @@ public class PlayerInput : MonoBehaviour
         else _isMoving = false;
 
         _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        weaponParent.PointerPosition = _mousePosition;
+        _onPointerPosition?.Invoke(_mousePosition);
+        //weaponParent.PointerPosition = _mousePosition;
 
         AnimateCharacter();
     }
@@ -79,6 +91,8 @@ public class PlayerInput : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!canMove)
+            return;
         // _rb.velocity = new Vector2(_moveDirection.x * _moveSpeed, _moveDirection.y * _moveSpeed );
         _rb.MovePosition(new Vector2((transform.position.x + _moveDirection.x * _moveSpeed * Time.deltaTime),
             transform.position.y + _moveDirection.y * _moveSpeed * Time.deltaTime));
@@ -86,6 +100,56 @@ public class PlayerInput : MonoBehaviour
         //Vector2 aimDirection = _mousePosition - _rb.position;
         //float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         //_rb.rotation = aimAngle;              
+    }
+
+    private void HandleDash()
+    {
+        Debug.Log("Dash");
+        StartCoroutine(Dash((_mousePosition - (Vector2)transform.position).normalized));
+    }
+
+    [SerializeField] float startDashTime = 1f;
+    [SerializeField] float dashSpeed = 1f;
+    [SerializeField] float dashCoolDown = 1f;
+
+    float currentDashTime;
+    float currentCooldownTime;
+
+    bool canMove = true;
+    bool canDash = true;
+    bool playerCollision = true;
+
+    IEnumerator Dash(Vector2 direction)
+    {
+        canMove = false;
+        canDash = false;
+        playerCollision = false;
+        currentDashTime = startDashTime; // Reset the dash timer.
+
+        while (currentDashTime > 0f)
+        {
+            currentDashTime -= Time.deltaTime; // Lower the dash timer each frame.
+
+            _rb.velocity = direction * dashSpeed; // Dash in the direction that was held down.
+                                                            // No need to multiply by Time.DeltaTime here, physics are already consistent across different FPS.
+
+            yield return null; // Returns out of the coroutine this frame so we don't hit an infinite loop.
+        }
+
+        _rb.velocity = new Vector2(0f, 0f); // Stop dashing.
+
+        currentCooldownTime = dashCoolDown;
+
+        while(currentCooldownTime > 0f)
+        {
+            currentCooldownTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        canMove = true;
+        canDash = true;
+        playerCollision = true;
     }
 
     private void AnimateCharacter()
