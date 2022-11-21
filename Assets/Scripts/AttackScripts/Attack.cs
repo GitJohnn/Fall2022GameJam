@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum UserType
+{
+    Player,
+    Enemy
+}
+
 public class Attack : MonoBehaviour
 {
    [SerializeField] bool _useCustomAttackSettings = false; 
@@ -56,25 +62,33 @@ public class Attack : MonoBehaviour
 
    void Update()
    {
-      if (_timeBetweenAttack <= 0)
-      {
-         if (Input.GetMouseButtonDown(0))
-         {
-            // Debug.Log("REE");
-            HandlePrimaryAttack();
-            _timeBetweenAttack = TimeBetweenAttacks;
+        if (_timeBetweenAttack <= 0)
+        {
+            if (_settings.UserType == UserType.Player) // If the user is a player
+            {
+                if (Input.GetMouseButtonDown(0))// and if the player presses the left mouse button
+                {
+                    // Debug.Log("REE");
+                    HandlePrimaryAttack(); // it will do the attack
+                    _timeBetweenAttack = TimeBetweenAttacks; // and reset the clock
 
-         }
-         else if (Input.GetMouseButtonDown(1))
-         {
-            HandleSecondaryAttack();
-         }
-      }
-      else
-      {
-         _timeBetweenAttack -= Time.deltaTime;
-      }
-   }
+                }
+                else if (Input.GetMouseButtonDown(1)) // if the player presses the left mouse button
+                {
+                    HandleSecondaryAttack(); // it'll do the secondary attack
+                }
+            }
+            else // But if the user isn't a player
+            {
+                // HandlePrimaryAttack(); // it'll only run the primary attack logic
+                // _timeBetweenAttack = TimeBetweenAttacks; // and then reset the clock
+            }
+        }
+        else
+        {
+            _timeBetweenAttack -= Time.deltaTime;
+        }
+    }
 
    public virtual void HandlePrimaryAttack()
    {
