@@ -23,12 +23,12 @@ public class LargePotion : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        var player = collision.GetComponent<PlayerInput>();
+        var player = collision.GetComponent<PlayerMovement>();
         if(player) playerInsideTrigger = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        var player = collision.GetComponent<PlayerInput>();
+        var player = collision.GetComponent<PlayerMovement>();
         if(player) playerInsideTrigger = false;
     }
 }
