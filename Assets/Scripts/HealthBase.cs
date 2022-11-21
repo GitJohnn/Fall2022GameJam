@@ -36,7 +36,7 @@ public abstract class HealthBase : MonoBehaviour
         if (currentHealth > 0)
         {
             OnHitWithReference?.Invoke(sender);
-            Debug.Log("hit!");
+            Debug.Log($"hit by {sender.name}");
         }
         else
         {
