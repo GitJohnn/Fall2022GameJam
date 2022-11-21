@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
         //Check if colliding with player object
         if ((playerLayer & (1 << objlayer)) != 0)
         {
-            var targetHealth = other.GetComponent<Health>();
+            var targetHealth = other.GetComponent<HealthBase>();
             if (!targetHealth)
                 return;
                 

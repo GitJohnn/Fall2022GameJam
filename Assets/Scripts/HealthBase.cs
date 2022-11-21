@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour
+public abstract class HealthBase : MonoBehaviour
 {
-    [SerializeField]
-    private int currentHealth, maxHealth;
+    [SerializeField, ReadOnly] private float currentHealth;
+    [SerializeField] private bool isDead = false;
 
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
 
-    [SerializeField]
-    private bool isDead = false;
+    public bool IsDead => isDead;
 
-    private void Awake()
-    {
-        InitializeHealth(maxHealth);
+    public abstract void ResetHealth();
+
+    private void Awake() {
+        ResetHealth();
     }
 
-    public void InitializeHealth(int healthValue)
+    protected virtual void InitializeHealth(float startingHealth)
     {
-        currentHealth = healthValue;
-        //maxHealth = healthValue;
+        currentHealth = startingHealth;
         isDead = false;
     }
 
@@ -41,9 +40,13 @@ public class Health : MonoBehaviour
         }
         else
         {
-            OnDeathWithReference?.Invoke(sender);
-            isDead = true;
-            Destroy(gameObject);
+            Die(sender);
         }
+    }
+
+    protected virtual void Die(GameObject sender) {
+        OnDeathWithReference?.Invoke(sender);
+        isDead = true;
+        Destroy(gameObject);
     }
 }

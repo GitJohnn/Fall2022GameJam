@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 451029314743656768}
   - component: {fileID: 451029314743656771}
   - component: {fileID: 9096050361651342448}
-  - component: {fileID: 1200418660}
+  - component: {fileID: 1819233338731427780}
   - component: {fileID: 1200418661}
   m_Layer: 6
   m_Name: Player
@@ -223,7 +223,7 @@ MonoBehaviour:
       m_Calls: []
   _attackPosition: {fileID: 9068170065388500724}
   _timeBetweenAttack: 0
---- !u!114 &1200418660
+--- !u!114 &1819233338731427780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,18 +232,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 451029314743656770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a15669ecf5c7e40a445a4dfc7369bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e7ce33353cd6db4a8f7979f8b6d9959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 100
+  isDead: 0
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls: []
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
-  isDead: 0
+  playerStats: {fileID: 11400000, guid: dbc41ddc4158bac43a92dc8a749e4c4a, type: 2}
+  healthBar: {fileID: 0}
 --- !u!114 &1200418661
 MonoBehaviour:
   m_ObjectHideFlags: 0
