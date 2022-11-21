@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] UnityEvent _onPrimaryAttack;
     [SerializeField] UnityEvent _onSecondaryAttack;
     [SerializeField] UnityEvent<Vector2> _onPointerPosition;
+    [SerializeField] UnityEvent<float> _ondashcooldown;
     [SerializeField] WeaponParent weaponParent;
 
     AgentAnimations agentAnimations;
@@ -34,6 +35,13 @@ public class PlayerInput : MonoBehaviour
         set { _moveSpeed = value; }
     }
 
+    [SerializeField] bool dashUnlocked = true;
+    [SerializeField] float startDashTime = 1f;
+    [SerializeField] float dashSpeed = 1f;
+    [SerializeField] float dashCoolDown = 1f;
+
+    public float CurrentDashCoolDown { get { return currentCooldownTime; } }
+
     private Vector2 _moveDirection;
     private Vector2 _mousePosition;
 
@@ -41,10 +49,19 @@ public class PlayerInput : MonoBehaviour
     {
         if (_rb == null) _rb = GetComponent<Rigidbody2D>();    
     }
+
     void Awake()
     {
         agentAnimations = GetComponent<AgentAnimations>();
         _rb.centerOfMass = _centerOfMass;
+        //Set all abilities as locked
+        //DashLocked()
+        //Call unlock abilities when unlocked when opening a chest
+        //DashUnlocked()
+        if (dashUnlocked)
+            DashUnlocked();
+        else
+            DashLocked();        
     }
 
     private void OnEnable()
@@ -67,10 +84,13 @@ public class PlayerInput : MonoBehaviour
         {
             _onPrimaryAttack?.Invoke(); 
         }
-        if (Input.GetMouseButtonDown(1) && !IsMouseOverUi)
+        if (Input.GetMouseButtonDown(1) && !IsMouseOverUi && canDash)
         {
             _onSecondaryAttack?.Invoke();
         }
+
+        if (isDashing)
+            _ondashcooldown?.Invoke(currentCooldownTime);
 
         _moveDirection = new Vector2(moveX, moveY).normalized;
 
@@ -108,23 +128,32 @@ public class PlayerInput : MonoBehaviour
         StartCoroutine(Dash((_mousePosition - (Vector2)transform.position).normalized));
     }
 
-    [SerializeField] float startDashTime = 1f;
-    [SerializeField] float dashSpeed = 1f;
-    [SerializeField] float dashCoolDown = 1f;
-
     float currentDashTime;
     float currentCooldownTime;
 
     bool canMove = true;
-    bool canDash = true;
+    bool canDash = true; //Start as true for testing
+    bool isDashing = false;
     bool playerCollision = true;
+
+    private void DashLocked()
+    {
+        canDash = false;
+    }
+
+    public void DashUnlocked()
+    {
+        canDash = true;
+    }
 
     IEnumerator Dash(Vector2 direction)
     {
         canMove = false;
         canDash = false;
+        isDashing = true;
         playerCollision = false;
         currentDashTime = startDashTime; // Reset the dash timer.
+        currentCooldownTime = 0;
 
         while (currentDashTime > 0f)
         {
@@ -132,24 +161,23 @@ public class PlayerInput : MonoBehaviour
 
             _rb.velocity = direction * dashSpeed; // Dash in the direction that was held down.
                                                             // No need to multiply by Time.DeltaTime here, physics are already consistent across different FPS.
-
             yield return null; // Returns out of the coroutine this frame so we don't hit an infinite loop.
         }
 
         _rb.velocity = new Vector2(0f, 0f); // Stop dashing.
 
-        currentCooldownTime = dashCoolDown;
+        canMove = true;        
+        playerCollision = true;
 
-        while(currentCooldownTime > 0f)
+        while (currentCooldownTime <= dashCoolDown)
         {
-            currentCooldownTime -= Time.deltaTime;
+            currentCooldownTime += Time.deltaTime;
 
             yield return null;
         }
-
-        canMove = true;
+        
         canDash = true;
-        playerCollision = true;
+        isDashing = false;
     }
 
     private void AnimateCharacter()

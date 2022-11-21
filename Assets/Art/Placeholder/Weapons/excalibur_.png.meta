@@ -376,6 +376,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: swordIcon
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 100
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2650fadf4cf37a64cb8fdeaac2970068
+      internalID: 1975356670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -391,6 +412,7 @@ TextureImporter:
       excalibur__10: -138323205
       excalibur__11: 355047944
       excalibur__12: -2056810195
+      swordIcon: 1975356670
       excalibur__7: 830592273
       excalibur__0: -1599417778
       excalibur__6: 1164751700

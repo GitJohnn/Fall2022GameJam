@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 330790333}
   - component: {fileID: 330790332}
   - component: {fileID: 330790331}
+  - component: {fileID: 330790334}
   m_Layer: 5
   m_Name: ButtonUI
   m_TagString: Untagged
@@ -185,7 +186,7 @@ MonoBehaviour:
           m_MethodName: set_sprite
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: -1071412509, guid: 72f9e11d5e74365408b07d2ad5d6161e, type: 3}
+            m_ObjectArgument: {fileID: -1531096413, guid: 72f9e11d5e74365408b07d2ad5d6161e, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -201,7 +202,7 @@ MonoBehaviour:
           m_MethodName: set_sprite
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: -1599417778, guid: 93c848eb1116aa24b99d8cb7a238722c, type: 3}
+            m_ObjectArgument: {fileID: 21300000, guid: 62653d1e14c38764da14df164a436f7e, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -237,7 +238,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.169
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -250,6 +251,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330790329}
   m_CullTransparentMesh: 1
+--- !u!114 &330790334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330790329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2959a0d675be6564593c648251be1861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalcooldown: 1
+  cooldownImage: {fileID: 330790332}
 --- !u!1 &919361459
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,13 +404,25 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: _ondashcooldown.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: _onPointerPosition.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: _onSecondaryAttack.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: _ondashcooldown.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: _ondashcooldown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 330790334}
     - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: _onPointerPosition.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
@@ -421,6 +448,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1617448659}
     - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: _ondashcooldown.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: _ondashcooldown.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_CurrentAbilityCooldown
+      objectReference: {fileID: 0}
+    - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: _onPointerPosition.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -445,6 +480,10 @@ PrefabInstance:
       value: HandleSecondaryAttack
       objectReference: {fileID: 0}
     - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: _ondashcooldown.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonCoolDownHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: _onPointerPosition.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: WeaponParent, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -455,6 +494,10 @@ PrefabInstance:
     - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: _onSecondaryAttack.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Attack, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: _ondashcooldown.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: _onPointerPosition.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -588,7 +631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1071412509, guid: 72f9e11d5e74365408b07d2ad5d6161e, type: 3}
+  m_Sprite: {fileID: 1975356670, guid: 93c848eb1116aa24b99d8cb7a238722c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -943,7 +986,7 @@ MonoBehaviour:
           m_MethodName: set_sprite
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: -1599417778, guid: 93c848eb1116aa24b99d8cb7a238722c, type: 3}
+            m_ObjectArgument: {fileID: 1975356670, guid: 93c848eb1116aa24b99d8cb7a238722c, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -979,7 +1022,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.169
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1187,8 +1230,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
+  m_SizeDelta: {x: 0.000015259, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1685805190
 MonoBehaviour:
@@ -1210,7 +1253,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1071412509, guid: 72f9e11d5e74365408b07d2ad5d6161e, type: 3}
+  m_Sprite: {fileID: -299951283, guid: a1165144cc7917a4293d6bb4ebc1188d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1528,7 +1571,7 @@ MonoBehaviour:
           m_MethodName: set_sprite
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: -1599417778, guid: 93c848eb1116aa24b99d8cb7a238722c, type: 3}
+            m_ObjectArgument: {fileID: -299951283, guid: a1165144cc7917a4293d6bb4ebc1188d, type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -1564,7 +1607,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.169
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1893,7 +1936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1071412509, guid: 72f9e11d5e74365408b07d2ad5d6161e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62653d1e14c38764da14df164a436f7e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
