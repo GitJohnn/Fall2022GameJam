@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &993724907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993724908}
+  m_Layer: 7
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993724908
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993724907}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.233, y: 0.285, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 687776126541102892}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &588328655711917085
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +164,7 @@ GameObject:
   - component: {fileID: 2141408230192251495}
   - component: {fileID: 2141408230192251492}
   - component: {fileID: 1883272509}
+  - component: {fileID: 360902096}
   m_Layer: 7
   m_Name: EnemyObject
   m_TagString: Untagged
@@ -229,6 +261,7 @@ MonoBehaviour:
   - {fileID: 2141408230758670484}
   - {fileID: 2141408231462981209}
   aiData: {fileID: 2141408230192251490}
+  attackSettings: {fileID: 0}
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
   attackDelay: 1
@@ -323,6 +356,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationScaleMultipler: 1.25
+--- !u!114 &360902096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141408230192251489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c19aad70360eff4199722c28d464564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useCustomAttackSettings: 0
+  _settings: {fileID: 11400000, guid: 7304c1a167d368f41b66f0a8aabe5424, type: 2}
+  _meleeDamage: 0
+  _timeBetweenAttacks: 0
+  _includeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _attackRange: 0
+  _onPrimaryAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  _onSecondaryAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  _attackPosition: {fileID: 993724908}
+  _timeBetweenAttack: 0
 --- !u!1 &2141408230370294587
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +804,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9121821313549748089}
+  - {fileID: 993724908}
   m_Father: {fileID: 3938013642945012720}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

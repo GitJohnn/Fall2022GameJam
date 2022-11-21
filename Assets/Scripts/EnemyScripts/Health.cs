@@ -13,10 +13,15 @@ public class Health : MonoBehaviour
     [SerializeField]
     private bool isDead = false;
 
+    private void Awake()
+    {
+        InitializeHealth(maxHealth);
+    }
+
     public void InitializeHealth(int healthValue)
     {
         currentHealth = healthValue;
-        maxHealth = healthValue;
+        //maxHealth = healthValue;
         isDead = false;
     }
 

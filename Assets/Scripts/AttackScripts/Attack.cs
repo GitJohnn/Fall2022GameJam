@@ -12,15 +12,15 @@ public enum UserType
 public class Attack : MonoBehaviour
 {
    [SerializeField] bool _useCustomAttackSettings = false; 
-   [SerializeField] AttackSettings _settings;
+   [SerializeField] protected AttackSettings _settings;
    
    [SerializeField, ShowIf("_useCustomAttackSettings")] int _meleeDamage;
    [SerializeField, ShowIf("_useCustomAttackSettings")] float _timeBetweenAttacks;
    [SerializeField, ShowIf("_useCustomAttackSettings")] LayerMask _includeLayers;
    [SerializeField, ShowIf("_useCustomAttackSettings")] float _attackRange;
-   [SerializeField] UnityEvent _onPrimaryAttack;
-   [SerializeField] UnityEvent _onSecondaryAttack;
-   [SerializeField] Transform _attackPosition;
+   [SerializeField] protected UnityEvent _onPrimaryAttack;
+   [SerializeField] protected UnityEvent _onSecondaryAttack;
+   [SerializeField] protected Transform _attackPosition;
 
    int MeleeDamage 
    {
