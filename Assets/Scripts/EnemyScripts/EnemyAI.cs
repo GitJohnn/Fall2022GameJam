@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private AIData aiData;
 
+    public AIBehavior aiBehavior = AIBehavior.ChaseAndAttack;
+
     [SerializeField]
     public AttackSettings attackSettings;
     [SerializeField]
@@ -45,6 +47,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     bool following = false;
+    bool runningAway = false;
 
     private void Start()
     {
@@ -75,10 +78,11 @@ public class EnemyAI : MonoBehaviour
         {
             //Looking at the Target
             OnPointerInput?.Invoke(aiData.currentTarget.position);
-            if (following == false)
+            if (!following)
             {
                 following = true;
-                StartCoroutine(ChaseAndAttack());
+                CallAIBehavior(aiBehavior);
+                //StartCoroutine(ChaseAndAttack());
             }
         }
         else if (aiData.GetTargetsCount() > 0)
@@ -88,6 +92,19 @@ public class EnemyAI : MonoBehaviour
         }
         //Moving the Agent
         OnMovementInput?.Invoke(movementInput);
+    }
+
+    private void CallAIBehavior(AIBehavior value)
+    {
+        switch (value)
+        {
+            case AIBehavior.ChaseAndAttack:
+                StartCoroutine(ChaseAndAttack());
+                break;
+            case AIBehavior.RunAwayAndAttack:
+                StartCoroutine(RunAwayAndAttack());
+                break;
+        }
     }
 
     private IEnumerator ChaseAndAttack()
@@ -124,6 +141,48 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    private IEnumerator RunAwayAndAttack()
+    {
+        if (aiData.currentTarget == null)
+        {
+            //Stopping Logic
+            Debug.Log("Stopping");
+            movementInput = Vector2.zero;
+            //following = false;
+            yield break;
+        }
+        else
+        {
+            float distance = Vector2.Distance(aiData.currentTarget.position, transform.position);
+
+            if (distance <= attackDistance)
+            {
+                //Attack logic
+                movementInput = Vector2.zero;
+                //avoid logic
+                if (distance <= attackDistance*0.9f)
+                {
+                    //Debug.Log("run away!");
+                    movementInput = (transform.position - aiData.currentTarget.position).normalized;
+                    //yield return new WaitForSeconds(aiUpdateDelay);
+                    //StartCoroutine(RunAwayAndAttack());                    
+                }
+                OnAttackPressed?.Invoke();
+                yield return new WaitForSeconds(attackDelay);
+                StartCoroutine(RunAwayAndAttack());
+
+            }
+            else
+            {
+                //Chase logic
+                movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
+                yield return new WaitForSeconds(aiUpdateDelay);
+                StartCoroutine(RunAwayAndAttack());
+            }
+
+        }
+    }
+
     private void OnDrawGizmos()
     {
         if (showGizmo == false)
@@ -133,4 +192,10 @@ public class EnemyAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackDistance);
 
     }
+}
+
+public enum AIBehavior
+{
+    ChaseAndAttack,
+    RunAwayAndAttack
 }
