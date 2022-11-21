@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public static bool IsMouseOverUi
     {
@@ -14,13 +14,11 @@ public class PlayerInput : MonoBehaviour
             return events != null && events.IsPointerOverGameObject();
         }
     }
-    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] PlayerStats _playerStats;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] bool _showCenterOfMass;
     [SerializeField, ShowIf("_showCenterOfMass")] Vector3 _centerOfMass;
     [SerializeField, ReadOnly] bool _isMoving;
-    [SerializeField] UnityEvent _onPrimaryAttack;
-    [SerializeField] UnityEvent _onSecondaryAttack;
     [SerializeField] WeaponParent weaponParent;
 
     AgentAnimations agentAnimations;
@@ -29,8 +27,7 @@ public class PlayerInput : MonoBehaviour
 
     public float MoveSpeed 
     {
-        get { return _moveSpeed; }
-        set { _moveSpeed = value; }
+        get { return _playerStats.Speed; }
     }
 
     private Vector2 _moveDirection;
@@ -52,15 +49,6 @@ public class PlayerInput : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetMouseButtonDown(0) && !IsMouseOverUi)
-        {
-            _onPrimaryAttack?.Invoke(); 
-        }
-        if (Input.GetMouseButtonDown(1) && !IsMouseOverUi)
-        {
-            _onSecondaryAttack?.Invoke();
-        }
-
         _moveDirection = new Vector2(moveX, moveY).normalized;
 
         if (_moveDirection.magnitude > 0.01f) _isMoving = true;
@@ -80,8 +68,8 @@ public class PlayerInput : MonoBehaviour
     private void FixedUpdate()
     {
         // _rb.velocity = new Vector2(_moveDirection.x * _moveSpeed, _moveDirection.y * _moveSpeed );
-        _rb.MovePosition(new Vector2((transform.position.x + _moveDirection.x * _moveSpeed * Time.deltaTime),
-            transform.position.y + _moveDirection.y * _moveSpeed * Time.deltaTime));
+        _rb.MovePosition(new Vector2((transform.position.x + _moveDirection.x * _playerStats.Speed * Time.deltaTime),
+            transform.position.y + _moveDirection.y * _playerStats.Speed * Time.deltaTime));
                 
         //Vector2 aimDirection = _mousePosition - _rb.position;
         //float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;

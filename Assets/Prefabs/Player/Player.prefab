@@ -171,29 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf901d76f61f2842ae1bd5cad8d9aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
+  _playerStats: {fileID: 11400000, guid: dbc41ddc4158bac43a92dc8a749e4c4a, type: 2}
   _rb: {fileID: 451029314743656768}
   _showCenterOfMass: 0
   _centerOfMass: {x: 0, y: 0, z: 0}
   _isMoving: 0
-  _onPrimaryAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7984830431271331363}
-        m_TargetAssemblyTypeName: WeaponParent, Assembly-CSharp
-        m_MethodName: AnimateAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _onSecondaryAttack:
-    m_PersistentCalls:
-      m_Calls: []
   weaponParent: {fileID: 7984830431271331363}
 --- !u!114 &9096050361651342448
 MonoBehaviour:
@@ -217,7 +199,19 @@ MonoBehaviour:
   _attackRange: 0
   _onPrimaryAttack:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7984830431271331363}
+        m_TargetAssemblyTypeName: WeaponParent, Assembly-CSharp
+        m_MethodName: AnimateAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onSecondaryAttack:
     m_PersistentCalls:
       m_Calls: []
