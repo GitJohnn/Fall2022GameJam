@@ -108,7 +108,7 @@ public class Attack : MonoBehaviour
 
    public virtual void HandleHitLogic(Collider2D collider)
    {
-      var targetHealth = collider.GetComponent<Health>();
+      var targetHealth = collider.GetComponent<HealthBase>();
       if (!targetHealth) return;
 
       targetHealth.GetHit(MeleeDamage, gameObject);

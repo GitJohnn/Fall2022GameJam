@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,8 @@ public class PlayerStats : ScriptableObject {
     public float Speed => speed;
     public float AttackSpeed => attackSpeed;
 
+    public event Action<float> MaxHealthChanged;
+
     //call at the beginning of a dungeon/scene to reset the stats to base levels
     public void InitializeStats() {
         maxHealth = maxHealthBase;
@@ -42,6 +45,7 @@ public class PlayerStats : ScriptableObject {
     public void ChangeMaxHealth(float percentageChange) {
         maxHealthPercentageChange += percentageChange;
         maxHealth = maxHealthBase + (maxHealthBase * (maxHealthPercentageChange / 10));
+        MaxHealthChanged?.Invoke(maxHealth);
     }
 
     public void ChangeAttackPower(float percentageChange) {

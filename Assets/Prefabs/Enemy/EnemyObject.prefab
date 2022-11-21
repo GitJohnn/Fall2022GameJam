@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 2141408230192251492}
   - component: {fileID: 1883272509}
   - component: {fileID: 360902096}
-  - component: {fileID: 360902105}
+  - component: {fileID: 6539783847676841165}
   m_Layer: 7
   m_Name: EnemyObject
   m_TagString: Untagged
@@ -262,6 +262,7 @@ MonoBehaviour:
   - {fileID: 2141408230758670484}
   - {fileID: 2141408231462981209}
   aiData: {fileID: 2141408230192251490}
+  aiBehavior: 0
   attackSettings: {fileID: 0}
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
@@ -385,7 +386,7 @@ MonoBehaviour:
       m_Calls: []
   _attackPosition: {fileID: 993724908}
   _timeBetweenAttack: 0
---- !u!114 &360902105
+--- !u!114 &6539783847676841165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -394,18 +395,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2141408230192251489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a15669ecf5c7e40a445a4dfc7369bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c92ddf7d2f911246ae5dcb9f8166987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 50
+  isDead: 0
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls: []
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
-  isDead: 0
+  maxHealth: 30
 --- !u!1 &2141408230370294587
 GameObject:
   m_ObjectHideFlags: 0

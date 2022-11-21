@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HealthUp_StrengthDown
   m_EditorClassIdentifier: 
   statToBuff: 0
-  buffPercentage: 0
-  statToDebuff: 0
-  debuffPercentage: 0
+  buffPercentage: 25
+  statToDebuff: 1
+  debuffPercentage: 30
