@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a1165144cc7917a4293d6bb4ebc1188d
+guid: 72f9e11d5e74365408b07d2ad5d6161e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 28
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,127 +104,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stick
+      name: e-key
       rect:
         serializedVersion: 2
-        x: 4
-        y: 0
-        width: 4
-        height: 24
-      alignment: 9
-      pivot: {x: 0.5, y: 0.15}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d6eb819747d0f54ca0badac2524dc46
-      internalID: -1920380365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bow1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 2
-        width: 6
-        height: 20
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a280d1a01e90504f9ac7f72862edf57
-      internalID: -665220333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bow2
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 2
-        width: 8
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d2e10720f9b051240ba34c6eb937088f
-      internalID: -908126323
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bow3
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 2
-        width: 9
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c4a6d3613b019d498439e19e2a40cde
-      internalID: -402534517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: arrow
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 5
-        width: 4
-        height: 14
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3bf57a6278aac514ab10a4912c0b92c2
-      internalID: 1109904288
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bowIcon
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
+        x: 96
+        y: 576
         width: 16
-        height: 24
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3801fd5576a2e04b94146ad17546396
-      internalID: -299951283
+      spriteID: f23860fbd07503f41a11ab857a2f6902
+      internalID: 81944940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: q-key
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 576
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652a4c116972d4f418ecc9d56b4f91b0
+      internalID: -1531096413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouse-right-click
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 432
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b553dc212570f845bdfe4d91b1cfaad
+      internalID: -1071412509
       vertices: []
       indices: 
       edges: []
@@ -240,12 +177,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      arrow: 1109904288
-      Bow3: -402534517
-      Bow2: -908126323
-      Stick: -1920380365
-      bowIcon: -299951283
-      Bow1: -665220333
+      q-key: -1531096413
+      mouse-right-click: -1071412509
+      e-key: 81944940
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

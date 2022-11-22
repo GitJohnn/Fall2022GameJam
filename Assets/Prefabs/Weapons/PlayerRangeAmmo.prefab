@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8739762110459197858}
   - component: {fileID: 6945353333349172003}
   m_Layer: 0
-  m_Name: RangeAmmo
+  m_Name: PlayerRangeAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,9 +96,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 5
   timeToLive: 4
-  playerLayer:
+  hitLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
