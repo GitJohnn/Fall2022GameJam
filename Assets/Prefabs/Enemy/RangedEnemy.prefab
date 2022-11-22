@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 1216985927053102739}
-  strength: 16
+  strength: 8
   delay: 0.15
   onBegin:
     m_PersistentCalls:
@@ -760,7 +760,7 @@ MonoBehaviour:
   detectionRadius: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   showGizmos: 0
 --- !u!1 &1216985927811084748
 GameObject:

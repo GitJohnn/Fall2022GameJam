@@ -205,8 +205,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18}
-  m_Size: {x: 0.4, y: 0.55}
+  m_Offset: {x: 0, y: 0.12}
+  m_Size: {x: 0.4, y: 0.43}
   m_Direction: 0
 --- !u!50 &2141408230192251494
 Rigidbody2D:
@@ -591,7 +591,7 @@ MonoBehaviour:
   targetDetectionRange: 5
   obstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 832
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -814,8 +814,8 @@ MonoBehaviour:
   detectionRadius: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
-  showGizmos: 0
+    m_Bits: 768
+  showGizmos: 1
 --- !u!1 &2141408231823800409
 GameObject:
   m_ObjectHideFlags: 0

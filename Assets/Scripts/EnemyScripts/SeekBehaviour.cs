@@ -34,7 +34,6 @@ public class SeekBehaviour : SteeringBehaviour
                 aiData.currentTarget = aiData.targets.OrderBy
                     (target => Vector2.Distance(target.position, transform.position)).FirstOrDefault();
             }
-
         }
 
         //cache the last position only if we still see the target (if the targets collection is not empty)
