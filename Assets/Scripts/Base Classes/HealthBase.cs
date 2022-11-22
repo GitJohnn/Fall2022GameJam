@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,7 @@ public abstract class HealthBase : MonoBehaviour
     [SerializeField] private bool isDead = false;
 
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
+    public event Action OnDeath;
 
     public bool IsDead => isDead;
 
@@ -46,6 +48,7 @@ public abstract class HealthBase : MonoBehaviour
 
     protected virtual void Die(GameObject sender) {
         OnDeathWithReference?.Invoke(sender);
+        OnDeath?.Invoke();
         isDead = true;
         Destroy(gameObject);
     }

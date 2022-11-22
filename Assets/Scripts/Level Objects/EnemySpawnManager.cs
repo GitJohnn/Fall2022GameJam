@@ -16,10 +16,15 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] float _timeBetweenWaves = 5f;
     [SerializeField] bool _enableGizmos = true;
     [SerializeField] UnityEvent _OnFinishedSpawns;
+    [SerializeField] UnityEvent _OnAllEnemyDead;
     public event Action OnFinishedSpawns;
+    public event Action OnAllEnemyDead;
     [SerializeField, ReadOnly] int _enemiesSpawned;
+    [SerializeField, ReadOnly] int _enemiesKilled; 
     public int EnemiesSpawned => _enemiesSpawned;
+    public int EnemiesKilled => _enemiesKilled;
     bool _runOnce;
+    bool _runOnce2;
     
 
     void Start()
@@ -42,9 +47,39 @@ public class EnemySpawnManager : MonoBehaviour
             {
                 OnFinishedSpawns?.Invoke();
                 _OnFinishedSpawns?.Invoke();
+                _runOnce = true;
             }
             enableSpawn = false;
         }
+
+        if (_enemiesKilled >= _numOfSpawnsLimit)
+        {
+            if (!_runOnce2)
+            {
+                OnAllEnemyDead?.Invoke();
+                _OnAllEnemyDead?.Invoke();
+                ResetSubscriptions();
+                // Debug.Log("It WOrks");
+                _runOnce2 = true;
+            }
+        }
+    }
+
+    void ResetSubscriptions()
+    {
+        for (int i = 0; i < _enemyObjects.Count; i++)
+        {
+            HealthBase enemyHealth = _enemyObjects[i].GetComponent<HealthBase>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.OnDeath -= OnEnemyDeath;
+            } 
+        }
+    }
+
+    void OnEnemyDeath()
+    {
+        _enemiesKilled++;
     }
 
     void Spawn()
@@ -56,6 +91,8 @@ public class EnemySpawnManager : MonoBehaviour
 
         GameObject spawnedEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
         AIData enemyData = spawnedEnemy.GetComponent<AIData>();
+        HealthBase enemyHealth = spawnedEnemy.GetComponent<HealthBase>();
+        enemyHealth.OnDeath += OnEnemyDeath;
         enemyData.currentTarget = _playerTransform;
 
         _enemiesSpawned++;
