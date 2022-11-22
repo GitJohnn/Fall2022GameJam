@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_rb == null) _rb = GetComponent<Rigidbody2D>();    
     }
+
     void Awake()
     {
         agentAnimations = GetComponent<AgentAnimations>();

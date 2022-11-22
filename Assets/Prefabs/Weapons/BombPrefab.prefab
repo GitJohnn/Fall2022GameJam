@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1662370719985824244}
   - component: {fileID: 6122164116715153604}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,10 @@ GameObject:
   - component: {fileID: 6035233110517028294}
   - component: {fileID: 6035233110517028292}
   - component: {fileID: 6035233110517028291}
-  m_Layer: 0
+  - component: {fileID: 1235898135}
+  - component: {fileID: 1235898133}
+  - component: {fileID: 1235898134}
+  m_Layer: 10
   m_Name: BombPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +114,7 @@ Transform:
   m_GameObject: {fileID: 6035233110517028290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.62, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1662370719985824244}
@@ -146,10 +149,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 108a48d06816b3348a8e235a74f6452e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToExplode: 2
+  timeToExplode: 3
   timeToFinishExplotion: 1
-  explotionRange: 2
+  explotionRange: 1.5
   damageAmount: 25
   targetLayers:
     serializedVersion: 2
     m_Bits: 704
+--- !u!50 &1235898135
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035233110517028290}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1235898133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035233110517028290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc5df6074ceeba459dd5dd82596a7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  isDead: 0
+  OnHitWithReference:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1235898134}
+        m_TargetAssemblyTypeName: KnockbackFeedback, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeathWithReference:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxObstacleHealth: 100
+--- !u!114 &1235898134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035233110517028290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e905fbb30b69e489c68f198d8d7efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 1235898135}
+  strength: 16
+  delay: 0.15
+  onBegin:
+    m_PersistentCalls:
+      m_Calls: []
+  onDone:
+    m_PersistentCalls:
+      m_Calls: []
