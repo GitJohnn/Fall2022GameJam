@@ -38,6 +38,5 @@ public class ToxicityBar : MonoBehaviour {
             timeElapsed += Time.deltaTime;
             yield return null;
         }
-        
     }
 }

@@ -9,10 +9,12 @@ public class PotionManager : MonoBehaviour {
 
     private void OnEnable() {
         PotionObject.PotionObjectTaken += DeactivatePotions;
+        EnemySpawnManager.OnAllEnemyDead += ActivatePotions;
     }
 
     private void OnDisable() {
         PotionObject.PotionObjectTaken -= DeactivatePotions;
+        EnemySpawnManager.OnAllEnemyDead -= ActivatePotions;
     }
 
     private void Start() {
@@ -23,9 +25,8 @@ public class PotionManager : MonoBehaviour {
             o.AssignPotion(unusedPotions[randInd]);
             unusedPotions.RemoveAt(randInd);
         }
-
-        //TODO: listen for when all enemies in the room are defeated and then activate potions
-        ActivatePotions(); //again, MOVE THIS SOMEWHERE ELSE
+        //deactivate the potions
+        DeactivatePotions();
     }
 
     //activate all potions in the scene
