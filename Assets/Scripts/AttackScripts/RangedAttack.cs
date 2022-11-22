@@ -29,7 +29,7 @@ public class RangedAttack : Attack
     public void RangeUnlocked()
     {
         canAttack = true;
-        attackButton.SetTotalcooldown(totalCooldown);
+        attackButton?.SetTotalcooldown(totalCooldown);
         currentAttackCooldown = totalCooldown;
     }
 

@@ -381,9 +381,6 @@ MonoBehaviour:
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
-  _onSecondaryAttack:
-    m_PersistentCalls:
-      m_Calls: []
   _attackPosition: {fileID: 993724908}
   _timeBetweenAttack: 0
 --- !u!114 &6539783847676841165
@@ -402,7 +399,19 @@ MonoBehaviour:
   isDead: 0
   OnHitWithReference:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6893093178436072899}
+        m_TargetAssemblyTypeName: DamageFlashEffect, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
@@ -723,6 +732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2141408231823800411}
   - component: {fileID: 2141408231823800408}
+  - component: {fileID: 6893093178436072899}
   m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -797,6 +807,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6893093178436072899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141408231823800409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aaa4e3e6303bcd41968691bd5e34692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: f60cfa3a239a16844aec92dabb820235, type: 2}
+  duration: 0.25
 --- !u!1 &6983460131548311740
 GameObject:
   m_ObjectHideFlags: 0
