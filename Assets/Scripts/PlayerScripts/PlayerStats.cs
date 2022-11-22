@@ -33,6 +33,7 @@ public class PlayerStats : MonoBehaviour {
     public float Defense => defense;
     public float Speed => speed;
     public float AttackSpeed => attackSpeed;
+    public float ToxicityThreshold => toxicityThreshold;
     public float ToxicityLevel => toxicityLevel;
 
     public event Action<float> MaxHealthChanged;
@@ -40,6 +41,7 @@ public class PlayerStats : MonoBehaviour {
     public event Action<float> DefenseChanged;
     public event Action<float> SpeedChanged;
     public event Action<float> AttackSpeedChanged;
+    public event Action<float> ToxicityChanged;
 
     private void Awake() {
         InitializeStats();
@@ -55,31 +57,31 @@ public class PlayerStats : MonoBehaviour {
     }
 
     public void ChangeMaxHealth(float percentageChange) {
-        maxHealth = StatChangeHelper(maxHealthBase, maxHealthPercentageChange, percentageChange);
+        maxHealth = StatChangeHelper(maxHealthBase, ref maxHealthPercentageChange, percentageChange);
         MaxHealthChanged?.Invoke(maxHealth);
     }
 
     public void ChangeAttackPower(float percentageChange) {
-        attackPower = StatChangeHelper(attackPowerBase, attackPowerPercentageChange, percentageChange);
+        attackPower = StatChangeHelper(attackPowerBase, ref attackPowerPercentageChange, percentageChange);
         AttackPowerChanged?.Invoke(attackPower);
     }
 
     public void ChangeDefense(float percentageChange) {
-        defense = StatChangeHelper(defenseBase, defensePercentageChange, percentageChange);
+        defense = StatChangeHelper(defenseBase, ref defensePercentageChange, percentageChange);
         DefenseChanged?.Invoke(defense);
     }
 
     public void ChangeSpeed(float percentageChange) {
-        speed = StatChangeHelper(speedBase, speedPercentageChange, percentageChange);
+        speed = StatChangeHelper(speedBase, ref speedPercentageChange, percentageChange);
         SpeedChanged?.Invoke(speed);
     }
 
     public void ChangeAttackSpeed(float percentageChange) {
-        attackSpeed = StatChangeHelper(attackSpeedBase, attackSpeedPercentageChange, percentageChange);
+        attackSpeed = StatChangeHelper(attackSpeedBase, ref attackSpeedPercentageChange, percentageChange);
         AttackSpeedChanged?.Invoke(attackSpeed);
     }
 
-    private float StatChangeHelper(float baseStat, float statPercentageChange, float newPercentageChange) {
+    private float StatChangeHelper(float baseStat, ref float statPercentageChange, float newPercentageChange) {
         statPercentageChange += newPercentageChange;
         float newStat = baseStat + (baseStat * (statPercentageChange / 100));
         if(newStat < minimumStatVal) newStat = minimumStatVal;
@@ -92,5 +94,6 @@ public class PlayerStats : MonoBehaviour {
             Debug.Log("toxicity threshold passed");
             //TODO: put something else here
         }
+        ToxicityChanged?.Invoke(toxicityLevel);
     }
 }
