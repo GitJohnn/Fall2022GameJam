@@ -1,24 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class RangedAttack : Attack
+public class BombAttack : Attack
 {
     public ButtonCoolDownHandler attackButton;
-    public GameObject projectilePrefab;
+    public GameObject bombPrefab;
 
-    public bool rangeAttackUnlocked = true;
-    public float projectileSpeed;
+    public bool bombAttackUnlocked = true;
     public float totalCooldown;
-
 
     public void Awake()
     {
-        if (rangeAttackUnlocked)
-            RangeUnlocked();
+        if (bombAttackUnlocked)
+            BombUnlocked();
         else
-            RangeLocked();
+            BombLocked();
     }
 
     private void Update()
@@ -26,14 +23,14 @@ public class RangedAttack : Attack
         attackButton.CurrentAbilityCooldown = currentAttackCooldown;
     }
 
-    public void RangeUnlocked()
+    public void BombUnlocked()
     {
         canAttack = true;
         attackButton.SetTotalcooldown(totalCooldown);
         currentAttackCooldown = totalCooldown;
     }
 
-    private void RangeLocked()
+    private void BombLocked()
     {
         canAttack = false;
     }
@@ -46,7 +43,7 @@ public class RangedAttack : Attack
     {
         if (!canAttack)
             return;
-        StartCoroutine(RangeAttack());        
+        StartCoroutine(RangeAttack());
         _onPrimaryAttack?.Invoke();
     }
 
@@ -55,10 +52,10 @@ public class RangedAttack : Attack
         canAttack = false;
         currentAttackCooldown = 0;
 
-        Rigidbody2D projectile = Instantiate(projectilePrefab, _attackPosition.position, _attackPosition.rotation).GetComponent<Rigidbody2D>();
-        projectile.AddForce(_attackPosition.right * projectileSpeed, ForceMode2D.Impulse);
+        GameObject bombrb = Instantiate(bombPrefab, _attackPosition.position, Quaternion.identity);
+        //projectile.AddForce(_attackPosition.right * projectileSpeed, ForceMode2D.Impulse);
 
-        while(currentAttackCooldown <= totalCooldown)
+        while (currentAttackCooldown <= totalCooldown)
         {
             currentAttackCooldown += Time.deltaTime;
             yield return null;
@@ -66,5 +63,4 @@ public class RangedAttack : Attack
 
         canAttack = true;
     }
-
 }
