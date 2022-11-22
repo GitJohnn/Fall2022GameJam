@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -13,12 +15,17 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] float _timeToSpawn = 2f;
     [SerializeField] float _timeBetweenWaves = 5f;
     [SerializeField] bool _enableGizmos = true;
+    [SerializeField] UnityEvent _OnFinishedSpawns;
+    public event Action OnFinishedSpawns;
     [SerializeField, ReadOnly] int _enemiesSpawned;
     public int EnemiesSpawned => _enemiesSpawned;
+    bool _runOnce;
+    
 
     void Start()
     {
         if (_playerTransform == null) _playerTransform = FindObjectOfType<PlayerMovement>().transform;
+        _runOnce = false;
     }
 
     void Update()
@@ -26,20 +33,25 @@ public class EnemySpawnManager : MonoBehaviour
         if (Time.time >= _timeToSpawn && enableSpawn)
         {
             Spawn();
-            _timeToSpawn = Time.time + Random.Range(0.1f, _timeBetweenWaves);
+            _timeToSpawn = Time.time + UnityEngine.Random.Range(0.1f, _timeBetweenWaves);
         }
 
         if (_enemiesSpawned >= _numOfSpawnsLimit)
         {
+            if (!_runOnce)
+            {
+                OnFinishedSpawns?.Invoke();
+                _OnFinishedSpawns?.Invoke();
+            }
             enableSpawn = false;
         }
     }
 
     void Spawn()
     {
-        GameObject enemyToSpawn = _enemyObjects[Random.Range(0, _enemyObjects.Count)];
-        float randomXPosition = Random.Range(_firstTransform.position.x, _secondTransform.position.x);
-        float randomYPosition = Random.Range(_firstTransform.position.y, _secondTransform.position.y);
+        GameObject enemyToSpawn = _enemyObjects[UnityEngine.Random.Range(0, _enemyObjects.Count)];
+        float randomXPosition = UnityEngine.Random.Range(_firstTransform.position.x, _secondTransform.position.x);
+        float randomYPosition = UnityEngine.Random.Range(_firstTransform.position.y, _secondTransform.position.y);
         Vector2 spawnPosition = new Vector2(randomXPosition, randomYPosition);
 
         GameObject spawnedEnemy = Instantiate(enemyToSpawn, spawnPosition, Quaternion.identity);
