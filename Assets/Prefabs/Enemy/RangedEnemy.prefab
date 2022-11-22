@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4822ebbf89cd4ca47b931cd4746bc4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDetectionRange: 5
+  targetDetectionRange: 6
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 320
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 1216985927053102737}
   - component: {fileID: 960486286413740488}
   - component: {fileID: 960486286413740495}
-  - component: {fileID: 3870899998773007549}
+  - component: {fileID: 2293824224662695761}
   m_Layer: 7
   m_Name: RangedEnemy
   m_TagString: Untagged
@@ -364,12 +364,13 @@ MonoBehaviour:
   - {fileID: 1216985926277049441}
   - {fileID: 1216985927786791596}
   aiData: {fileID: 1216985927053102743}
+  aiBehavior: 0
   attackSettings: {fileID: 0}
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
   attackDelay: 1
-  showGizmo: 1
-  attackDistance: 2
+  showGizmo: 0
+  attackDistance: 4
   OnAttackPressed:
     m_PersistentCalls:
       m_Calls:
@@ -501,7 +502,8 @@ MonoBehaviour:
   _timeBetweenAttack: 0
   projectilePrefab: {fileID: 6945353333335619128, guid: f4c5e0c52534d294ca221164b4c3e57d, type: 3}
   projectileSpeed: 4
---- !u!114 &3870899998773007549
+  totalDashcooldown: 0
+--- !u!114 &2293824224662695761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -510,18 +512,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1216985927053102740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a15669ecf5c7e40a445a4dfc7369bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c92ddf7d2f911246ae5dcb9f8166987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 50
+  isDead: 0
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls: []
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
-  isDead: 0
+  maxHealth: 20
 --- !u!1 &1216985927376123052
 GameObject:
   m_ObjectHideFlags: 0
