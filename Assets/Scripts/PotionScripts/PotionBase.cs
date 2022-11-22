@@ -19,6 +19,7 @@ public class PotionBase : ScriptableObject {
     public void ApplyPotion(PlayerStats player) {
         AdjustStat(player, statToBuff, buffPercentage);
         AdjustStat(player, statToDebuff, -debuffPercentage);
+        player.ChangeToxicity(toxicity);
     }
 
     private void AdjustStat(PlayerStats player, PlayerStat stat, float percentage) {
