@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 1883272509}
   - component: {fileID: 360902096}
   - component: {fileID: 6539783847676841165}
+  - component: {fileID: 1680651599}
   m_Layer: 7
   m_Name: EnemyObject
   m_TagString: Untagged
@@ -204,8 +205,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18}
-  m_Size: {x: 0.4, y: 0.55}
+  m_Offset: {x: 0, y: 0.12}
+  m_Size: {x: 0.4, y: 0.43}
   m_Direction: 0
 --- !u!50 &2141408230192251494
 Rigidbody2D:
@@ -275,6 +276,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7561036089810491848}
         m_TargetAssemblyTypeName: WeaponParent, Assembly-CSharp
         m_MethodName: AnimateAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 360902096}
+        m_TargetAssemblyTypeName: Attack, Assembly-CSharp
+        m_MethodName: HandlePrimaryAttack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -381,9 +394,6 @@ MonoBehaviour:
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
-  _onSecondaryAttack:
-    m_PersistentCalls:
-      m_Calls: []
   _attackPosition: {fileID: 993724908}
   _timeBetweenAttack: 0
 --- !u!114 &6539783847676841165
@@ -402,11 +412,104 @@ MonoBehaviour:
   isDead: 0
   OnHitWithReference:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6893093178436072899}
+        m_TargetAssemblyTypeName: DamageFlashEffect, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1680651599}
+        m_TargetAssemblyTypeName: KnockbackFeedback, Assembly-CSharp
+        m_MethodName: PlayFeedback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
   maxHealth: 30
+--- !u!114 &1680651599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141408230192251489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e905fbb30b69e489c68f198d8d7efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb2d: {fileID: 2141408230192251494}
+  strength: 8
+  delay: 0.15
+  onBegin:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2141408230192251493}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2141408230192251495}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2141408230192251493}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2141408230192251495}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &2141408230370294587
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +591,7 @@ MonoBehaviour:
   targetDetectionRange: 5
   obstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 832
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -711,8 +814,8 @@ MonoBehaviour:
   detectionRadius: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
-  showGizmos: 0
+    m_Bits: 768
+  showGizmos: 1
 --- !u!1 &2141408231823800409
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,6 +826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2141408231823800411}
   - component: {fileID: 2141408231823800408}
+  - component: {fileID: 6893093178436072899}
   m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
@@ -797,6 +901,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6893093178436072899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141408231823800409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aaa4e3e6303bcd41968691bd5e34692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: f60cfa3a239a16844aec92dabb820235, type: 2}
+  duration: 0.25
 --- !u!1 &6983460131548311740
 GameObject:
   m_ObjectHideFlags: 0

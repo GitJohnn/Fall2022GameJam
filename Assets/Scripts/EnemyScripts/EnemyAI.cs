@@ -16,6 +16,8 @@ public class EnemyAI : MonoBehaviour
 
     public AIBehavior aiBehavior = AIBehavior.ChaseAndAttack;
 
+    [SerializeField] private LayerMask playerLayerMask, obstacleLayerMask;
+
     [SerializeField]
     public AttackSettings attackSettings;
     [SerializeField]
@@ -25,6 +27,8 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     private float attackDistance = 0.5f;
+    [SerializeField]
+    private float runAwayRadius = 0.25f;
 
     //Inputs sent from the Enemy AI to the Enemy controller
     public UnityEvent OnAttackPressed;
@@ -159,19 +163,20 @@ public class EnemyAI : MonoBehaviour
             {
                 //Attack logic
                 movementInput = Vector2.zero;
-                //avoid logic
-                if (distance <= attackDistance*0.9f)
+
+                if (distance <= runAwayRadius)
                 {
-                    //Debug.Log("run away!");
+                    Debug.Log("Run Away");
                     movementInput = (transform.position - aiData.currentTarget.position).normalized;
-                    //yield return new WaitForSeconds(aiUpdateDelay);
-                    //StartCoroutine(RunAwayAndAttack());                    
+                    //yield return null;
                 }
+
                 OnAttackPressed?.Invoke();
                 yield return new WaitForSeconds(attackDelay);
                 StartCoroutine(RunAwayAndAttack());
 
             }
+
             else
             {
                 //Chase logic

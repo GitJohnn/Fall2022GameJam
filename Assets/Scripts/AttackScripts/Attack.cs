@@ -19,7 +19,7 @@ public class Attack : MonoBehaviour
    [SerializeField, ShowIf("_useCustomAttackSettings")] LayerMask _includeLayers;
    [SerializeField, ShowIf("_useCustomAttackSettings")] float _attackRange;
    [SerializeField] protected UnityEvent _onPrimaryAttack;
-   [SerializeField] protected UnityEvent _onSecondaryAttack;
+   //[SerializeField] protected UnityEvent _onSecondaryAttack;
    [SerializeField] protected Transform _attackPosition;
 
     private Rigidbody2D _rigidbody2D;
@@ -109,10 +109,10 @@ public class Attack : MonoBehaviour
     }
 
     //Dash mechanic
-    public virtual void HandleSecondaryAttack()
-    {
-        _onSecondaryAttack?.Invoke();
-    }
+    //public virtual void HandleSecondaryAttack()
+    //{
+    //    _onSecondaryAttack?.Invoke();
+    //}
 
     public virtual void HandleHitLogic(Collider2D collider)
     {

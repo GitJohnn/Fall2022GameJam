@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 466068613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.286, y: 0.041, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 1819233338731427780}
   - component: {fileID: 1200418661}
   - component: {fileID: 1617448663}
+  - component: {fileID: 807327558}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -643,12 +644,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf901d76f61f2842ae1bd5cad8d9aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 5966520742072954775}
+  _playerStats: {fileID: 11400000, guid: dbc41ddc4158bac43a92dc8a749e4c4a, type: 2}
   _rb: {fileID: 451029314743656768}
   _showCenterOfMass: 0
   _centerOfMass: {x: 0, y: 0, z: 0}
   _isMoving: 0
   weaponParent: {fileID: 7984830431271331363}
+  dashUnlocked: 1
+  dashButton: {fileID: 0}
+  startDashTime: 0.25
+  dashSpeed: 20
+  dashCoolDown: 1
 --- !u!114 &1452811158880980936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,7 +669,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onLeftClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7984830431271331363}
+        m_TargetAssemblyTypeName: WeaponParent, Assembly-CSharp
+        m_MethodName: AnimateAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 9096050361651342448}
+        m_TargetAssemblyTypeName: Attack, Assembly-CSharp
+        m_MethodName: HandlePrimaryAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onRightClick:
     m_PersistentCalls:
       m_Calls:
@@ -679,6 +709,38 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onDashAbility:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 451029314743656771}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: HandleDash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dashAbilityKey: 32
+  _onBombAbility:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 807327558}
+        m_TargetAssemblyTypeName: BombAttack, Assembly-CSharp
+        m_MethodName: HandlePrimaryAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  bombAbilityKey: 101
 --- !u!114 &9096050361651342448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,9 +776,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onSecondaryAttack:
-    m_PersistentCalls:
-      m_Calls: []
   _attackPosition: {fileID: 9068170065388500724}
   _timeBetweenAttack: 0
 --- !u!114 &1819233338731427780
@@ -735,7 +794,19 @@ MonoBehaviour:
   isDead: 0
   OnHitWithReference:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 60280887}
+        m_TargetAssemblyTypeName: DamageFlashEffect, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
@@ -776,7 +847,34 @@ MonoBehaviour:
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
-  _onSecondaryAttack:
+  _attackPosition: {fileID: 466068614}
+  _timeBetweenAttack: 0
+  attackButton: {fileID: 0}
+  projectilePrefab: {fileID: 6945353333335619128, guid: 0f6bff58884278b4b9425019fe161385, type: 3}
+  rangeAttackUnlocked: 1
+  projectileSpeed: 12
+  totalCooldown: 0.8
+--- !u!114 &807327558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451029314743656770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a5ce735d88a20448640ef092564bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _useCustomAttackSettings: 0
+  _settings: {fileID: 11400000, guid: 0263598d6b76dfd4ca55e57d7003c526, type: 2}
+  _meleeDamage: 0
+  _timeBetweenAttacks: 0
+  _includeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _attackRange: 0
+  _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
   _attackPosition: {fileID: 466068614}
@@ -784,6 +882,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6945353333335619128, guid: 0f6bff58884278b4b9425019fe161385, type: 3}
   projectileSpeed: 12
   totalDashcooldown: 0
+  attackButton: {fileID: 0}
+  bombPrefab: {fileID: 6035233110517028290, guid: 738262aced3e7604880feeb5a0572adf, type: 3}
+  bombAttackUnlocked: 1
+  totalCooldown: 2.5
 --- !u!1 &2359453401861223982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,6 +1406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8558910199080755799}
   - component: {fileID: 5296024738030757521}
+  - component: {fileID: 60280887}
   m_Layer: 6
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -1454,6 +1557,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &60280887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782404313136491012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aaa4e3e6303bcd41968691bd5e34692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: f60cfa3a239a16844aec92dabb820235, type: 2}
+  duration: 0.1
 --- !u!1 &8933177289061141972
 GameObject:
   m_ObjectHideFlags: 0

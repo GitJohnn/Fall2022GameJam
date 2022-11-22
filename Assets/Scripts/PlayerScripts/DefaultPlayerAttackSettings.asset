@@ -17,5 +17,5 @@ MonoBehaviour:
   _attackDelay: 0.15
   _includeLayers:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 1408
   _attackRange: 0.5
