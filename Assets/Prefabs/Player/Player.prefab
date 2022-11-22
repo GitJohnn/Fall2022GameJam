@@ -107,6 +107,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &776859936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 776859937}
+  m_Layer: 6
+  m_Name: BombSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &776859937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776859936}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2772019660388085441}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1070727310
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1171237452
 Transform:
   m_ObjectHideFlags: 0
@@ -644,7 +675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf901d76f61f2842ae1bd5cad8d9aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStats: {fileID: 11400000, guid: dbc41ddc4158bac43a92dc8a749e4c4a, type: 2}
+  _playerStats: {fileID: 5966520742072954775}
   _rb: {fileID: 451029314743656768}
   _showCenterOfMass: 0
   _centerOfMass: {x: 0, y: 0, z: 0}
@@ -877,11 +908,8 @@ MonoBehaviour:
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
-  _attackPosition: {fileID: 466068614}
+  _attackPosition: {fileID: 776859937}
   _timeBetweenAttack: 0
-  projectilePrefab: {fileID: 6945353333335619128, guid: 0f6bff58884278b4b9425019fe161385, type: 3}
-  projectileSpeed: 12
-  totalDashcooldown: 0
   attackButton: {fileID: 0}
   bombPrefab: {fileID: 6035233110517028290, guid: 738262aced3e7604880feeb5a0572adf, type: 3}
   bombAttackUnlocked: 1
@@ -1346,6 +1374,7 @@ Transform:
   m_Children:
   - {fileID: 3052923255796108240}
   - {fileID: 466068614}
+  - {fileID: 776859937}
   m_Father: {fileID: 9155243811211914158}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1481,6 +1510,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &60280887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782404313136491012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aaa4e3e6303bcd41968691bd5e34692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: f60cfa3a239a16844aec92dabb820235, type: 2}
+  duration: 0.1
 --- !u!1 &8658154127637689922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,20 +1600,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &60280887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7782404313136491012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aaa4e3e6303bcd41968691bd5e34692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 2100000, guid: f60cfa3a239a16844aec92dabb820235, type: 2}
-  duration: 0.1
 --- !u!1 &8933177289061141972
 GameObject:
   m_ObjectHideFlags: 0
