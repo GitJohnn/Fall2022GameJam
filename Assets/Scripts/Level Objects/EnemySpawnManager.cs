@@ -17,8 +17,8 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] bool _enableGizmos = true;
     [SerializeField] UnityEvent _OnFinishedSpawns;
     [SerializeField] UnityEvent _OnAllEnemyDead;
-    public event Action OnFinishedSpawns;
-    public event Action OnAllEnemyDead;
+    public static event Action OnFinishedSpawns;
+    public static event Action OnAllEnemyDead;
     [SerializeField, ReadOnly] int _enemiesSpawned;
     [SerializeField, ReadOnly] int _enemiesKilled; 
     public int EnemiesSpawned => _enemiesSpawned;

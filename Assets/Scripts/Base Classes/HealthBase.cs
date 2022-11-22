@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public abstract class HealthBase : MonoBehaviour
 {
-    [SerializeField, ReadOnly] private float currentHealth;
+    [SerializeField, ReadOnly] protected float currentHealth;
     [SerializeField] private bool isDead = false;
 
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
@@ -16,7 +16,7 @@ public abstract class HealthBase : MonoBehaviour
 
     public abstract void ResetHealth();
 
-    private void Awake() {
+    private void Start() {
         ResetHealth();
     }
 
@@ -26,7 +26,7 @@ public abstract class HealthBase : MonoBehaviour
         isDead = false;
     }
 
-    public void GetHit(int amount, GameObject sender)
+    public virtual void GetHit(int amount, GameObject sender)
     {
         if (isDead)
             return;
