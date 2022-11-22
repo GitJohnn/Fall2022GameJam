@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf901d76f61f2842ae1bd5cad8d9aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 8
+  _playerStats: {fileID: 11400000, guid: dbc41ddc4158bac43a92dc8a749e4c4a, type: 2}
   _rb: {fileID: 451029314743656768}
   _showCenterOfMass: 0
   _centerOfMass: {x: 0, y: 0, z: 0}
@@ -359,62 +359,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onThirdAbility:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9096050361651342448}
-        m_TargetAssemblyTypeName: Attack, Assembly-CSharp
-        m_MethodName: HandleSecondaryAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  thirdAbilityKey: 32
-  _onFourthAbility:
-    m_PersistentCalls:
-      m_Calls: []
-  fourthAbilityKey: 113
-  _onPointerPosition:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7984830431271331363}
-        m_TargetAssemblyTypeName: WeaponParent, Assembly-CSharp
-        m_MethodName: set_PointerPosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _ondashcooldown:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonCoolDownHandler, Assembly-CSharp
-        m_MethodName: set_CurrentAbilityCooldown
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  weaponParent: {fileID: 7984830431271331363}
-  dashUnlocked: 1
-  buttonCooldown: {fileID: 0}
-  startDashTime: 0.25
-  dashSpeed: 25
-  dashCoolDown: 1
 --- !u!114 &9096050361651342448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +464,7 @@ MonoBehaviour:
   _timeBetweenAttack: 0
   projectilePrefab: {fileID: 6945353333335619128, guid: 0f6bff58884278b4b9425019fe161385, type: 3}
   projectileSpeed: 12
+  totalDashcooldown: 0
 --- !u!1 &2359453401861223982
 GameObject:
   m_ObjectHideFlags: 0
