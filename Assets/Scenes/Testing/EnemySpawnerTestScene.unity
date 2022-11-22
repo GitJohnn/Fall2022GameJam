@@ -249,6 +249,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5951339957622016575, guid: 21c04299d7d1b174aaa698809a2e1001, type: 3}
+      propertyPath: enableSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5951339957622016575, guid: 21c04299d7d1b174aaa698809a2e1001, type: 3}
       propertyPath: _playerTransform
       value: 
       objectReference: {fileID: 1795853282}
