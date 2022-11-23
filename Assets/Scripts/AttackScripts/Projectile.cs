@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         LayerMask objlayer = other.gameObject.layer;
-        Debug.Log(objlayer);
+        //Debug.Log(objlayer);
         //Check if colliding with obstacle object
         if ((obstacleLayer & (1 << objlayer)) != 0)
         {

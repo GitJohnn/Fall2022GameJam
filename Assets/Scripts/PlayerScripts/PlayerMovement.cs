@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
         get { return _playerStats.Speed; }
     }
 
+    public bool CanMove { get { return canMove; } set { canMove = value; } }
+
     private Vector2 _moveDirection;
     private Vector2 _mousePosition;
 
