@@ -146,6 +146,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 584866223, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 584866223, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1248676871, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -224,6 +232,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 451029314743656774, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108797747043635169, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7108797747043635169, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2462,7 +2478,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1857900417}
-  - component: {fileID: 1857900418}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -2487,18 +2502,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1857900418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1857900416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dac5071edc57d244ab416587793d4dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1914943587
 GameObject:
   m_ObjectHideFlags: 0
