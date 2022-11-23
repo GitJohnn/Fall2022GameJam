@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b735ecf1d814dc54fb0db1b565ce5cfc, type: 3}
+  m_Name: RoomData_Room01
+  m_EditorClassIdentifier: 
+  _roomDimentions: {x: 22, y: 22}
+  _objectData:
+  - {fileID: 11400000, guid: bb53ed445bd4ad345a3c83f94297f2b3, type: 2}
+  - {fileID: 11400000, guid: 60116392718951a41b91c2f0c23258c2, type: 2}
+  - {fileID: 11400000, guid: a3df26557a0162d40b87d957ecbdc9f1, type: 2}
+  _doorLocations:
+  - {x: -10.5, y: 0}
+  - {x: 10.5, y: 0}
+  - {x: 0, y: 10.5}
+  - {x: 0, y: -10.5}

@@ -6,16 +6,19 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "CreateRoomSpawnData")]
 public class RoomData: ScriptableObject
 {
-    [SerializeField] public Vector2 _roomDimentions = new Vector2();
-    [SerializeField] public List<ObjectSpawnData> _objectData = new List<ObjectSpawnData>();
-    [SerializeField] public List<Vector2> _doorLocations = new List<Vector2>();
+    [SerializeField] private Vector2 _roomDimentions = new Vector2();
+    [SerializeField] private List<ObjectSpawnData> _objectData = new List<ObjectSpawnData>();
+    [SerializeField] private List<Transform> _doorLocations = new List<Transform>();
 
+    public Vector2 RoomDimentions => _roomDimentions;
+    public List<ObjectSpawnData> ObjectSpawnData => _objectData;
+    public List<Transform> DoorLocations => _doorLocations;
 
     public void SpawnRoomObjects()
     {
         foreach (var objectData in _objectData)
         {
-            objectData.SpawnObject();
+            if (objectData) objectData.SpawnObject();
         }
     }
 }

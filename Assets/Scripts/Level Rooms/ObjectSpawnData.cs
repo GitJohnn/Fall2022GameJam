@@ -1,17 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "ObjectSpawnData")]
+[CreateAssetMenu(menuName = "ObjectSpawnData")]
 public class ObjectSpawnData : ScriptableObject
 {
     [Header("Spawn Data")]
-    [SerializeField] protected GameObject _prefabToSpawn = null; 
-    [SerializeField] protected int _maxNumToSpawn;
-    [SerializeField] protected int _guaranteedNumToSpawn;
+    [SerializeField] protected GameObject _prefabToSpawn = null;
+
+    [SerializeField] protected int _maxNumToSpawn = 1;
+    [SerializeField] protected int _guaranteedNumToSpawn = 0;
     [SerializeField] public List<Vector2> _locationsToSpawn = new List<Vector2>();
+
     [Range(0, 1)]
-    [SerializeField] protected float _chanceToSpawnObject;
+    [SerializeField] protected float _chanceToSpawnObject = 0.5f;
 
     private List<Vector2> _spawnedLocations = new List<Vector2>();
     protected int _numCurrentlySpawned = 0;
