@@ -32,6 +32,7 @@ public class TowerBossScript : MonoBehaviour
     [SerializeField] UnityEvent OnPhase1Complete;
 
     private bool phase2Complete = false;
+    private bool phase2Started = false;
     private int phase2HealthAmount;
     private int currentPhase2Amount = 0;
     [SerializeField] UnityEvent OnStartPhase2;
@@ -57,6 +58,12 @@ public class TowerBossScript : MonoBehaviour
 
         towerBossHealthSlider.value = towerBossHealth.GetHealthPercentage();
 
+        //Check boss health drops to second phase limit and player has destroyed all walls
+        if(phase1Complete && !phase2Started && towerBossHealth.GetHealthPercentage() <= 0.5f)
+        {
+            StartEarlyPhase2();
+        }
+        
         if (!isMovingPlayer)
             return;
 
@@ -79,6 +86,12 @@ public class TowerBossScript : MonoBehaviour
         StartCoroutine(TimeBeforeNextPhase(timeBeforeNextPhase));
     }
 
+    public void StartEarlyPhase2()
+    {
+        Debug.Log("Early phase 2");
+        StartCoroutine(EarlyPhase2StartCoroutine());
+    }
+
     public void CheckPhase2HealthObstacles()
     {
         currentPhase2Amount++;
@@ -86,25 +99,44 @@ public class TowerBossScript : MonoBehaviour
         if (currentPhase2Amount < phase2HealthAmount)
             return;
 
+        //Debug.Log("complete phase 2");
         phase2Complete = true;
         OnPhase2Complete?.Invoke();
     }
 
     public void MovePlayerBeforeNextPhaseStart()
     {
-        Debug.Log("moving player");
-        playerTransform.position = Vector3.Lerp(playerTransform.position, movePlayerPos.position, currentTimeToMovePlayer / timeToMovePlayer);
+        //Debug.Log("moving player");
+        playerTransform.position = Vector2.Lerp(playerTransform.position, movePlayerPos.position, currentTimeToMovePlayer / timeToMovePlayer);
     }
 
     IEnumerator TimeBeforeNextPhase(float value)
     {
-        yield return new WaitForSeconds(value);
+        float currentWaitTime = 0;
+        while (currentWaitTime < value)
+        {
+            currentWaitTime += Time.deltaTime;
+            yield return null;
+        }
+        //yield return new WaitForSeconds(value);
         isMovingPlayer = true;
         onStartMovePlayer?.Invoke();
         yield return new WaitForSeconds(timeToMovePlayer);
         isMovingPlayer = false;
         onEndMovePlayer?.Invoke();
         OnStartPhase2?.Invoke();
+        phase2Started = true;
+    }
+
+    IEnumerator EarlyPhase2StartCoroutine()
+    {
+        isMovingPlayer = true;
+        onStartMovePlayer?.Invoke();
+        yield return new WaitForSeconds(timeToMovePlayer);
+        isMovingPlayer = false;
+        onEndMovePlayer?.Invoke();
+        OnStartPhase2?.Invoke();
+        phase2Started = true;
     }
 
     public void TriggerBossDead()

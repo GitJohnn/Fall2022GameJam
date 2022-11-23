@@ -7,7 +7,8 @@ public class TowerBossAttack : MonoBehaviour
     public Rigidbody2D projectilePrefab;
     public Transform shootingPosition;
     public float projectileSpeed = 8;
-    public float shootingCoolDown = 1.25f;
+    public float phase1ShootingCoolDown = 1.25f;
+    public float phase2ShootingCoolDown = 1.25f;
     public bool StopAttacking { get; set; }
 
     public Transform playerTransform; 
@@ -20,7 +21,9 @@ public class TowerBossAttack : MonoBehaviour
         if (StopAttacking || TowerBossScript.isBossDead)
             return;
 
-        if(currentShootingCooldown < shootingCoolDown)
+        float totalCooldown = isPhase2 ? phase2ShootingCoolDown : phase1ShootingCoolDown;
+
+        if(currentShootingCooldown < totalCooldown)
         {
             currentShootingCooldown += Time.deltaTime;
             return;
@@ -29,7 +32,7 @@ public class TowerBossAttack : MonoBehaviour
         {
             currentShootingCooldown = 0;
             if (isPhase2)
-                ShootPlayer();
+                ShootStraight();
             else
                 ShootStraight();
         }
