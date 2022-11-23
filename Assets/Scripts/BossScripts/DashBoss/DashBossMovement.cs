@@ -36,6 +36,8 @@ public class DashBossMovement : MonoBehaviour
 
     private void Update()
     {
+        if (DashBossScript.isBossDead)
+            return;
         if (IsStopped)
             return;
 

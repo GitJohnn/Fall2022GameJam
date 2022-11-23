@@ -488,7 +488,23 @@ MonoBehaviour:
         m_CallState: 2
   OnDeathWithReference:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734834742}
+        m_TargetAssemblyTypeName: DashBossScript, Assembly-CSharp
+        m_MethodName: TailHealthDies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDontDestroyDeath:
+    m_PersistentCalls:
       m_Calls: []
+  dontDestroyOnDeath: 0
   maxHealth: 125
 --- !u!68 &75504734
 EdgeCollider2D:
@@ -1131,6 +1147,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   _maxObstacleHealth: 25
 --- !u!1001 &373971289
 PrefabInstance:
@@ -2049,6 +2069,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   _maxObstacleHealth: 25
 --- !u!1 &624198543
 GameObject:
@@ -7988,6 +8012,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   _maxObstacleHealth: 25
 --- !u!1 &658911475
 GameObject:
@@ -9203,6 +9231,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   _maxObstacleHealth: 25
 --- !u!1 &683970102
 GameObject:
@@ -9482,6 +9514,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60129ae8b27711f4085593a80190020a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tailHealth: {fileID: 75504733}
+  headHealth: {fileID: 1720648855}
+  headAttackDamage: 25
+  headObjParent: {fileID: 473932223}
+  headHealthPrefab: {fileID: 6453845473610162196, guid: 53edae3c298ee644f99cf718349a6d3b, type: 3}
+  bossHealthSlider: {fileID: 683970104}
+  onStopBossMovement:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734834740}
+        m_TargetAssemblyTypeName: DashBossMovement, Assembly-CSharp
+        m_MethodName: set_IsStopped
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onContinueBossMovement:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 734834740}
+        m_TargetAssemblyTypeName: DashBossMovement, Assembly-CSharp
+        m_MethodName: set_IsStopped
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onBossDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  stopBossCooldown: 4
 --- !u!50 &734834744
 Rigidbody2D:
   serializedVersion: 4
@@ -9945,6 +10017,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   maxHealth: 250
 --- !u!70 &911266886
 CapsuleCollider2D:
@@ -11720,6 +11796,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   _maxObstacleHealth: 25
 --- !u!1001 &1469925504
 PrefabInstance:
@@ -20626,7 +20706,7 @@ GameObject:
   - component: {fileID: 1720648854}
   - component: {fileID: 1720648856}
   m_Layer: 9
-  m_Name: Health
+  m_Name: HeadHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20678,6 +20758,9 @@ MonoBehaviour:
   isDead: 0
   OnHitWithReference:
     m_PersistentCalls:
+      m_Calls: []
+  OnDeathWithReference:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1720648854}
         m_TargetAssemblyTypeName: DamageFlashEffect, Assembly-CSharp
@@ -20691,10 +20774,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDeathWithReference:
+      - m_Target: {fileID: 734834742}
+        m_TargetAssemblyTypeName: DashBossScript, Assembly-CSharp
+        m_MethodName: HeadHealthDies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 734834742}
+        m_TargetAssemblyTypeName: DashBossScript, Assembly-CSharp
+        m_MethodName: HeadAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDontDestroyDeath:
     m_PersistentCalls:
-      m_Calls: []
-  maxHealth: 50
+      m_Calls:
+      - m_Target: {fileID: 734834742}
+        m_TargetAssemblyTypeName: DashBossScript, Assembly-CSharp
+        m_MethodName: HeadHealthDies
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dontDestroyOnDeath: 1
+  maxHealth: 10
 --- !u!58 &1720648856
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -36204,4 +36324,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   _maxObstacleHealth: 25

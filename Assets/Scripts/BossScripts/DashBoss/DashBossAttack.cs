@@ -37,6 +37,8 @@ public class DashBossAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DashBossScript.isBossDead)
+            return;
         if (!CanAttack)
             return;
 

@@ -10,9 +10,11 @@ public abstract class HealthBase : MonoBehaviour
     [SerializeField] private bool isDead = false;
 
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
+    public UnityEvent onDontDestroyDeath;
     public event Action OnDeath;
 
     public bool IsDead => isDead;
+    public bool dontDestroyOnDeath = false;
 
     public abstract void ResetHealth();
 
@@ -49,6 +51,10 @@ public abstract class HealthBase : MonoBehaviour
         OnDeathWithReference?.Invoke(sender);
         OnDeath?.Invoke();
         isDead = true;
-        Destroy(gameObject);
+        if (dontDestroyOnDeath)
+            onDontDestroyDeath?.Invoke();        
+        else
+            Destroy(gameObject);
+
     }
 }
