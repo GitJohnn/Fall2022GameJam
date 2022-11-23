@@ -264,12 +264,19 @@ MonoBehaviour:
   - {fileID: 2141408231462981209}
   aiData: {fileID: 2141408230192251490}
   aiBehavior: 0
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   attackSettings: {fileID: 0}
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
   attackDelay: 1
   showGizmo: 1
   attackDistance: 0.75
+  runAwayRadius: 0.25
   OnAttackPressed:
     m_PersistentCalls:
       m_Calls:
@@ -437,6 +444,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnDamageWithReference:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
@@ -889,7 +899,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -362041483, guid: 51bda5141d11a274892f0db68b0dfe9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -914,6 +924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: f60cfa3a239a16844aec92dabb820235, type: 2}
+  damageFlashMaterial: {fileID: 0}
   duration: 0.25
 --- !u!1 &6983460131548311740
 GameObject:

@@ -152,7 +152,7 @@ MonoBehaviour:
   timeToExplode: 3
   timeToFinishExplotion: 1
   explotionRange: 1.5
-  damageAmount: 25
+  damageAmount: 13
   targetLayers:
     serializedVersion: 2
     m_Bits: 704

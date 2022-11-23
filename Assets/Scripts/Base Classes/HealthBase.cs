@@ -32,13 +32,12 @@ public abstract class HealthBase : MonoBehaviour
             return;
         if (sender.layer == gameObject.layer)
             return;
-
+        
         currentHealth -= amount;
 
         if (currentHealth > 0)
         {
             OnHitWithReference?.Invoke(sender);
-            // Debug.Log($"hit by {sender.name}");
         }
         else
         {
