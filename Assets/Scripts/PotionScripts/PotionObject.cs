@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class PotionObject : MonoBehaviour {
 
-    public PotionBase potion;
+	[SerializeField] private PotionInfoPanel potionInfoPanel;
+    private PotionBase potion;
+	private PlayerStats player;
 
-    public static event Action PotionObjectTaken;
-
-    private PlayerStats player;
+	public static event Action PotionObjectTaken;
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.E) && player != null) {
+        if(Input.GetKeyDown(KeyCode.F) && player != null) {
             potion.ApplyPotion(player);
             PotionObjectTaken?.Invoke();
         }
@@ -20,15 +20,29 @@ public class PotionObject : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         player = collision.GetComponent<PlayerStats>();
+		if(player) {
+			potionInfoPanel.ShowPanel();
+		}
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
         var thisPlayer = collision.GetComponent<PlayerStats>();
-        if(thisPlayer) player = null;
+		if(thisPlayer) {
+			player = null;
+			potionInfoPanel.HidePanel();
+		}
     }
 
-    public void AssignPotion(PotionBase newPotion) {
+	private void OnMouseOver() {
+		potionInfoPanel.ShowPanel();
+	}
+
+	private void OnMouseExit() {
+		potionInfoPanel.HidePanel();
+	}
+
+	public void AssignPotion(PotionBase newPotion) {
         potion = newPotion;
-        //TODO: assign the UI stuff here too
+		potionInfoPanel.InitializePanel(potion);
     }
 }
