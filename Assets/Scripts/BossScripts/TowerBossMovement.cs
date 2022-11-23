@@ -19,7 +19,7 @@ public class TowerBossMovement : MonoBehaviour
 
     void Update()
     {
-        if (stopMovement)
+        if (stopMovement || TowerBossScript.isBossDead)
             return;
         distance = Vector3.Distance(towerBossObj.position, movePositions[currentPosition].position);
 
@@ -38,7 +38,7 @@ public class TowerBossMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (stopMovement)
+        if (stopMovement || TowerBossScript.isBossDead)
             return;
         towerBossObj.position += (Vector3)direction * moveSpeed * Time.deltaTime;
     }    

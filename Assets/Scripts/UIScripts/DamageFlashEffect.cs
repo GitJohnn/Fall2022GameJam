@@ -11,7 +11,7 @@ public class DamageFlashEffect : MonoBehaviour
     [SerializeField] private float duration;
 
     // The SpriteRenderer that should flash.
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     // The material that was in use, when the script started.
     private Material originalMaterial;
@@ -23,7 +23,8 @@ public class DamageFlashEffect : MonoBehaviour
     {
         // Get the SpriteRenderer to be used,
         // alternatively you could set it from the inspector.
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if(!spriteRenderer)
+            spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Get the material that the SpriteRenderer uses, 
         // so we can switch back to it after the flash ended.
