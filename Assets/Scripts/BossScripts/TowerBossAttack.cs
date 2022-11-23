@@ -8,18 +8,18 @@ public class TowerBossAttack : MonoBehaviour
     public Transform shootingPosition;
     public float projectileSpeed = 8;
     public float shootingCoolDown = 1.25f;
+    public bool StopAttacking { get; set; }
 
     public Transform playerTransform; 
     private float currentShootingCooldown = 0;
-
-    private void Awake()
-    {
-        //SetPlayerTransform(player);
-    }
+    private bool isPhase2 = false;
 
     // Update is called once per frame
     void Update()
     {
+        if (StopAttacking)
+            return;
+
         if(currentShootingCooldown < shootingCoolDown)
         {
             currentShootingCooldown += Time.deltaTime;
@@ -28,7 +28,10 @@ public class TowerBossAttack : MonoBehaviour
         else
         {
             currentShootingCooldown = 0;
-            ShootPlayer();
+            if (isPhase2)
+                ShootPlayer();
+            else
+                ShootStraight();
         }
     }
 
@@ -46,9 +49,10 @@ public class TowerBossAttack : MonoBehaviour
         projectile.AddForce(playerDir * projectileSpeed, ForceMode2D.Impulse);
     }
 
-    public void SetPlayerTransform(Transform value)
+    public void StartPhase2()
     {
-        playerTransform = value;
+        //playerTransform = value;
+        isPhase2 = true;
     }
 
 }

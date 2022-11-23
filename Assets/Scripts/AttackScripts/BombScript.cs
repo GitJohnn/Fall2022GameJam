@@ -32,7 +32,7 @@ public class BombScript : MonoBehaviour
             // Debug.Log(collider.name); 
             HandleHitLogic(collider);
         }
-        Debug.Log("Bomb Explosion!");
+        //Debug.Log("Bomb Explosion!");
 
         yield return new WaitForSeconds(timeToFinishExplotion);
 

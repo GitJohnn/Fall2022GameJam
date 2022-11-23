@@ -9,4 +9,9 @@ public class EnemyHealth : HealthBase {
     public override void ResetHealth() {
         InitializeHealth(maxHealth);
     }
+
+    public float GetHealthPercentage()
+    {
+        return currentHealth / maxHealth;
+    }
 }
