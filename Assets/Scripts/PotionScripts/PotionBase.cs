@@ -11,9 +11,10 @@ public class PotionBase : ScriptableObject {
     [SerializeField] private float debuffPercentage;
     [SerializeField] private float toxicity;
 
-    //TODO: set up how to display this information to the player before they take (strings, images, etc)
-    //          (this could be done on another manager, but idk)
-
+    public PlayerStat StatToBuff => statToBuff;
+    public float BuffPercentage => buffPercentage;
+    public PlayerStat StatToDebuff => statToDebuff;
+    public float DebuffPercentage => debuffPercentage;
 
     //TODO: play around with this and figure out how to pass in the stats most efficiently
     public void ApplyPotion(PlayerStats player) {

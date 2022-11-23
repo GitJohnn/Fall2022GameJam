@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 584866223}
   - component: {fileID: 584866225}
   - component: {fileID: 584866224}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 1070727311}
   - component: {fileID: 1070727313}
   - component: {fileID: 1070727312}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: ToxicityBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1080191058}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 1697532717}
   - component: {fileID: 1697532719}
   - component: {fileID: 1697532718}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1473,21 +1473,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDamageWithReference:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 60280887}
-        m_TargetAssemblyTypeName: DamageFlashEffect, Assembly-CSharp
-        m_MethodName: DamageFlash
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
@@ -1682,7 +1667,7 @@ GameObject:
   - component: {fileID: 6977754997414025716}
   - component: {fileID: 5732743558422813680}
   - component: {fileID: 3808742786579965778}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1790,7 +1775,7 @@ GameObject:
   - component: {fileID: 1291189061789086044}
   - component: {fileID: 1549739537136455637}
   - component: {fileID: 2705093531276164544}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1892,7 +1877,7 @@ GameObject:
   - component: {fileID: 9049046100850000597}
   - component: {fileID: 380488546955440825}
   - component: {fileID: 1366208903763725731}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1966,7 +1951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3645254190147974587}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2174,8 +2159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: f60cfa3a239a16844aec92dabb820235, type: 2}
-  damageFlashMaterial: {fileID: 2100000, guid: 2f82f294d06ba8d41ac3972cb4708106, type: 2}
   duration: 0.1
+  spriteRenderer: {fileID: 0}
 --- !u!1 &8658154127637689922
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2172,7 @@ GameObject:
   - component: {fileID: 7108797747043635169}
   - component: {fileID: 5424623934611575479}
   - component: {fileID: 1751002065792734965}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
