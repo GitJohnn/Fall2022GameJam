@@ -168,8 +168,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
+  m_Mass: 50
+  m_LinearDrag: 75
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 1235898135}
-  strength: 16
+  strength: 2000
   delay: 0.15
   onBegin:
     m_PersistentCalls:
