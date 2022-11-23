@@ -161,4 +161,9 @@ public class PlayerMovement : MonoBehaviour
         Vector2 lookDirection = (_mousePosition - (Vector2)transform.position);
         agentAnimations.RotateToPointer(lookDirection, weaponParent.characterRenderer);
     }
+
+    public Vector3 GetWeaponDirection()
+    {
+        return weaponParent.transform.right;
+    } 
 }
