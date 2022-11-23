@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TowerBossMovement : MonoBehaviour
 {
+    public Transform towerBossObj;
     public Transform[] movePositions;
     public float moveSpeed = 3f;
 
@@ -13,23 +14,33 @@ public class TowerBossMovement : MonoBehaviour
     private float distance;
     private Vector2 direction;
 
-    // Update is called once per frame
+    public bool StopMovement { get { return stopMovement; } set { stopMovement = value; } }
+    private bool stopMovement = false;
+
     void Update()
     {
-        distance = Vector3.Distance(transform.position, movePositions[currentPosition].position);
+        if (stopMovement)
+            return;
+        distance = Vector3.Distance(towerBossObj.position, movePositions[currentPosition].position);
 
         if(distance > 0.1f)
         {
-            direction = (movePositions[currentPosition].position - transform.position).normalized;            
+            direction = (movePositions[currentPosition].position - towerBossObj.position).normalized;            
         }
         else
         {
-            currentPosition = (currentPosition < movePositions.Length) ? currentPosition++ : 0;
+            //Debug.Log(movePositions.Length);
+            currentPosition = (currentPosition < movePositions.Length - 1) ? (currentPosition + 1) : 0;
+            //Debug.Log(currentPosition);
+            direction = Vector3.zero;
         }
     }
 
     private void FixedUpdate()
     {
-        transform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
-    }
+        if (stopMovement)
+            return;
+        towerBossObj.position += (Vector3)direction * moveSpeed * Time.deltaTime;
+    }    
+
 }
