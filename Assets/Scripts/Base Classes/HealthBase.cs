@@ -43,7 +43,7 @@ public abstract class HealthBase : MonoBehaviour
         {
             Die(sender);
         }
-    }
+    }    
 
     protected virtual void Die(GameObject sender) {
         OnDeathWithReference?.Invoke(sender);

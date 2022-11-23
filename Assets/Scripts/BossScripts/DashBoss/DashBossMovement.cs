@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DashBossMovement : MonoBehaviour
 {
-    public PlayerMovement targetTransform;
+    public Transform targetTransform;
     public float totalMovementCooldown = 1.25f;
     public float totalRotateCooldown = 2f;
+
+    [SerializeField] public UnityEvent onStartDash;
+    [SerializeField] public UnityEvent onEndDash;
+
     public float dashDuration = 1.25f;
     public float dashSpeed = 8f;
     public float totalDashCooldown = 1.5f;    
@@ -70,7 +75,7 @@ public class DashBossMovement : MonoBehaviour
         }
 
         Debug.Log("rotate to target");
-        Vector2 aimDirection = (targetTransform.transform.position - transform.position).normalized;
+        Vector2 aimDirection = (targetTransform.position - transform.position).normalized;
         float angleZ = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         currentRotateCooldown += Time.deltaTime;
         bossRb.rotation = Mathf.Lerp(bossRb.rotation, angleZ, currentRotateCooldown/ totalRotateCooldown);        
@@ -97,10 +102,11 @@ public class DashBossMovement : MonoBehaviour
         }
         IsStopped = false;
         isDashing = true;
+        onStartDash?.Invoke();
         bossRb.velocity = transform.right * dashSpeed; // Dash in the direction that was held down.
-
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
+        onEndDash?.Invoke();
         bossRb.velocity = Vector2.zero;
     }
     
