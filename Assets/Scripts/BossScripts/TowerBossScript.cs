@@ -13,7 +13,7 @@ public class TowerBossScript : MonoBehaviour
 
     [SerializeField]public UnityEvent OnTowerBossDead;
 
-    private bool isBossDead = false;
+    public static bool isBossDead = false;
 
     public Transform playerTransform;
     public Transform movePlayerPos;
@@ -52,8 +52,10 @@ public class TowerBossScript : MonoBehaviour
 
     private void Update()
     {
-        if(!isBossDead)
-            towerBossHealthSlider.value = towerBossHealth.GetHealthPercentage();
+        if (isBossDead)
+            return;
+
+        towerBossHealthSlider.value = towerBossHealth.GetHealthPercentage();
 
         if (!isMovingPlayer)
             return;
@@ -108,7 +110,14 @@ public class TowerBossScript : MonoBehaviour
     public void TriggerBossDead()
     {
         isBossDead = true;
+        StartCoroutine(AfterBossDeathTimer(3));
+    }
+
+    IEnumerator AfterBossDeathTimer(float value)
+    {
+        yield return new WaitForSeconds(value);
         OnTowerBossDead?.Invoke();
+        Debug.Log("Boss has died");
     }
 
 }

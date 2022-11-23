@@ -17,7 +17,7 @@ public class TowerBossAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (StopAttacking)
+        if (StopAttacking || TowerBossScript.isBossDead)
             return;
 
         if(currentShootingCooldown < shootingCoolDown)
