@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b68c41b65b67f9e4fa53712f790e3292, type: 3}
-  m_Name: HealthUp_StrengthDown
+  m_Name: HealthUp_AttackPowerDown
   m_EditorClassIdentifier: 
   statToBuff: 0
-  buffPercentage: 0
-  statToDebuff: 0
-  debuffPercentage: 0
+  buffPercentage: 25
+  statToDebuff: 1
+  debuffPercentage: 30
+  toxicity: 30

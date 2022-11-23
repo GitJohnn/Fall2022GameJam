@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 469882362}
   - component: {fileID: 469882361}
-  - component: {fileID: 469882360}
   - component: {fileID: 469882363}
+  - component: {fileID: 469882364}
   m_Layer: 7
   m_Name: TestDummy
   m_TagString: Untagged
@@ -142,27 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &469882360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469882359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51a15669ecf5c7e40a445a4dfc7369bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 10
-  maxHealth: 10
-  OnHitWithReference:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeathWithReference:
-    m_PersistentCalls:
-      m_Calls: []
-  isDead: 0
 --- !u!212 &469882361
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -256,6 +235,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &469882364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469882359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc5df6074ceeba459dd5dd82596a7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  isDead: 0
+  OnHitWithReference:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathWithReference:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxObstacleHealth: 50
 --- !u!1 &934243748
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,17 +381,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 451029314546915036, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 451029314743656770, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 451029314743656771, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
-      propertyPath: _onPrimaryAttack.m_PersistentCalls.m_Calls.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 451029314743656774, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: m_RootOrder
@@ -436,14 +428,6 @@ PrefabInstance:
     - target: {fileID: 451029314743656774, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 451029315137961264, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 451029315929807405, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}

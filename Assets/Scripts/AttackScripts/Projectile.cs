@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 {
     public int projectileDamage = 5;
     public float timeToLive = 4f;
-    [SerializeField]private LayerMask playerLayer, obstacleLayer;
+    [SerializeField]private LayerMask hitLayer, obstacleLayer;
 
     public UnityEvent _onHitCollision;
 
@@ -19,17 +19,18 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         LayerMask objlayer = other.gameObject.layer;
+        //Debug.Log(objlayer);
         //Check if colliding with obstacle object
         if ((obstacleLayer & (1 << objlayer)) != 0)
         {
-            Debug.Log("hit obstacle layer");
+            //Debug.Log("hit obstacle layer");
             Destroy(gameObject);
             return;
         }
-        //Check if colliding with player object
-        if ((playerLayer & (1 << objlayer)) != 0)
+        //Check if colliding with hit object
+        if ((hitLayer & (1 << objlayer)) != 0)
         {
-            var targetHealth = other.GetComponent<Health>();
+            var targetHealth = other.GetComponent<HealthBase>();
             if (!targetHealth)
                 return;
                 

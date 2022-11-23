@@ -208,6 +208,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: bowIcon
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3801fd5576a2e04b94146ad17546396
+      internalID: -299951283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -223,6 +244,7 @@ TextureImporter:
       Bow3: -402534517
       Bow2: -908126323
       Stick: -1920380365
+      bowIcon: -299951283
       Bow1: -665220333
   spritePackingTag: 
   pSDRemoveMatte: 0

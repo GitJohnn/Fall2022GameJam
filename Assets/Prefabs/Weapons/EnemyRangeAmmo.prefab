@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8739762110459197858}
   - component: {fileID: 6945353333349172003}
   m_Layer: 0
-  m_Name: RangeAmmo
+  m_Name: EnemyRangeAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,12 +96,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 5
   timeToLive: 4
-  playerLayer:
+  hitLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1088
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   _onHitCollision:
     m_PersistentCalls:
       m_Calls: []
@@ -177,7 +177,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1109904288, guid: a1165144cc7917a4293d6bb4ebc1188d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
