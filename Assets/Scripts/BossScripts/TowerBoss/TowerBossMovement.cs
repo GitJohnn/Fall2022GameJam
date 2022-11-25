@@ -21,16 +21,17 @@ public class TowerBossMovement : MonoBehaviour
     {
         if (stopMovement || TowerBossScript.isBossDead)
             return;
+
         distance = Vector3.Distance(towerBossObj.position, movePositions[currentPosition].position);
 
-        if(distance > 0.1f)
+        if(distance > stopDistance)
         {
             direction = (movePositions[currentPosition].position - towerBossObj.position).normalized;            
         }
         else
         {
             //Debug.Log(movePositions.Length);
-            currentPosition = (currentPosition < movePositions.Length - 1) ? (currentPosition + 1) : 0;
+            currentPosition = (currentPosition < movePositions.Length - 1) ? (currentPosition++) : 0;
             //Debug.Log(currentPosition);
             direction = Vector3.zero;
         }

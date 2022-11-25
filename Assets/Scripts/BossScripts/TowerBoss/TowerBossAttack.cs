@@ -32,7 +32,7 @@ public class TowerBossAttack : MonoBehaviour
         {
             currentShootingCooldown = 0;
             if (isPhase2)
-                ShootStraight();
+                ShootPlayer();
             else
                 ShootStraight();
         }
