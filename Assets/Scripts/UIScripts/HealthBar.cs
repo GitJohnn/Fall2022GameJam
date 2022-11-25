@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour {
+public class HealthBar : StatBarUIBase {
 
-    [SerializeField] private RectTransform rectTransform;
     [SerializeField] private Slider slider;
-    [SerializeField] private PlayerStats playerStats;
     [SerializeField] private PlayerHealth playerHealth;
-
-    private float barSizeFactor;
 
     private void OnEnable() {
         playerStats.MaxHealthChanged += UpdateMaxHealth;
@@ -22,20 +18,15 @@ public class HealthBar : MonoBehaviour {
         playerHealth.PlayerHit -= UpdateCurrentHealth;
     }
 
-    private void Start() {
-        ResetBar();
-    }
-
-    private void ResetBar() {
+    protected override void ResetBar() {
         slider.maxValue = playerStats.MaxHealth;
         slider.value = slider.maxValue;
 
-        barSizeFactor = rectTransform.rect.width / playerStats.MaxHealth;
+		currentStatVal = playerStats.MaxHealth;
     }
 
     private void UpdateMaxHealth(float newMaxHealth) {
-        float newWidth = newMaxHealth * barSizeFactor;
-        rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newWidth);
+		UpdateBarWidth(newMaxHealth);
 
         float healthDifference = newMaxHealth - slider.maxValue;
         slider.maxValue = newMaxHealth;

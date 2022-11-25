@@ -45,6 +45,7 @@ public class PotionObject : MonoBehaviour {
 	}
 
 	private void OnMouseExit() {
+		if(player) return; //player is inside trigger, don't hide it
 		potionInfoPanel.HidePanel();
 	}
 

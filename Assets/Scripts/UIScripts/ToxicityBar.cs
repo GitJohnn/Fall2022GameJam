@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToxicityBar : MonoBehaviour {
+public class ToxicityBar : StatBarUIBase {
 
     [SerializeField] private Slider slider;
-    [SerializeField] private PlayerStats playerStats;
 
     private void OnEnable() {
         playerStats.ToxicityChanged += UpdateToxicityBar;
@@ -16,11 +15,7 @@ public class ToxicityBar : MonoBehaviour {
         playerStats.ToxicityChanged -= UpdateToxicityBar;
     }
 
-    private void Start() {
-        ResetBar();
-    }
-
-    private void ResetBar() {
+    protected override void ResetBar() {
         slider.maxValue = playerStats.ToxicityThreshold;
         slider.value = 0;
     }
