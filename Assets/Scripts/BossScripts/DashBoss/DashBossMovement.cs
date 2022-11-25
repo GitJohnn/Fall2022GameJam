@@ -32,6 +32,8 @@ public class DashBossMovement : MonoBehaviour
     private void Awake()
     {
         bossRb = GetComponent<Rigidbody2D>();
+        if (!targetTransform)
+            targetTransform = GameObject.FindObjectOfType<PlayerMovement>().transform;
     }
 
     private void Update()

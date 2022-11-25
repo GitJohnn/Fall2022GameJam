@@ -38,7 +38,7 @@ public class RangedAttack : Attack
         canAttack = false;
     }
 
-    float currentAttackCooldown;
+    public float currentAttackCooldown { get; set; }
 
     bool canAttack;
 
