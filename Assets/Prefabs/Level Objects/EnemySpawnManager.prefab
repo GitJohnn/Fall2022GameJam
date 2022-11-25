@@ -111,14 +111,17 @@ MonoBehaviour:
   _firstTransform: {fileID: 5951339956240389046}
   _secondTransform: {fileID: 5951339956441507541}
   _playerTransform: {fileID: 0}
-  enableSpawn: 1
+  enableSpawn: 0
   _enemyObjects:
   - {fileID: 2141408230192251489, guid: 7ff256edfb9d10947b80501f0b7f2aa1, type: 3}
   - {fileID: 1216985927053102740, guid: 0f178cd3866901643ae74f6a10225f5a, type: 3}
-  _numOfSpawnsLimit: 10
+  _numOfSpawnsLimit: 2
   _timeToSpawn: 2
   _timeBetweenWaves: 5
   _enableGizmos: 1
+  _OnFirstSpawn:
+    m_PersistentCalls:
+      m_Calls: []
   _OnFinishedSpawns:
     m_PersistentCalls:
       m_Calls: []

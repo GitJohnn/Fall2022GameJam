@@ -6,25 +6,32 @@ using UnityEngine.Events;
 
 public class EnemySpawnManager : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField, HighlightIfNull] Transform _firstTransform;
     [SerializeField, HighlightIfNull] Transform _secondTransform;
     [SerializeField] Transform _playerTransform;
-    public bool enableSpawn = true;
+    public bool enableSpawn = false;
+    [Header("Settings")]
     [SerializeField] List<GameObject> _enemyObjects;
     [SerializeField] int _numOfSpawnsLimit = 10;
     [SerializeField] float _timeToSpawn = 2f;
     [SerializeField] float _timeBetweenWaves = 5f;
     [SerializeField] bool _enableGizmos = true;
+    [Header("Events")]
+    [SerializeField] UnityEvent _OnFirstSpawn;
     [SerializeField] UnityEvent _OnFinishedSpawns;
     [SerializeField] UnityEvent _OnAllEnemyDead;
+    public static event Action OnFirstSpawn;
     public static event Action OnFinishedSpawns;
     public static event Action OnAllEnemyDead;
+    [Header("Debug")]
     [SerializeField, ReadOnly] int _enemiesSpawned;
     [SerializeField, ReadOnly] int _enemiesKilled; 
     public int EnemiesSpawned => _enemiesSpawned;
     public int EnemiesKilled => _enemiesKilled;
-    bool _runOnce;
-    bool _runOnce2;
+    bool _runOnce = false;
+    bool _runOnce2 = false;
+
     
 
     void Start()
@@ -33,36 +40,56 @@ public class EnemySpawnManager : MonoBehaviour
         _runOnce = false;
     }
 
+    [Button]
+    public void StartSpawning()
+    {
+        HandleFirstSpawn();
+        enableSpawn = true;
+    }
+
     void Update()
     {
-        if (Time.time >= _timeToSpawn && enableSpawn)
+        if (!enableSpawn) return;
+
+        if (Time.time >= _timeToSpawn)
         {
             Spawn();
             _timeToSpawn = Time.time + UnityEngine.Random.Range(0.1f, _timeBetweenWaves);
+
         }
 
         if (_enemiesSpawned >= _numOfSpawnsLimit)
         {
-            if (!_runOnce)
-            {
-                OnFinishedSpawns?.Invoke();
-                _OnFinishedSpawns?.Invoke();
-                _runOnce = true;
-            }
+            if (!_runOnce) HandleFinishedSpawns();
             enableSpawn = false;
         }
 
         if (_enemiesKilled >= _numOfSpawnsLimit)
         {
-            if (!_runOnce2)
-            {
-                OnAllEnemyDead?.Invoke();
-                _OnAllEnemyDead?.Invoke();
-                ResetSubscriptions();
-                // Debug.Log("It WOrks");
-                _runOnce2 = true;
-            }
+            if (!_runOnce2) HandleEnemiesKilled();
         }
+    }
+
+    void HandleFirstSpawn()
+    {
+        OnFirstSpawn?.Invoke();
+        _OnFirstSpawn?.Invoke();
+    }
+
+    void HandleFinishedSpawns()
+    {
+        OnFinishedSpawns?.Invoke();
+        _OnFinishedSpawns?.Invoke();
+        _runOnce = true;
+    }
+
+    void HandleEnemiesKilled()
+    {
+        OnAllEnemyDead?.Invoke();
+        _OnAllEnemyDead?.Invoke();
+        ResetSubscriptions();
+        // Debug.Log("It WOrks");
+        _runOnce2 = true;
     }
 
     void ResetSubscriptions()
