@@ -31,7 +31,7 @@ public class TowerBossMovement : MonoBehaviour
         else
         {
             //Debug.Log(movePositions.Length);
-            currentPosition = (currentPosition < movePositions.Length - 1) ? (currentPosition + 1) : 0;
+            currentPosition = (currentPosition < movePositions.Length - 1) ? (currentPosition++) : 0;
             //Debug.Log(currentPosition);
             direction = Vector3.zero;
         }

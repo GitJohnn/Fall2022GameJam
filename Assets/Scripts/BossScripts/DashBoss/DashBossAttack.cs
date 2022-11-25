@@ -43,7 +43,10 @@ public class DashBossAttack : MonoBehaviour
             return;
 
         if (currentAttackCooldown < attackCooldown)
-            currentAttackCooldown += Time.deltaTime; 
+        {
+            currentAttackCooldown += Time.deltaTime;
+            return;
+        }
         else
             HandleAttackLogic();
     }

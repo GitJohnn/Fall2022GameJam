@@ -11,9 +11,13 @@ public class Projectile : MonoBehaviour
 
     public UnityEvent _onHitCollision;
 
+    private Rigidbody2D projectileRb;
+
     private void Awake()
     {
+        //projectileRb = GetComponent<Rigidbody2D>();
         StartCoroutine(DestroySelfAferTime(timeToLive));
+        //transform.right = projectileRb.velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

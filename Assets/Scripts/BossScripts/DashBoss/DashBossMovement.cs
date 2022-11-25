@@ -17,7 +17,7 @@ public class DashBossMovement : MonoBehaviour
     public float totalDashCooldown = 1.5f;    
     public float rotationSpeed = 15f;
 
-    public bool IsStopped { get; set; } = false;
+    public bool IsStopped { get; set; } = true;
 
     private Rigidbody2D bossRb;
     private float currentMovementCooldown = 0;

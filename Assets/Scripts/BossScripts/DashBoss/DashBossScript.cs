@@ -12,6 +12,7 @@ public class DashBossScript : MonoBehaviour
     public GameObject headObjParent;
     public GameObject headHealthPrefab;
     public Slider bossHealthSlider;
+    public bool startOnAwake = true;
 
     public static bool isBossDead = false;
 
@@ -22,6 +23,18 @@ public class DashBossScript : MonoBehaviour
     public float stopBossCooldown = 4f;
     private float currentBossCooldown = 0;
     private bool stopBossMovement = true;
+    //private DashBossAttack dashBossAttack;
+    private DashBossMovement dashBossMovement;
+
+    private void Awake()
+    {
+        //Get components
+        //dashBossAttack = GetComponent<DashBossAttack>();
+        dashBossMovement = GetComponent<DashBossMovement>();
+
+        if(startOnAwake)
+            StartBossFight();
+    }
 
     // Update is called once per frame
     void Update()
@@ -34,6 +47,12 @@ public class DashBossScript : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }                    
+    }
+
+    public void StartBossFight()
+    {
+        dashBossMovement.IsStopped = false;
+        //dashBossAttack.CanAttack = false;
     }
 
     public void TailHealthDies()

@@ -16,7 +16,7 @@ public class ProjectileBossMovement : MonoBehaviour
     private Vector2 direction;
 
     public bool StopMovement { get { return stopMovement; } set { stopMovement = value; } }
-    public bool stopMovement = false;
+    public bool stopMovement = true;
 
     public bool StopRotate { get { return stopRotate; } set { stopRotate = value; } }
     public bool stopRotate = true;
@@ -24,7 +24,10 @@ public class ProjectileBossMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stopMovement || TowerBossScript.isBossDead)
+        if (ProjectileBossScipt.IsBossDead)
+            return;
+
+        if (stopMovement)
             return;
 
         distance = Vector3.Distance(bossTransform.position, movePositions[currentPosition].position);
@@ -52,7 +55,7 @@ public class ProjectileBossMovement : MonoBehaviour
         Vector2 aimDirection = (playerTransfrom.position - bossTransform.position).normalized;
         float angleZ = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        bossTransform.rotation = Quaternion.Euler(0, 0, angleZ - 90);
+        bossTransform.rotation = Quaternion.Euler(0, 0, angleZ + 90);
     }
 
     private void FixedUpdate()
