@@ -1320,6 +1320,7 @@ MonoBehaviour:
   _isMoving: 0
   weaponParent: {fileID: 7984830431271331363}
   dashUnlocked: 1
+  useMouseDirection: 1
   dashButton: {fileID: 330790334}
   startDashTime: 0.25
   dashSpeed: 20
