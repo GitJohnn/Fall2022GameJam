@@ -1297,7 +1297,7 @@ MonoBehaviour:
   defense: 0
   speedBase: 5
   speed: 0
-  attackDelayBase: 0
+  attackDelayBase: 0.15
   attackDelay: 0
   toxicityThreshold: 100
   toxicityLevel: 0
