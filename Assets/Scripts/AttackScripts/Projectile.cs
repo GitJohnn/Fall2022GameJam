@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
         if ((obstacleLayer & (1 << objlayer)) != 0)
         {
             //Debug.Log("hit obstacle layer");
-            Utility.SpawnParticles(_VFXHit, this.gameObject);
+            Utility.SpawnParticles(_VFXHit, this.gameObject, false);
             Destroy(gameObject);
             return;
         }
@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
             _onHitCollision?.Invoke();
             //Debug.Log(other.gameObject);
             targetHealth.GetHit(projectileDamage, gameObject);
-            Utility.SpawnParticles(_VFXHit, this.gameObject);
+            Utility.SpawnParticles(_VFXHit, this.gameObject, false);
             Destroy(gameObject);
         }
     }

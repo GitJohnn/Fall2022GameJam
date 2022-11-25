@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Utility : MonoBehaviour
 {
-    public static void SpawnParticles(GameObject particles, GameObject parent)
+    public static void SpawnParticles(GameObject particles, GameObject parent, bool makeChildOfParent)
     {
-        Instantiate(particles, parent.transform.position, parent.transform.rotation);
+        if(makeChildOfParent == false)
+            Instantiate(particles, parent.transform.position, parent.transform.rotation);
+        if (makeChildOfParent == true)
+            Instantiate(particles, parent.transform);
     }
 }
