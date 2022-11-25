@@ -10,7 +10,6 @@ public class DashBossScript : MonoBehaviour
     public EnemyHealth headHealth;
     public int headAttackDamage;
     public GameObject headObjParent;
-    public GameObject headHealthPrefab;
     public Slider bossHealthSlider;
     public bool startOnAwake = true;
 
