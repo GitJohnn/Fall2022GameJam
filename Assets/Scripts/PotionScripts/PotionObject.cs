@@ -10,6 +10,13 @@ public class PotionObject : MonoBehaviour {
 	private PlayerStats player;
 
 	public static event Action PotionObjectTaken;
+    #region setup Particles
+    [SerializeField] GameObject _waitingVFX;
+    private void Start()
+    {
+        Utility.SpawnParticles(_waitingVFX, this.gameObject, true);
+    }
+    #endregion
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.F) && player != null) {
