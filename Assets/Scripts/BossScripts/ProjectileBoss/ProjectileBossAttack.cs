@@ -69,6 +69,9 @@ public class ProjectileBossAttack : MonoBehaviour
     {
         //float randomRotation = Random.Range(-30, 30);
         //Quaternion.Euler(0, 0, randomRotation) *
+        if ((turret1Destroyed && turretIndex == 0)|| (turret2Destroyed && turretIndex == 1))
+            return;
+
         foreach (Transform turret in turretPositions)
         {
             Rigidbody2D projectile = Instantiate(projectilePrefab, turret.position, turret.rotation).GetComponent<Rigidbody2D>();
@@ -78,7 +81,6 @@ public class ProjectileBossAttack : MonoBehaviour
 
     private void ShootToPlayer(Transform[] turretPositions)
     {
-        int turretIndex = 0;
         foreach (Transform turret in turretPositions)
         {
             Vector2 playerDir = (playerPos.position - turret.position).normalized;
@@ -124,8 +126,10 @@ public class ProjectileBossAttack : MonoBehaviour
             currentStraightShooting += Time.deltaTime;
             yield return null;
         }
-        ShootStraight(Turret1Pos);
-        ShootStraight(Turret2Pos);
+        if(!turret1Destroyed)
+            ShootStraight(Turret1Pos);
+        if(!turret2Destroyed)
+            ShootStraight(Turret2Pos);
         StartCoroutine(Phase2ShootingCoroutine());
     }
 
