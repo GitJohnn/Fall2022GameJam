@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public int projectileDamage = 5;
     public float timeToLive = 4f;
     [SerializeField]private LayerMask hitLayer, obstacleLayer;
+    [SerializeField] GameObject _VFXHit;
 
     public UnityEvent _onHitCollision;
 
@@ -28,6 +29,7 @@ public class Projectile : MonoBehaviour
         if ((obstacleLayer & (1 << objlayer)) != 0)
         {
             //Debug.Log("hit obstacle layer");
+            Utility.SpawnParticles(_VFXHit, this.gameObject);
             Destroy(gameObject);
             return;
         }
@@ -42,6 +44,7 @@ public class Projectile : MonoBehaviour
             _onHitCollision?.Invoke();
             //Debug.Log(other.gameObject);
             targetHealth.GetHit(projectileDamage, gameObject);
+            Utility.SpawnParticles(_VFXHit, this.gameObject);
             Destroy(gameObject);
         }
     }
