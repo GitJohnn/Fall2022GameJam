@@ -102,6 +102,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
+  _VFXHit: {fileID: 3274053707080079367, guid: 2898c5cadc7d2aa489bf72deb1851260, type: 3}
   _onHitCollision:
     m_PersistentCalls:
       m_Calls: []
