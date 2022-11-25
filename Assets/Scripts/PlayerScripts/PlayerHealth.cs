@@ -29,7 +29,8 @@ public class PlayerHealth : HealthBase {
 	}
 
     public override void GetHit(float amount, GameObject sender) {
-        base.GetHit(amount, sender);
+		float actualAmount = amount / (playerStats.Defense / 100);
+        base.GetHit(actualAmount, sender);
         PlayerHit?.Invoke(currentHealth);
     }
 

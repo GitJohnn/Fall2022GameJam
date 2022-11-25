@@ -1293,7 +1293,7 @@ MonoBehaviour:
   maxHealth: 0
   attackPowerBase: 10
   attackPower: 0
-  defenseBase: 50
+  defenseBase: 100
   defense: 0
   speedBase: 5
   speed: 0
