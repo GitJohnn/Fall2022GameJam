@@ -28,7 +28,7 @@ public class PlayerHealth : HealthBase {
 		AddHealth(healthDifference); //can also take away health if the difference is negative
 	}
 
-    public override void GetHit(int amount, GameObject sender) {
+    public override void GetHit(float amount, GameObject sender) {
         base.GetHit(amount, sender);
         PlayerHit?.Invoke(currentHealth);
     }

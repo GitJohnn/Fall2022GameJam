@@ -37,7 +37,7 @@ public abstract class HealthBase : MonoBehaviour
         if (currentHealth > currentMaxHealth) currentHealth = currentMaxHealth;
     }
 
-    public virtual void GetHit(int amount, GameObject sender)
+    public virtual void GetHit(float amount, GameObject sender)
     {
         if (isDead)
             return;

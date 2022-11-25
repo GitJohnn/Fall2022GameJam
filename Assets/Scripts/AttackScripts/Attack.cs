@@ -11,36 +11,45 @@ public enum UserType
 
 public class Attack : MonoBehaviour
 {
-   [SerializeField] bool _useCustomAttackSettings = false; 
-   [SerializeField] protected AttackSettings _settings;
+	[SerializeField] private bool _useDefaultAttackSettings = false;
+	[SerializeField, ShowIf("_useDefaultAttackSettings")] protected AttackSettings _settings;
+
+	[SerializeField] bool _useCustomAttackSettings = false;
+	[SerializeField, ShowIf("_useCustomAttackSettings")] float _meleeDamage;
+	[SerializeField, ShowIf("_useCustomAttackSettings")] float _timeBetweenAttacks;
+	[SerializeField, ShowIf("_useCustomAttackSettings")] LayerMask _includeLayers;
+	[SerializeField, ShowIf("_useCustomAttackSettings")] float _attackRange;
    
-   [SerializeField, ShowIf("_useCustomAttackSettings")] int _meleeDamage;
-   [SerializeField, ShowIf("_useCustomAttackSettings")] float _timeBetweenAttacks;
-   [SerializeField, ShowIf("_useCustomAttackSettings")] LayerMask _includeLayers;
-   [SerializeField, ShowIf("_useCustomAttackSettings")] float _attackRange;
-   [SerializeField] protected UnityEvent _onPrimaryAttack;
-   //[SerializeField] protected UnityEvent _onSecondaryAttack;
-   [SerializeField] protected Transform _attackPosition;
+	[SerializeField] bool _usePlayerStats = false;
+	[SerializeField, ShowIf("_usePlayerStats")] private PlayerStats _playerStats;
+	[SerializeField, ShowIf("_usePlayerStats")] LayerMask _playerIncludeLayers;
+	[SerializeField, ShowIf("_usePlayerStats")] float _playerAttackRange;
+
+	[SerializeField] protected UnityEvent _onPrimaryAttack;
+	//[SerializeField] protected UnityEvent _onSecondaryAttack;
+	[SerializeField] protected Transform _attackPosition;
 
     private Rigidbody2D _rigidbody2D;
 
-   int MeleeDamage 
-   {
-      get 
-      {
-         if (_useCustomAttackSettings) return _meleeDamage;
-         else return _settings.MeleeDamage;
-      }
-   }
+	float MeleeDamage 
+	{
+		get 
+		{
+			if(_useCustomAttackSettings) return _meleeDamage;
+			else if (_usePlayerStats) return _playerStats.AttackPower;
+			else return _settings.MeleeDamage;
+		}
+	}
 
-   float TimeBetweenAttacks 
-   {
-      get 
-      {
-         if (_useCustomAttackSettings) return _timeBetweenAttacks;
-         else return _settings.AttackDelay;
-      }
-   }
+	float TimeBetweenAttacks 
+	{
+		get 
+		{
+			if(_useCustomAttackSettings) return _timeBetweenAttacks;
+			else if(_usePlayerStats) return _playerStats.AttackSpeed;
+			else return _settings.AttackDelay;
+		}
+	}
 
    LayerMask IncludeLayers 
    {
