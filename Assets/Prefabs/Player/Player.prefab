@@ -1297,8 +1297,8 @@ MonoBehaviour:
   defense: 0
   speedBase: 5
   speed: 0
-  attackSpeedBase: 0.15
-  attackSpeed: 0
+  attackDelayBase: 0
+  attackDelay: 0
   toxicityThreshold: 100
   toxicityLevel: 0
 --- !u!114 &451029314743656771
@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack Speed
+  m_text: Attack Delay
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3148,7 +3148,7 @@ GameObject:
   - component: {fileID: 7581285321286059103}
   - component: {fileID: 4443080798218626004}
   m_Layer: 5
-  m_Name: AttackSpeedBar
+  m_Name: AttackDelayBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

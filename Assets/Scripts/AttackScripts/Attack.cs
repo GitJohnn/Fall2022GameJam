@@ -46,7 +46,7 @@ public class Attack : MonoBehaviour
 		get 
 		{
 			if(_useCustomAttackSettings) return _timeBetweenAttacks;
-			else if(_usePlayerStats) return _playerStats.AttackSpeed;
+			else if(_usePlayerStats) return _playerStats.AttackDelay;
 			else return _settings.AttackDelay;
 		}
 	}
