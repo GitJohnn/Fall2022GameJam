@@ -391,14 +391,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c19aad70360eff4199722c28d464564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useCustomAttackSettings: 0
+  _useDefaultAttackSettings: 1
   _settings: {fileID: 11400000, guid: 7304c1a167d368f41b66f0a8aabe5424, type: 2}
+  _useCustomAttackSettings: 0
   _meleeDamage: 0
   _timeBetweenAttacks: 0
   _includeLayers:
     serializedVersion: 2
     m_Bits: 0
   _attackRange: 0
+  _usePlayerStats: 0
+  _playerStats: {fileID: 0}
+  _playerIncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _playerAttackRange: 0
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -535,6 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loot: []
+  _enemyHealth: {fileID: 6539783847676841165}
 --- !u!1 &2141408230370294587
 GameObject:
   m_ObjectHideFlags: 0

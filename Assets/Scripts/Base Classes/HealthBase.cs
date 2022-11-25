@@ -16,7 +16,8 @@ public abstract class HealthBase : MonoBehaviour
     public bool IsDead => isDead;
     public bool dontDestroyOnDeath = false;
 
-    float startingMaxHealth;
+    protected float currentMaxHealth;
+
     public abstract void ResetHealth();
 
     private void Start() {
@@ -26,17 +27,17 @@ public abstract class HealthBase : MonoBehaviour
     protected virtual void InitializeHealth(float startingHealth)
     {
         currentHealth = startingHealth;
-        startingMaxHealth = startingHealth;
+        currentMaxHealth = startingHealth;
         isDead = false;
     }
 
     public virtual void AddHealth(float hp)
     {
         currentHealth += hp;
-        if (currentHealth > startingMaxHealth) currentHealth = startingMaxHealth;
+        if (currentHealth > currentMaxHealth) currentHealth = currentMaxHealth;
     }
 
-    public virtual void GetHit(int amount, GameObject sender)
+    public virtual void GetHit(float amount, GameObject sender)
     {
         if (isDead)
             return;

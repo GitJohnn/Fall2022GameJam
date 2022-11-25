@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerStat { MaxHealth, AttackPower, Defense, Speed, AttackSpeed }
+public enum PlayerStat { MaxHealth, AttackPower, Defense, Speed, AttackDelay }
 
 public class PlayerStats : MonoBehaviour {
 
@@ -15,8 +15,8 @@ public class PlayerStats : MonoBehaviour {
     [SerializeField, ReadOnly] private float defense;
     [SerializeField] private float speedBase;
     [SerializeField, ReadOnly] private float speed;
-    [SerializeField] private float attackSpeedBase;
-    [SerializeField, ReadOnly] private float attackSpeed;
+    [SerializeField] private float attackDelayBase;
+    [SerializeField, ReadOnly] private float attackDelay;
     [SerializeField] private float toxicityThreshold;
     [SerializeField, ReadOnly] private float toxicityLevel;
 
@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour {
     private float attackPowerPercentageChange = 0;
     private float defensePercentageChange = 0;
     private float speedPercentageChange = 0;
-    private float attackSpeedPercentageChange = 0;
+    private float attackDelayPercentageChange = 0;
 
     private float minimumStatVal = 0.1f;
 
@@ -32,7 +32,7 @@ public class PlayerStats : MonoBehaviour {
     public float AttackPower => attackPower;
     public float Defense => defense;
     public float Speed => speed;
-    public float AttackSpeed => attackSpeed;
+    public float AttackDelay => attackDelay;
     public float ToxicityThreshold => toxicityThreshold;
     public float ToxicityLevel => toxicityLevel;
 
@@ -40,7 +40,7 @@ public class PlayerStats : MonoBehaviour {
     public event Action<float> AttackPowerChanged;
     public event Action<float> DefenseChanged;
     public event Action<float> SpeedChanged;
-    public event Action<float> AttackSpeedChanged;
+    public event Action<float> AttackDelayChanged;
     public event Action<float> ToxicityChanged;
 
     private void Awake() {
@@ -53,7 +53,7 @@ public class PlayerStats : MonoBehaviour {
         attackPower = attackPowerBase;
         defense = defenseBase;
         speed = speedBase;
-        attackSpeed = attackSpeedBase;
+        attackDelay = attackDelayBase;
     }
 
     public void ChangeMaxHealth(float percentageChange) {
@@ -76,9 +76,9 @@ public class PlayerStats : MonoBehaviour {
         SpeedChanged?.Invoke(speed);
     }
 
-    public void ChangeAttackSpeed(float percentageChange) {
-        attackSpeed = StatChangeHelper(attackSpeedBase, ref attackSpeedPercentageChange, -percentageChange);
-        AttackSpeedChanged?.Invoke(attackSpeed);
+    public void ChangeAttackDelay(float percentageChange) {
+        attackDelay = StatChangeHelper(attackDelayBase, ref attackDelayPercentageChange, -percentageChange);
+        AttackDelayChanged?.Invoke(attackDelay);
     }
 
     private float StatChangeHelper(float baseStat, ref float statPercentageChange, float newPercentageChange) {

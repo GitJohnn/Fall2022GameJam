@@ -1291,14 +1291,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthBase: 100
   maxHealth: 0
-  attackPowerBase: 50
+  attackPowerBase: 10
   attackPower: 0
-  defenseBase: 50
+  defenseBase: 100
   defense: 0
   speedBase: 5
   speed: 0
-  attackSpeedBase: 0.25
-  attackSpeed: 0
+  attackDelayBase: 0
+  attackDelay: 0
   toxicityThreshold: 100
   toxicityLevel: 0
 --- !u!114 &451029314743656771
@@ -1424,14 +1424,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c19aad70360eff4199722c28d464564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useCustomAttackSettings: 0
+  _useDefaultAttackSettings: 0
   _settings: {fileID: 11400000, guid: 0263598d6b76dfd4ca55e57d7003c526, type: 2}
+  _useCustomAttackSettings: 0
   _meleeDamage: 0
   _timeBetweenAttacks: 0
   _includeLayers:
     serializedVersion: 2
     m_Bits: 384
   _attackRange: 0
+  _usePlayerStats: 1
+  _playerStats: {fileID: 5966520742072954775}
+  _playerIncludeLayers:
+    serializedVersion: 2
+    m_Bits: 1408
+  _playerAttackRange: 0.5
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls:
@@ -1511,14 +1518,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc3c3ad646e81a4486c7f0ad4084a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useCustomAttackSettings: 0
+  _useDefaultAttackSettings: 0
   _settings: {fileID: 11400000, guid: 7304c1a167d368f41b66f0a8aabe5424, type: 2}
+  _useCustomAttackSettings: 0
   _meleeDamage: 0
   _timeBetweenAttacks: 0
   _includeLayers:
     serializedVersion: 2
     m_Bits: 0
   _attackRange: 0
+  _usePlayerStats: 0
+  _playerStats: {fileID: 0}
+  _playerIncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _playerAttackRange: 0
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -1541,14 +1555,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a5ce735d88a20448640ef092564bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useCustomAttackSettings: 0
+  _useDefaultAttackSettings: 0
   _settings: {fileID: 11400000, guid: 0263598d6b76dfd4ca55e57d7003c526, type: 2}
+  _useCustomAttackSettings: 0
   _meleeDamage: 0
   _timeBetweenAttacks: 0
   _includeLayers:
     serializedVersion: 2
     m_Bits: 0
   _attackRange: 0
+  _usePlayerStats: 0
+  _playerStats: {fileID: 0}
+  _playerIncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _playerAttackRange: 0
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -1669,7 +1690,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack Speed
+  m_text: Attack Delay
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3128,7 +3149,7 @@ GameObject:
   - component: {fileID: 7581285321286059103}
   - component: {fileID: 4443080798218626004}
   m_Layer: 5
-  m_Name: AttackSpeedBar
+  m_Name: AttackDelayBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
