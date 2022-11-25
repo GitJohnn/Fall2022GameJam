@@ -10,9 +10,23 @@ public class PlayerHealth : HealthBase {
 
     public event Action<float> PlayerHit;
 
-    public override void ResetHealth() {
+	private void OnEnable() {
+		playerStats.MaxHealthChanged += AddMaxHealth;
+	}
+
+	private void OnDisable() {
+		playerStats.MaxHealthChanged -= AddMaxHealth;
+	}
+
+	public override void ResetHealth() {
         InitializeHealth(playerStats.MaxHealth);
     }
+
+	private void AddMaxHealth(float newMaxHealth) {
+		float healthDifference = newMaxHealth - currentMaxHealth;
+		currentMaxHealth = newMaxHealth;
+		AddHealth(healthDifference); //can also take away health if the difference is negative
+	}
 
     public override void GetHit(int amount, GameObject sender) {
         base.GetHit(amount, sender);
