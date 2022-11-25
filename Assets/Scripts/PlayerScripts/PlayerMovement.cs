@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
         currentDashTime = startDashTime; // Reset the dash timer.
         currentDashCooldownTime = 0;
 
-        particleSpawner.SpawnParticles(_dashParticles, this.gameObject);
+        Utility.SpawnParticles(_dashParticles, this.gameObject);
 
         while (currentDashTime > 0f)
         {
