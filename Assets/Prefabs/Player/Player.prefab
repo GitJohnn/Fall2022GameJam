@@ -1322,6 +1322,7 @@ MonoBehaviour:
   startDashTime: 0.25
   dashSpeed: 20
   dashCoolDown: 1
+  _dashParticles: {fileID: 7535828560974409548, guid: 5c321518142897346a78f9a4abb748ee, type: 3}
 --- !u!114 &1452811158880980936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1477,6 +1478,10 @@ MonoBehaviour:
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   playerStats: {fileID: 5966520742072954775}
 --- !u!114 &1200418661
 MonoBehaviour:

@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float dashSpeed = 1f;
     [SerializeField] float dashCoolDown = 1f;
 
+    [SerializeField] GameObject _dashParticles;
+
     AgentAnimations agentAnimations;
 
     public bool IsMoving => _isMoving;
@@ -131,6 +133,8 @@ public class PlayerMovement : MonoBehaviour
         playerCollision = false;
         currentDashTime = startDashTime; // Reset the dash timer.
         currentDashCooldownTime = 0;
+
+        particleSpawner.SpawnParticles(_dashParticles, this.gameObject);
 
         while (currentDashTime > 0f)
         {
