@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour {
     private float speedPercentageChange = 0;
     private float attackSpeedPercentageChange = 0;
 
-    private float minimumStatVal = 1;
+    private float minimumStatVal = 0.1f;
 
     public float MaxHealth => maxHealth;
     public float AttackPower => attackPower;
@@ -77,7 +77,7 @@ public class PlayerStats : MonoBehaviour {
     }
 
     public void ChangeAttackSpeed(float percentageChange) {
-        attackSpeed = StatChangeHelper(attackSpeedBase, ref attackSpeedPercentageChange, percentageChange);
+        attackSpeed = StatChangeHelper(attackSpeedBase, ref attackSpeedPercentageChange, -percentageChange);
         AttackSpeedChanged?.Invoke(attackSpeed);
     }
 
