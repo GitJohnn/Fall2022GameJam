@@ -10,6 +10,7 @@ public class TowerBossScript : MonoBehaviour
     public TowerBossAttack towerBossAttack;
     public EnemyHealth towerBossHealth;
     public Slider towerBossHealthSlider;
+    public bool startOnAwake = false;
 
     [SerializeField]public UnityEvent OnTowerBossDead;
 
@@ -46,9 +47,13 @@ public class TowerBossScript : MonoBehaviour
 
     private void Awake()
     {
+        if (!playerTransform)
+            playerTransform = GameObject.FindObjectOfType<PlayerMovement>().transform;
         phase1HealthAmount = phase1Health.Count;        
         phase2HealthAmount = phase2Health.Count;
         //Debug.Log(phase1HealthAmount + " " + phase2HealthAmount);
+        if (startOnAwake)
+            StartBossFight();
     }
 
     private void Update()
@@ -72,6 +77,12 @@ public class TowerBossScript : MonoBehaviour
             currentTimeToMovePlayer += Time.deltaTime;
             MovePlayerBeforeNextPhaseStart();
         }
+    }
+
+    public void StartBossFight()
+    {
+        towerBossMovement.StopMovement = false;
+        towerBossAttack.StopAttacking = false;
     }
 
     public void CheckPhase1HealthObstacles()

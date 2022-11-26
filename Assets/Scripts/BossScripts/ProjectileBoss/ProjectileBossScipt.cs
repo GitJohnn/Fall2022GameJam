@@ -24,7 +24,7 @@ public class ProjectileBossScipt : MonoBehaviour
         projMoveScript = GetComponent<ProjectileBossMovement>();
 
         if (startOnAwake)
-            StartOnAwake();
+            StartBossFight();
     }
 
     private void Update()
@@ -38,7 +38,7 @@ public class ProjectileBossScipt : MonoBehaviour
         }
     }
 
-    public void StartOnAwake()
+    public void StartBossFight()
     {
         projAttackScript.StopAttacking = false;
         projMoveScript.StopMovement = false;

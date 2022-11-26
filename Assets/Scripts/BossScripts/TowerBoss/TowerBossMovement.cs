@@ -15,7 +15,7 @@ public class TowerBossMovement : MonoBehaviour
     private Vector2 direction;
 
     public bool StopMovement { get { return stopMovement; } set { stopMovement = value; } }
-    private bool stopMovement = false;
+    private bool stopMovement = true;
 
     void Update()
     {
