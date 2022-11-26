@@ -9,6 +9,8 @@ public class OrthoSmoothFollow : MonoBehaviour
     private float followDistance;
     public PlayerMovement target;
     public Vector3 offset;
+    public bool useSmoothDamp = false;
+    Vector3 velocity = Vector3.zero;
     Vector3 targetPos;
     // Use this for initialization
     void Awake()
@@ -19,7 +21,7 @@ public class OrthoSmoothFollow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void FixedUpdate()
     {
         if (target)
         {
@@ -32,7 +34,9 @@ public class OrthoSmoothFollow : MonoBehaviour
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime);
 
-            transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.5f);
+            if (!useSmoothDamp) transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.5f);
+            else transform.position = Vector3.SmoothDamp(transform.position, targetPos + offset, ref velocity, 0.05f);
+            
 
         }
     }
