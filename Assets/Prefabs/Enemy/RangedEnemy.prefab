@@ -492,14 +492,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07fd71b2b7855874098aeb3c5dd88fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useCustomAttackSettings: 0
+  _useDefaultAttackSettings: 0
   _settings: {fileID: 11400000, guid: 7304c1a167d368f41b66f0a8aabe5424, type: 2}
+  _useCustomAttackSettings: 0
   _meleeDamage: 0
   _timeBetweenAttacks: 0
   _includeLayers:
     serializedVersion: 2
     m_Bits: 0
   _attackRange: 0
+  _usePlayerStats: 0
+  _playerStats: {fileID: 0}
+  _playerIncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _playerAttackRange: 0
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -521,6 +528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -548,12 +556,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDamageWithReference:
-    m_PersistentCalls:
-      m_Calls: []
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   maxHealth: 20
 --- !u!114 &540602065
 MonoBehaviour:
@@ -722,8 +731,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: f60cfa3a239a16844aec92dabb820235, type: 2}
-  damageFlashMaterial: {fileID: 0}
   duration: 0.25
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1216985927786791570
 GameObject:
   m_ObjectHideFlags: 0

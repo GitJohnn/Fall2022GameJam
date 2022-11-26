@@ -8,6 +8,7 @@ public abstract class HealthBase : MonoBehaviour
 {
     [SerializeField, ReadOnly] protected float currentHealth;
     [SerializeField] private bool isDead = false;
+    [SerializeField] GameObject deathParticles;
 
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
     public UnityEvent onDontDestroyDeath;
@@ -61,8 +62,9 @@ public abstract class HealthBase : MonoBehaviour
         OnDeath?.Invoke();
         isDead = true;
         if (dontDestroyOnDeath)
-            onDontDestroyDeath?.Invoke();        
+            onDontDestroyDeath?.Invoke();
         else
+            Utility.SpawnParticles(deathParticles, this.gameObject, false);
             Destroy(gameObject);
 
     }
