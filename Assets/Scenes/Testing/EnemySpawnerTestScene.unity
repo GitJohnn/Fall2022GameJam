@@ -236,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5966520742072954775, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: speedBase
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7108797747043635169, guid: 1fe6c4c7accee6f44af0c95b8dc4173f, type: 3}
       propertyPath: m_AnchorMax.x
