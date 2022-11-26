@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 360902096}
   - component: {fileID: 6539783847676841165}
   - component: {fileID: 1680651599}
+  - component: {fileID: 220474762484379206}
   m_Layer: 7
   m_Name: EnemyObject
   m_TagString: Untagged
@@ -390,14 +391,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c19aad70360eff4199722c28d464564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useCustomAttackSettings: 0
+  _useDefaultAttackSettings: 1
   _settings: {fileID: 11400000, guid: 7304c1a167d368f41b66f0a8aabe5424, type: 2}
+  _useCustomAttackSettings: 0
   _meleeDamage: 0
   _timeBetweenAttacks: 0
   _includeLayers:
     serializedVersion: 2
     m_Bits: 0
   _attackRange: 0
+  _usePlayerStats: 0
+  _playerStats: {fileID: 0}
+  _playerIncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _playerAttackRange: 0
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -444,12 +452,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnDamageWithReference:
-    m_PersistentCalls:
-      m_Calls: []
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   maxHealth: 30
 --- !u!114 &1680651599
 MonoBehaviour:
@@ -520,6 +529,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &220474762484379206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141408230192251489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8ac49bcf5787a46bf928f44c399c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _loot: []
+  _enemyHealth: {fileID: 6539783847676841165}
 --- !u!1 &2141408230370294587
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,8 +947,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: f60cfa3a239a16844aec92dabb820235, type: 2}
-  damageFlashMaterial: {fileID: 0}
   duration: 0.25
+  spriteRenderer: {fileID: 0}
 --- !u!1 &6983460131548311740
 GameObject:
   m_ObjectHideFlags: 0

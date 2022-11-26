@@ -10,6 +10,7 @@ public class ButtonCoolDownHandler : MonoBehaviour
     private float totalcooldown;
 
     [SerializeField] Image cooldownImage;
+    [SerializeField] UnityEvent<float> OnUpdateCooldown;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class ButtonCoolDownHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OnUpdateCooldown?.Invoke(CurrentAbilityCooldown);
         cooldownImage.fillAmount = (CurrentAbilityCooldown / totalcooldown);
     }
 

@@ -37,8 +37,8 @@ public class PotionBase : ScriptableObject {
             case PlayerStat.Speed:
                 player.ChangeSpeed(percentage);
                 break;
-            case PlayerStat.AttackSpeed:
-                player.ChangeAttackSpeed(percentage);
+            case PlayerStat.AttackDelay:
+                player.ChangeAttackDelay(percentage);
                 break;
         }
     }

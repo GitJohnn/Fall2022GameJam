@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Dash")]
     [SerializeField] bool dashUnlocked = true;
+    [SerializeField] bool useMouseDirection = false;
     [SerializeField] ButtonCoolDownHandler dashButton;
     [SerializeField] float startDashTime = 1f;
     [SerializeField] float dashSpeed = 1f;
@@ -103,7 +104,8 @@ public class PlayerMovement : MonoBehaviour
         if (!canDash)
             return;
         Debug.Log("Dash");
-        StartCoroutine(Dash((_mousePosition - (Vector2)transform.position).normalized));
+        if (useMouseDirection) StartCoroutine(Dash((_mousePosition - (Vector2)transform.position).normalized));
+        else StartCoroutine(Dash(_moveDirection));
     }
 
     private void DashLocked()
@@ -119,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     float currentDashTime;
-    float currentDashCooldownTime;
+    public float currentDashCooldownTime { get; set; }
 
     bool canMove = true;
     bool canDash = true; //Start as true for testing

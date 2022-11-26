@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5951339956240389047}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2, y: 4.29, z: 0}
+  m_LocalPosition: {x: -21.46, y: 4.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5951339956441507542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2, y: -4.58, z: 0}
+  m_LocalPosition: {x: -4.83, y: -4.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -111,12 +111,22 @@ MonoBehaviour:
   _firstTransform: {fileID: 5951339956240389046}
   _secondTransform: {fileID: 5951339956441507541}
   _playerTransform: {fileID: 0}
-  enableSpawn: 1
+  enableSpawn: 0
   _enemyObjects:
   - {fileID: 2141408230192251489, guid: 7ff256edfb9d10947b80501f0b7f2aa1, type: 3}
   - {fileID: 1216985927053102740, guid: 0f178cd3866901643ae74f6a10225f5a, type: 3}
-  _numOfSpawnsLimit: 10
+  _numOfSpawnsLimit: 2
   _timeToSpawn: 2
   _timeBetweenWaves: 5
   _enableGizmos: 1
+  _OnFirstSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  _OnFinishedSpawns:
+    m_PersistentCalls:
+      m_Calls: []
+  _OnAllEnemyDead:
+    m_PersistentCalls:
+      m_Calls: []
   _enemiesSpawned: 0
+  _enemiesKilled: 0
