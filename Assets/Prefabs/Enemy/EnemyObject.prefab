@@ -425,6 +425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:

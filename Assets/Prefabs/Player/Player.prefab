@@ -141,6 +141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownImage: {fileID: 330790332}
+  OnUpdateCooldown:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &466068613
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +643,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownImage: {fileID: 1248676873}
+  OnUpdateCooldown:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1541157376
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,6 +976,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownImage: {fileID: 1841940610}
+  OnUpdateCooldown:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2079411204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,6 +1479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:

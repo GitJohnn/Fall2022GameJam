@@ -535,3 +535,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  openParticles: {fileID: 7535828560974409548, guid: d8741f7bc7da5864ba93a58d7f4d2b2a, type: 3}
