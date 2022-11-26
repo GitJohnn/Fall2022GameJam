@@ -52,9 +52,26 @@ MonoBehaviour:
   - {fileID: 6311488625245547803}
   - {fileID: 6311488625800002882}
   possiblePotions:
+  - {fileID: 11400000, guid: a692ff9cca587834488ce9042ee044b6, type: 2}
+  - {fileID: 11400000, guid: d9da5ae578dcfe648af052c082e2b755, type: 2}
+  - {fileID: 11400000, guid: 7d2383eabc3ef9b4c97b56e7f7684367, type: 2}
+  - {fileID: 11400000, guid: ae4757f187b27574e9e5812a26244629, type: 2}
   - {fileID: 11400000, guid: 8cb0a17b3d837ae47838ebe3e1fc73a9, type: 2}
+  - {fileID: 11400000, guid: 60c6ab684c3fc6e48a47a51d3d986681, type: 2}
+  - {fileID: 11400000, guid: d1c8016b9af9eec458037829828e49fe, type: 2}
+  - {fileID: 11400000, guid: bf4d212d69df2ca43b527470e97f85f8, type: 2}
+  - {fileID: 11400000, guid: 1c961b2f516c0fb44a42776aa3c42b14, type: 2}
+  - {fileID: 11400000, guid: 079a7c6b2f7beba4bbe518130dbda4c1, type: 2}
+  - {fileID: 11400000, guid: 33392c1d0fbd9ec4781ebdeb1d211417, type: 2}
   - {fileID: 11400000, guid: 52a1d80be86893145a97c15e13888d5a, type: 2}
+  - {fileID: 11400000, guid: 7697ee25bfd8474419eef69909deea4a, type: 2}
   - {fileID: 11400000, guid: a83260c5fbd3ec34387e0ec8367b4a5c, type: 2}
+  - {fileID: 11400000, guid: a395fd694fa06224e93fba6a5b87651b, type: 2}
+  - {fileID: 11400000, guid: bf32850cea30da64a8874e492a1a9ac2, type: 2}
+  - {fileID: 11400000, guid: b09cc4ad58721d948b05cb8654dd5966, type: 2}
+  - {fileID: 11400000, guid: 4ca6f89f84cff6945ac567b51c6db759, type: 2}
+  - {fileID: 11400000, guid: 747ade6aede58d9468cd96fdefb1cb5e, type: 2}
+  - {fileID: 11400000, guid: c1288475b75ee02418f412b8524d2c81, type: 2}
 --- !u!1001 &5230316915932156648
 PrefabInstance:
   m_ObjectHideFlags: 0

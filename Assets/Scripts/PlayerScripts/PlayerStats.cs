@@ -42,8 +42,10 @@ public class PlayerStats : MonoBehaviour {
     public event Action<float> SpeedChanged;
     public event Action<float> AttackDelayChanged;
     public event Action<float> ToxicityChanged;
+	public event Action ToxicityFull;
+	public event Action StatsReset;
 
-    private void Awake() {
+	private void Awake() {
         InitializeStats();
     }
 
@@ -54,6 +56,7 @@ public class PlayerStats : MonoBehaviour {
         defense = defenseBase;
         speed = speedBase;
         attackDelay = attackDelayBase;
+		toxicityLevel = 0;
     }
 
     public void ChangeMaxHealth(float percentageChange) {
@@ -92,8 +95,19 @@ public class PlayerStats : MonoBehaviour {
         toxicityLevel += newToxicity;
         if(toxicityLevel >= toxicityThreshold) {
             Debug.Log("toxicity threshold passed");
-            //TODO: put something else here
+			ToxicityFull?.Invoke();
         }
         ToxicityChanged?.Invoke(toxicityLevel);
     }
+
+	public void ResetStats() {
+		InitializeStats();
+		MaxHealthChanged?.Invoke(maxHealthBase);
+		AttackPowerChanged?.Invoke(attackPowerBase);
+		DefenseChanged?.Invoke(defenseBase);
+		SpeedChanged.Invoke(speedBase);
+		AttackDelayChanged?.Invoke(attackDelayBase);
+		ToxicityChanged?.Invoke(0);
+		StatsReset?.Invoke();
+	}
 }
