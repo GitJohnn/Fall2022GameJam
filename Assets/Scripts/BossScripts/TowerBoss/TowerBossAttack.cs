@@ -9,11 +9,17 @@ public class TowerBossAttack : MonoBehaviour
     public float projectileSpeed = 8;
     public float phase1ShootingCoolDown = 1.25f;
     public float phase2ShootingCoolDown = 1.25f;
-    public bool StopAttacking { get; set; }
+    public bool StopAttacking { get; set; } = true;
 
     public Transform playerTransform; 
     private float currentShootingCooldown = 0;
     private bool isPhase2 = false;
+
+    private void Awake()
+    {
+        if (!playerTransform)
+            playerTransform = GameObject.FindObjectOfType<PlayerMovement>().transform;
+    }
 
     // Update is called once per frame
     void Update()

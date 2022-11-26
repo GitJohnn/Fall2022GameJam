@@ -7,8 +7,20 @@ public class PortalInteractHandler : TriggerEventHandler
 {
     public KeyCode interactKeycode = KeyCode.I;
     public UnityEvent OnInteract;
+    public UnityEvent OnScreenFade;
 
-    public bool CanInteract { get; set; }
+    public bool CanInteract { get; set; } = true;
+
+    private void OnEnable()
+    {        
+
+    }
+
+    private void OnDisable()
+    {
+        //FadeAnimationScript.OnFade.RemoveListener(OnScreenFadeAction);
+        FadeAnimationScript.OnFade -= ScreenFadeEventCall;
+    }
 
     private void Update()
     {
@@ -18,7 +30,17 @@ public class PortalInteractHandler : TriggerEventHandler
         if(isInsideTrigger && Input.GetKeyDown(interactKeycode))
         {
             OnInteract?.Invoke();
+            //FadeAnimationScript.OnFade.AddListener(OnScreenFadeAction);
+            FadeAnimationScript.OnFade += ScreenFadeEventCall;
+            Debug.Log("Interacting with " + gameObject.name);
+            CanInteract = false;
         }
+    }
+
+    private void ScreenFadeEventCall()
+    {
+        OnScreenFade?.Invoke();
+        Debug.Log("Calling screen fade event");
     }
 
 }
