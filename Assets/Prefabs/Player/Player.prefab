@@ -1306,7 +1306,7 @@ MonoBehaviour:
   defense: 0
   speedBase: 5
   speed: 0
-  attackDelayBase: 0.15
+  attackDelayBase: 0.2
   attackDelay: 0
   toxicityThreshold: 100
   toxicityLevel: 0
@@ -1350,18 +1350,6 @@ MonoBehaviour:
   _onLeftClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7984830431271331363}
-        m_TargetAssemblyTypeName: WeaponParent, Assembly-CSharp
-        m_MethodName: AnimateAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 9096050361651342448}
         m_TargetAssemblyTypeName: Attack, Assembly-CSharp
         m_MethodName: HandlePrimaryAttack
@@ -1436,12 +1424,12 @@ MonoBehaviour:
   _useDefaultAttackSettings: 0
   _settings: {fileID: 11400000, guid: 0263598d6b76dfd4ca55e57d7003c526, type: 2}
   _useCustomAttackSettings: 0
-  _meleeDamage: 0
-  _timeBetweenAttacks: 0
-  _includeLayers:
+  _customMeleeDamage: 0
+  _customTimeBetweenAttacks: 0
+  _customIncludeLayers:
     serializedVersion: 2
-    m_Bits: 384
-  _attackRange: 0
+    m_Bits: 0
+  _customAttackRange: 0
   _usePlayerStats: 1
   _playerStats: {fileID: 5966520742072954775}
   _playerIncludeLayers:
@@ -1464,7 +1452,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _attackPosition: {fileID: 9068170065388500724}
-  _timeBetweenAttack: 0
+  _timeSinceLastAttack: 0
 --- !u!114 &1819233338731427780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1531,12 +1519,12 @@ MonoBehaviour:
   _useDefaultAttackSettings: 0
   _settings: {fileID: 11400000, guid: 7304c1a167d368f41b66f0a8aabe5424, type: 2}
   _useCustomAttackSettings: 0
-  _meleeDamage: 0
-  _timeBetweenAttacks: 0
-  _includeLayers:
+  _customMeleeDamage: 0
+  _customTimeBetweenAttacks: 0
+  _customIncludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  _attackRange: 0
+  _customAttackRange: 0
   _usePlayerStats: 0
   _playerStats: {fileID: 0}
   _playerIncludeLayers:
@@ -1547,7 +1535,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _attackPosition: {fileID: 466068614}
-  _timeBetweenAttack: 0
+  _timeSinceLastAttack: 0
   attackButton: {fileID: 1841940612}
   projectilePrefab: {fileID: 6945353333335619128, guid: 0f6bff58884278b4b9425019fe161385, type: 3}
   rangeAttackUnlocked: 1
@@ -1568,12 +1556,12 @@ MonoBehaviour:
   _useDefaultAttackSettings: 0
   _settings: {fileID: 11400000, guid: 0263598d6b76dfd4ca55e57d7003c526, type: 2}
   _useCustomAttackSettings: 0
-  _meleeDamage: 0
-  _timeBetweenAttacks: 0
-  _includeLayers:
+  _customMeleeDamage: 0
+  _customTimeBetweenAttacks: 0
+  _customIncludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  _attackRange: 0
+  _customAttackRange: 0
   _usePlayerStats: 0
   _playerStats: {fileID: 0}
   _playerIncludeLayers:
@@ -1584,7 +1572,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _attackPosition: {fileID: 776859937}
-  _timeBetweenAttack: 0
+  _timeSinceLastAttack: 0
   attackButton: {fileID: 1248676875}
   bombPrefab: {fileID: 6035233110517028290, guid: 738262aced3e7604880feeb5a0572adf, type: 3}
   bombAttackUnlocked: 1
