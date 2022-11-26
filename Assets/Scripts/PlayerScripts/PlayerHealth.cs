@@ -7,15 +7,37 @@ using UnityEngine.UI;
 public class PlayerHealth : HealthBase {
 
     [SerializeField] private PlayerStats playerStats;
+	[SerializeField] private float toxicityDamageAmount;
+	[SerializeField] private float toxicityDamageTickSpeed;
+
+	private bool toxicityFull;
+	private float toxicityTickTimer;
 
     public event Action<float> PlayerHit;
 
 	private void OnEnable() {
 		playerStats.MaxHealthChanged += AddMaxHealth;
+		playerStats.ToxicityFull += StartToxicityTickDamage;
+		playerStats.StatsReset += EndToxicityTickDamage;
 	}
 
 	private void OnDisable() {
 		playerStats.MaxHealthChanged -= AddMaxHealth;
+		playerStats.ToxicityFull -= StartToxicityTickDamage;
+		playerStats.StatsReset -= EndToxicityTickDamage;
+	}
+
+	private void Awake() {
+		toxicityFull = false;
+		toxicityTickTimer = 0;
+	}
+
+	private void Update() {
+		toxicityTickTimer += Time.deltaTime;
+		if(toxicityFull && (toxicityTickTimer >= toxicityDamageTickSpeed)) {
+			GetHit(toxicityDamageAmount, FindObjectOfType<Camera>().gameObject); //just using the camera to guarantee that it's not the same layer
+			toxicityTickTimer = 0;
+		}
 	}
 
 	public override void ResetHealth() {
@@ -38,4 +60,13 @@ public class PlayerHealth : HealthBase {
         base.Die(sender);
         //TODO: other stuff
     }
+
+	private void StartToxicityTickDamage() {
+		toxicityFull = true;
+		toxicityTickTimer = 0;
+	}
+
+	private void EndToxicityTickDamage() {
+		toxicityFull = false;
+	}
 }

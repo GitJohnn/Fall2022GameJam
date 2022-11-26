@@ -1306,7 +1306,7 @@ MonoBehaviour:
   defense: 0
   speedBase: 5
   speed: 0
-  attackDelayBase: 0.2
+  attackDelayBase: 0.25
   attackDelay: 0
   toxicityThreshold: 100
   toxicityLevel: 0
@@ -1491,6 +1491,8 @@ MonoBehaviour:
       m_Calls: []
   dontDestroyOnDeath: 0
   playerStats: {fileID: 5966520742072954775}
+  toxicityDamageAmount: 1
+  toxicityDamageTickSpeed: 1
 --- !u!114 &1200418661
 MonoBehaviour:
   m_ObjectHideFlags: 0
