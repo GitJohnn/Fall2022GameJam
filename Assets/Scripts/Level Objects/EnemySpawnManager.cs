@@ -43,6 +43,7 @@ public class EnemySpawnManager : MonoBehaviour
     [Button]
     public void StartSpawning()
     {
+		Debug.Log("HandleFirstSpawn");
         HandleFirstSpawn();
         enableSpawn = true;
     }
@@ -60,13 +61,14 @@ public class EnemySpawnManager : MonoBehaviour
 
         if (_enemiesSpawned >= _numOfSpawnsLimit)
         {
+			Debug.Log("HandleFinishedSpawns");
             if (!_runOnce) HandleFinishedSpawns();
             enableSpawn = false;
         }
 
-        if (_enemiesKilled >= _numOfSpawnsLimit)
+        if (_enemiesKilled == _numOfSpawnsLimit)
         {
-			Debug.Log("here");
+			Debug.Log("HandleEnemiesKilled");
             if (!_runOnce2) HandleEnemiesKilled();
         }
     }
@@ -108,6 +110,12 @@ public class EnemySpawnManager : MonoBehaviour
     void OnEnemyDeath()
     {
         _enemiesKilled++;
+        if (_enemiesKilled == _numOfSpawnsLimit)
+        {
+			Debug.Log("HandleEnemiesKilled");
+            if (!_runOnce2) HandleEnemiesKilled();
+        }
+        Debug.Log($"Enemies killed {_enemiesKilled}");
     }
 
     void Spawn()
