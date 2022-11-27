@@ -27,6 +27,11 @@ public class FadeAnimationScript : MonoBehaviour
         StartCoroutine(StartFadeTransition(fadeDuration));
     }
 
+    public void SetFade(bool value)
+    {
+        fadeAnimator.SetBool("Fade", value);
+    }
+
     IEnumerator StartFadeTransition(float fadeDuration)
     {
         fadeAnimator.SetBool("Fade", true);
