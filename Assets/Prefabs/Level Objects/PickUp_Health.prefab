@@ -79,7 +79,7 @@ MonoBehaviour:
   _rb: {fileID: 3300254967095994893}
   speed: 5
   height: 0.1
-  _HP: 1
+  _HP: 25
 --- !u!61 &3300254967095994891
 BoxCollider2D:
   m_ObjectHideFlags: 0

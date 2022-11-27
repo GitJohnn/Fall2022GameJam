@@ -49,7 +49,7 @@ public abstract class HealthBase : MonoBehaviour
             return;
 
         if (_sfxHit) _sfxHit.Play();
-        Utility.SpawnParticles(_vfxHit, gameObject, false);
+        if (_vfxHit) Utility.SpawnParticles(_vfxHit, gameObject, false);
         currentHealth -= amount;
 
         if (currentHealth > 0)
