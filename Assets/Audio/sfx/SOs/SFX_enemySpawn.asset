@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4bf446c639ecc46b5102adc0e61f4c, type: 3}
   m_Name: SFX_enemySpawn
   m_EditorClassIdentifier: 
-  _SFXSound: {fileID: 0}
+  _SFXSound: {fileID: 8300000, guid: 33c3e06b8bcdd854eab8fee578fcfcc3, type: 3}
   _mixer: {fileID: 0}
   isLooping: 0
   Volume: 1
