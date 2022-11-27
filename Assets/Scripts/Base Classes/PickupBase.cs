@@ -21,27 +21,13 @@ public class PickupBase : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Pickup(other.gameObject);
+        if (other.GetComponent<PlayerInputHandler>()) Pickup(other.gameObject);
     }
 
     protected virtual void Pickup(GameObject player)
     {
         PickupFeedback();
         Destroy(gameObject);
-    }
-
-    void FixedUpdate()
-    {
-        Movement();
-    }
-
-    protected virtual void Movement()
-    {
-        
-
-        Vector2 position = transform.position;
-        float newYValue = Mathf.Sin(Time.time * speed) + transform.position.y;
-        _rb.MovePosition(new Vector2(transform.position.x, newYValue * height));
     }
 
     protected virtual void PickupFeedback()

@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 
 public class LootDrops : MonoBehaviour
 {
-    [SerializeField] List<LootItem> _loot;
+    [SerializeField] List<GameObject> _loot;
+    [SerializeField] float _dropChance;
     [SerializeField, HighlightIfNull] HealthBase _enemyHealth;
 
     void OnValidate()
@@ -15,31 +16,18 @@ public class LootDrops : MonoBehaviour
         if (_enemyHealth == null) _enemyHealth = GetComponent<HealthBase>();
     }
 
+    [Button]
     public void Drop()
     {
-        GameObject objectToSpawn = HandleObjectPick();
-        Instantiate(objectToSpawn, transform.position, Quaternion.identity);
-    }
-
-    GameObject HandleObjectPick()
-    {
-        if (_loot.Count <= 0) return null;
-
-        int randomPercentage = Random.Range(0, 101);
-        List<GameObject> possibleObjects = new List<GameObject>();
-
-        foreach (var item in _loot)
+        if (_loot.Count <= 0) return;
+        float randNum = Random.Range(0, 100);
+        if (randNum <= _dropChance)
         {
-            if (item.dropPercentage <= randomPercentage) possibleObjects.Add(item.lootDrop);
+            GameObject dropped = Instantiate(_loot[Random.Range(0, _loot.Count)], transform.position, Quaternion.identity);
+            Debug.Log($"Created: {dropped}");
         }
-
-        return possibleObjects[Random.Range(0, possibleObjects.Count)];
     }
+
+   
 }
 
-[Serializable]
-public struct LootItem
-{
-    public GameObject lootDrop;
-    public int dropPercentage;
-}
