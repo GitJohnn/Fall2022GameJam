@@ -66,6 +66,7 @@ public class EnemySpawnManager : MonoBehaviour
 
         if (_enemiesKilled >= _numOfSpawnsLimit)
         {
+			Debug.Log("here");
             if (!_runOnce2) HandleEnemiesKilled();
         }
     }
