@@ -157,6 +157,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 704
   _sfxExplosion: {fileID: 11400000, guid: b053104b7c1d4ca46b5276d8bac060f9, type: 2}
+  _vfxExplosion: {fileID: 7535828560974409548, guid: b612fd4ea0db8d447898ba9af255fc7c, type: 3}
 --- !u!50 &1235898135
 Rigidbody2D:
   serializedVersion: 4
