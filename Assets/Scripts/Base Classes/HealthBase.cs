@@ -63,9 +63,11 @@ public abstract class HealthBase : MonoBehaviour
         isDead = true;
         if (dontDestroyOnDeath)
             onDontDestroyDeath?.Invoke();
-        else
+        else if (deathParticles)
+        {
             Utility.SpawnParticles(deathParticles, this.gameObject, false);
             Destroy(gameObject);
+        }
 
     }
 }
