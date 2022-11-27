@@ -18,6 +18,7 @@ public class DashBossScript : MonoBehaviour
     [SerializeField] UnityEvent onStopBossMovement;
     [SerializeField] UnityEvent onContinueBossMovement;
     [SerializeField] UnityEvent onBossDeath;
+    [SerializeField] UnityEvent onScreenFadeAfterDeath;
 
     public float stopBossCooldown = 4f;
     private float currentBossCooldown = 0;
@@ -43,6 +44,7 @@ public class DashBossScript : MonoBehaviour
         if (isBossDead)
         {
             onBossDeath?.Invoke();
+            OnScreenFadeEventSubscription();
             gameObject.SetActive(false);
             return;
         }                    
@@ -90,5 +92,14 @@ public class DashBossScript : MonoBehaviour
         Debug.Log("Boss movement continue");
     }
 
+    public void OnScreenFadeEventSubscription()
+    {
+        FadeAnimationScript.OnFaded += ScreenFadeEvent;
+    }
+
+    private void ScreenFadeEvent()
+    {
+        onScreenFadeAfterDeath?.Invoke();
+    }
 
 }

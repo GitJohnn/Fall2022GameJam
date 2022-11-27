@@ -6,11 +6,11 @@ using UnityEngine.Events;
 public class FadeAnimationScript : MonoBehaviour
 {
     Animator fadeAnimator;
-    public float fadeCooldown = 4;
+    public float fadeCooldown = 1;
     public float animationTransitionTime = 0.75f;
     public bool Fade { get; set; }
 
-    public static UnityAction OnFade = delegate { };
+    public static UnityAction OnFaded = delegate { };
 
     private float currentFadeCooldown = 0;
 
@@ -18,15 +18,15 @@ public class FadeAnimationScript : MonoBehaviour
     void Start()
     {
         fadeAnimator = GetComponent<Animator>();
-        StartFade();
+        StartFade(1);
     }
 
-    public void StartFade()
+    public void StartFade(float fadeDuration)
     {
-        StartCoroutine(StartFadeTransition());
+        StartCoroutine(StartFadeTransition(fadeDuration));
     }
 
-    IEnumerator StartFadeTransition()
+    IEnumerator StartFadeTransition(float fadeDuration)
     {
         fadeAnimator.SetBool("Fade", true);
 
@@ -39,7 +39,10 @@ public class FadeAnimationScript : MonoBehaviour
             yield return null;
         }
 
-        OnFade();
+        OnFaded();
+
+        yield return new WaitForSeconds(fadeDuration);
+
         Debug.Log("Is Faded");
 
         fadeAnimator.SetBool("Fade", false);

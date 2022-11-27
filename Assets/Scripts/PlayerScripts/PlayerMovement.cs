@@ -31,13 +31,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float dashCoolDown = 1f;
 
     [SerializeField] GameObject _dashParticles;
+    [SerializeField] Transform startTransform;
     [SerializeField] SFXEvent _sfxDash;
 
     AgentAnimations agentAnimations;
 
     public bool IsMoving => _isMoving;
 
-    public float MoveSpeed 
+    public float MoveSpeed
     {
         get { return _playerStats.Speed; }
     }
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnValidate()
     {
-        if (_rb == null) _rb = GetComponent<Rigidbody2D>();    
+        if (_rb == null) _rb = GetComponent<Rigidbody2D>();
     }
 
     void Awake()
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         else
             DashLocked();
     }
-    
+
     void Update()
     {
         Cursor.visible = true;
@@ -96,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         // _rb.velocity = new Vector2(_moveDirection.x * _moveSpeed, _moveDirection.y * _moveSpeed );
         _rb.MovePosition(new Vector2((transform.position.x + _moveDirection.x * _playerStats.Speed * Time.deltaTime),
             transform.position.y + _moveDirection.y * _playerStats.Speed * Time.deltaTime));
-                
+
         //Vector2 aimDirection = _mousePosition - _rb.position;
         //float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         //_rb.rotation = aimAngle;              
@@ -174,5 +175,35 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 GetWeaponDirection()
     {
         return weaponParent.transform.right;
-    } 
+    }
+
+    //private void OnDisable()
+    //{
+    //    FadeAnimationScript.OnFaded -= MovePlayerToLocation;    
+    //}
+
+    //public void FadeMovePlayerEvent()
+    //{
+    //    FadeAnimationScript.OnFaded += MovePlayerToLocation;
+    //    MovePlayerToLocation();
+    //}
+
+    public void MovePlayerToStart()
+    {
+        StartCoroutine(MovePlayerCoroutine());
+    }
+
+    IEnumerator MovePlayerCoroutine()
+    {
+        Debug.Log("Moving player to start");
+        canMove = false;
+        float currentPlayerMove = 0;
+        while(currentPlayerMove< 0.25f)
+        {
+            currentPlayerMove += Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, startTransform.position, currentPlayerMove / 0.25f);
+            yield return null;
+        }
+        canMove = true;
+    }
 }
