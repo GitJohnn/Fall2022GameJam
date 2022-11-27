@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4bf446c639ecc46b5102adc0e61f4c, type: 3}
+  m_Name: SFX_bowShoot
+  m_EditorClassIdentifier: 
+  _SFXSound: {fileID: 8300000, guid: ae7392ad42850fc4e80d02950b7d9680, type: 3}
+  _mixer: {fileID: 0}
+  isLooping: 0
+  Volume: 1
+  maxPitch: 1
+  minPitch: 0.8
+  panStereo: 0
+  _spatialBlend: 0
+  _startTime: 0
