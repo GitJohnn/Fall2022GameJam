@@ -48,7 +48,7 @@ public abstract class HealthBase : MonoBehaviour
         if (sender.layer == gameObject.layer)
             return;
 
-        _sfxHit.Play();
+        if (_sfxHit) _sfxHit.Play();
         Utility.SpawnParticles(_vfxHit, gameObject, false);
         currentHealth -= amount;
 
