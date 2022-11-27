@@ -58,6 +58,7 @@ public class PlayerHealth : HealthBase {
 
     protected override void Die(GameObject sender) {
         base.Die(sender);
+        GetComponent<PlayerDeath>().OnPlayerDeath();
         //TODO: other stuff
     }
 
