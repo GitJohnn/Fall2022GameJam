@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potionInfoPanel: {fileID: 5699415716296879401}
   _waitingVFX: {fileID: 7535828560974409548, guid: 65550071320240b4b911d1cc990ffade, type: 3}
+  _sfxDrinkPotion: {fileID: 11400000, guid: 5510e47ae79420746b84226ed35eb493, type: 2}
 --- !u!1 &2234692449159136120
 GameObject:
   m_ObjectHideFlags: 0

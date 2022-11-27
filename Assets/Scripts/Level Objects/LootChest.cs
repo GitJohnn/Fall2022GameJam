@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using SoundSystem;
 
 public class LootChest : TriggerEventHandler
 {
@@ -17,6 +18,7 @@ public class LootChest : TriggerEventHandler
     float _time = 0.5f;
     float _distance = 0.1f;
     float _delayBetweenShakes = 0f;
+    [SerializeField] SFXEvent _sfxOpen;
 
     private void Update()
     {
@@ -35,6 +37,7 @@ public class LootChest : TriggerEventHandler
         // TODO: This will be called by the player when they try to open a chest?
         _startPos = gameObject.transform.position;
         StartCoroutine(shake());
+        _sfxOpen.Play();
         Utility.SpawnParticles(openParticles, gameObject, false);
         OnOpenChest?.Invoke();
     }

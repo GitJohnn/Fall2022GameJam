@@ -1335,6 +1335,7 @@ MonoBehaviour:
   dashSpeed: 20
   dashCoolDown: 1
   _dashParticles: {fileID: 7535828560974409548, guid: 5c321518142897346a78f9a4abb748ee, type: 3}
+  _sfxDash: {fileID: 11400000, guid: 9f992fd180765764ea88235600ed5c3e, type: 2}
 --- !u!114 &1452811158880980936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,6 +1453,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _attackPosition: {fileID: 9068170065388500724}
+  _sfxStaffSwing: {fileID: 11400000, guid: 645c1321974ca574891560144d060605, type: 2}
   _timeSinceLastAttack: 0
 --- !u!114 &1819233338731427780
 MonoBehaviour:
@@ -1468,6 +1470,8 @@ MonoBehaviour:
   currentHealth: 0
   isDead: 0
   deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
+  _sfxHit: {fileID: 11400000, guid: f891eefcc1e944a408aec95352d90601, type: 2}
+  _sfxDeath: {fileID: 11400000, guid: 3ca31ce15e8373645863b63485a3c0f6, type: 2}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -1537,12 +1541,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _attackPosition: {fileID: 466068614}
+  _sfxStaffSwing: {fileID: 0}
   _timeSinceLastAttack: 0
   attackButton: {fileID: 1841940612}
   projectilePrefab: {fileID: 6945353333335619128, guid: 0f6bff58884278b4b9425019fe161385, type: 3}
   rangeAttackUnlocked: 1
   projectileSpeed: 12
   totalCooldown: 0.8
+  _sfxBowShoot: {fileID: 11400000, guid: 5f7ee743279ddf945a7946b9a0f9a8ed, type: 2}
 --- !u!114 &807327558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1574,11 +1580,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _attackPosition: {fileID: 776859937}
+  _sfxStaffSwing: {fileID: 0}
   _timeSinceLastAttack: 0
   attackButton: {fileID: 1248676875}
   bombPrefab: {fileID: 6035233110517028290, guid: 738262aced3e7604880feeb5a0572adf, type: 3}
   bombAttackUnlocked: 1
   totalCooldown: 2.5
+  _sfxBombPlace: {fileID: 11400000, guid: 83e4517dabd7f724cb58e9398b3744ac, type: 2}
 --- !u!114 &1585287823
 MonoBehaviour:
   m_ObjectHideFlags: 0

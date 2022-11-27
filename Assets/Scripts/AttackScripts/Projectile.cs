@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using SoundSystem;
 public class Projectile : MonoBehaviour
 {
     public int projectileDamage = 5;
     public float timeToLive = 4f;
     [SerializeField]private LayerMask hitLayer, obstacleLayer;
     [SerializeField] GameObject _VFXHit;
+    [SerializeField] SFXEvent _wallHit;
 
     public UnityEvent _onHitCollision;
 
@@ -29,6 +30,7 @@ public class Projectile : MonoBehaviour
         if ((obstacleLayer & (1 << objlayer)) != 0)
         {
             //Debug.Log("hit obstacle layer");
+            _wallHit.Play();
             Utility.SpawnParticles(_VFXHit, this.gameObject, false);
             Destroy(gameObject);
             return;

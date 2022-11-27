@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using SoundSystem;
 
 public abstract class HealthBase : MonoBehaviour
 {
     [SerializeField, ReadOnly] protected float currentHealth;
     [SerializeField] private bool isDead = false;
     [SerializeField] GameObject deathParticles;
-
+    [SerializeField] SFXEvent _sfxHit;
+    [SerializeField] SFXEvent _sfxDeath;
+    
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
     public UnityEvent onDontDestroyDeath;
     public event Action OnDeath;
@@ -44,7 +47,8 @@ public abstract class HealthBase : MonoBehaviour
             return;
         if (sender.layer == gameObject.layer)
             return;
-        
+
+        _sfxHit.Play();
         currentHealth -= amount;
 
         if (currentHealth > 0)
@@ -65,6 +69,7 @@ public abstract class HealthBase : MonoBehaviour
             onDontDestroyDeath?.Invoke();
         else
             Utility.SpawnParticles(deathParticles, this.gameObject, false);
+            _sfxDeath.Play();
             Destroy(gameObject);
 
     }

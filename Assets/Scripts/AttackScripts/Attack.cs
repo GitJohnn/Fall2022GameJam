@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using SoundSystem;
 
 public enum UserType
 {
@@ -28,6 +29,7 @@ public class Attack : MonoBehaviour
 	[SerializeField] protected UnityEvent _onPrimaryAttack;
 	//[SerializeField] protected UnityEvent _onSecondaryAttack;
 	[SerializeField] protected Transform _attackPosition;
+    [SerializeField] SFXEvent _sfxStaffSwing;
 
     private Rigidbody2D _rigidbody2D;
 
@@ -84,7 +86,7 @@ public class Attack : MonoBehaviour
     public virtual void HandlePrimaryAttack()
     {
 		if(_timeSinceLastAttack < TimeBetweenAttacks) return;
-		
+        _sfxStaffSwing.Play();
         _onPrimaryAttack?.Invoke();
         Collider2D[] targets = Physics2D.OverlapCircleAll(_attackPosition.position, AttackRange, IncludeLayers);
         foreach (Collider2D collider in targets)

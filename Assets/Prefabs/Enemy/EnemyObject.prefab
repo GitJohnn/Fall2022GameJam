@@ -394,12 +394,12 @@ MonoBehaviour:
   _useDefaultAttackSettings: 1
   _settings: {fileID: 11400000, guid: 7304c1a167d368f41b66f0a8aabe5424, type: 2}
   _useCustomAttackSettings: 0
-  _meleeDamage: 0
-  _timeBetweenAttacks: 0
-  _includeLayers:
+  _customMeleeDamage: 0
+  _customTimeBetweenAttacks: 0
+  _customIncludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  _attackRange: 0
+  _customAttackRange: 0
   _usePlayerStats: 0
   _playerStats: {fileID: 0}
   _playerIncludeLayers:
@@ -410,7 +410,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _attackPosition: {fileID: 993724908}
-  _timeBetweenAttack: 0
+  _sfxStaffSwing: {fileID: 11400000, guid: 645c1321974ca574891560144d060605, type: 2}
+  _timeSinceLastAttack: 0
 --- !u!114 &6539783847676841165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +427,8 @@ MonoBehaviour:
   currentHealth: 0
   isDead: 0
   deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
+  _sfxHit: {fileID: 11400000, guid: af260fca64446ea4b8c4738b7f211414, type: 2}
+  _sfxDeath: {fileID: 11400000, guid: ca85da82c909e51428bb48d5fef55745, type: 2}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
