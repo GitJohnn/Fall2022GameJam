@@ -30,7 +30,7 @@ public class ProjectileBossScipt : MonoBehaviour
 
     private void OnDisable()
     {
-        FadeAnimationScript.OnFaded -= OnScreenFadeSubscription;
+        //FadeAnimationScript.OnFaded -= OnScreenFadeSubscription;
     }
 
     private void Update()
@@ -41,7 +41,7 @@ public class ProjectileBossScipt : MonoBehaviour
         {
             OnBossDeath?.Invoke();
             Debug.Log("Subscribing to event");
-            FadeAnimationScript.OnFaded += OnScreenFadeSubscription;
+            FadeAnimationScript.OnFaded += ScreenFadeEvent;
             gameObject.SetActive(false);
         }
     }
@@ -53,9 +53,8 @@ public class ProjectileBossScipt : MonoBehaviour
         projMoveScript.StopRotate = false;
     }
 
-    private void OnScreenFadeSubscription()
+    private void ScreenFadeEvent()
     {
-        Debug.Log("Moving Player");
         OnScreenFadeAfterDeath?.Invoke();
     }
 
