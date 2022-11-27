@@ -180,6 +180,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 0}
+  _sfxHit: {fileID: 0}
+  _sfxDeath: {fileID: 0}
+  _vfxHit: {fileID: 0}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -712,6 +716,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 0}
+  _sfxHit: {fileID: 0}
+  _sfxDeath: {fileID: 0}
+  _vfxHit: {fileID: 0}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -1172,6 +1180,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  OnScreenFadeAfterDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5152820502668414030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,6 +1218,7 @@ MonoBehaviour:
   phase1ShootingCoolDown: 2.25
   phase2ShootingCoolDown: 1.85
   playerTransform: {fileID: 0}
+  _spiderShot: {fileID: 11400000, guid: 9ad22868a67dae4498ad9f0f62f79828, type: 2}
 --- !u!1 &5152820502725281909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1484,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 0}
+  _sfxHit: {fileID: 0}
+  _sfxDeath: {fileID: 0}
+  _vfxHit: {fileID: 0}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -1754,6 +1770,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 0}
+  _sfxHit: {fileID: 0}
+  _sfxDeath: {fileID: 0}
+  _vfxHit: {fileID: 0}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -1890,6 +1910,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 0}
+  _sfxHit: {fileID: 0}
+  _sfxDeath: {fileID: 0}
+  _vfxHit: {fileID: 0}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -2094,6 +2118,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 0}
+  _sfxHit: {fileID: 0}
+  _sfxDeath: {fileID: 0}
+  _vfxHit: {fileID: 0}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -2300,6 +2328,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
+  _sfxHit: {fileID: 11400000, guid: 9e212569d3eff49448eded193520f39d, type: 2}
+  _sfxDeath: {fileID: 11400000, guid: 7e49b804cf7c4c84e81f70e5c06ce45c, type: 2}
+  _vfxHit: {fileID: 3274053707080079367, guid: 6c927ca34bf45b84baf46591441a5702, type: 3}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:

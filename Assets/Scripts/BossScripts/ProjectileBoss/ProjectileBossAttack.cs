@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using SoundSystem;
 public class ProjectileBossAttack : MonoBehaviour
 {
     public Rigidbody2D projectilePrefab;
@@ -25,6 +25,8 @@ public class ProjectileBossAttack : MonoBehaviour
     private int turret2DestroyCount = 0;
     private bool turret1Destroyed = false;
     private bool turret2Destroyed = false;
+
+    [SerializeField] SFXEvent _robotShot;
 
     // Update is called once per frame
     void Update()
@@ -71,7 +73,7 @@ public class ProjectileBossAttack : MonoBehaviour
         //Quaternion.Euler(0, 0, randomRotation) *
         if ((turret1Destroyed && turretIndex == 0)|| (turret2Destroyed && turretIndex == 1))
             return;
-
+        _robotShot.Play();
         foreach (Transform turret in turretPositions)
         {
             Rigidbody2D projectile = Instantiate(projectilePrefab, turret.position, turret.rotation).GetComponent<Rigidbody2D>();
