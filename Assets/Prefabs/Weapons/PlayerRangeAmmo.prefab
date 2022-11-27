@@ -103,6 +103,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 768
   _VFXHit: {fileID: 3274053707080079367, guid: 2898c5cadc7d2aa489bf72deb1851260, type: 3}
+  _wallHit: {fileID: 11400000, guid: 516c17b97f819c64e98c8323641ceea7, type: 2}
   _onHitCollision:
     m_PersistentCalls:
       m_Calls: []

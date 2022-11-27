@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SoundSystem;
 
 public class PotionObject : MonoBehaviour {
 
@@ -18,8 +19,11 @@ public class PotionObject : MonoBehaviour {
     }
     #endregion
 
+    [SerializeField] SFXEvent _sfxDrinkPotion;
+
     private void Update() {
         if(Input.GetKeyDown(KeyCode.I) && player != null) {
+            _sfxDrinkPotion.Play();
             potion.ApplyPotion(player);
             PotionObjectTaken?.Invoke();
         }

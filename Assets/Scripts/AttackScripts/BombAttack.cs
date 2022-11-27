@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using SoundSystem;
 public class BombAttack : Attack
 {
     public ButtonCoolDownHandler attackButton;
@@ -9,6 +9,8 @@ public class BombAttack : Attack
 
     public bool bombAttackUnlocked = true;
     public float totalCooldown;
+
+    [SerializeField] SFXEvent _sfxBombPlace;
 
     public void Awake()
     {
@@ -50,6 +52,7 @@ public class BombAttack : Attack
     IEnumerator RangeAttack()
     {
         canAttack = false;
+        _sfxBombPlace.Play();
         currentAttackCooldown = 0;
 
         GameObject bombrb = Instantiate(bombPrefab, _attackPosition.position, Quaternion.identity);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using SoundSystem;
 
 public class RangedAttack : Attack
 {
@@ -12,6 +13,7 @@ public class RangedAttack : Attack
     public float projectileSpeed;
     public float totalCooldown;
 
+    [SerializeField] SFXEvent _sfxBowShoot;
 
     public void Awake()
     {
@@ -54,6 +56,7 @@ public class RangedAttack : Attack
     {
         canAttack = false;
         currentAttackCooldown = 0;
+        _sfxBowShoot.Play();
 
         Rigidbody2D projectile = Instantiate(projectilePrefab, _attackPosition.position, _attackPosition.rotation).GetComponent<Rigidbody2D>();
         projectile.AddForce(_attackPosition.right * projectileSpeed, ForceMode2D.Impulse);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-
+using SoundSystem;
 public class PlayerInput : MonoBehaviour
 {
     public static bool IsMouseOverUi
@@ -55,6 +55,10 @@ public class PlayerInput : MonoBehaviour
     public float CurrentDashCoolDown { get { return currentDashCooldownTime; } }
     public float CurrentRangeCoolDown { get { return currentRangeCooldown; } }
 
+    [SerializeField] SFXEvent _sfxBombPlace;
+    [SerializeField] SFXEvent _sfxSwingStaff;
+    [SerializeField] SFXEvent _sfxBowShoot;
+
     private Vector2 _moveDirection;
     private Vector2 _mousePosition;
 
@@ -101,11 +105,13 @@ public class PlayerInput : MonoBehaviour
         //Neutral attack
         if (Input.GetMouseButtonDown(0) && !IsMouseOverUi)
         {
+            _sfxSwingStaff.Play();
             _onPrimaryAttack?.Invoke(); 
         }
         //Right mouse click is range attack
         if (Input.GetMouseButtonDown(1) && !IsMouseOverUi && canRangeAttack)
-        {            
+        {
+            _sfxBowShoot.Play();
             _onSecondaryAttack?.Invoke();
             StartCoroutine(Range());
         }
@@ -117,6 +123,7 @@ public class PlayerInput : MonoBehaviour
         //Bomb placing
         if (Input.GetKeyDown(fourthAbilityKey))
         {
+            _sfxBombPlace.Play();
             _onFourthAbility?.Invoke();
         }
 

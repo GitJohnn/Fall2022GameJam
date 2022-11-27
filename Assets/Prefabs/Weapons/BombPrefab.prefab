@@ -156,6 +156,7 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 704
+  _sfxExplosion: {fileID: 11400000, guid: b053104b7c1d4ca46b5276d8bac060f9, type: 2}
 --- !u!50 &1235898135
 Rigidbody2D:
   serializedVersion: 4
@@ -191,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 0}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -209,6 +211,10 @@ MonoBehaviour:
   OnDeathWithReference:
     m_PersistentCalls:
       m_Calls: []
+  onDontDestroyDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  dontDestroyOnDeath: 0
   _maxObstacleHealth: 100
 --- !u!114 &1235898134
 MonoBehaviour:

@@ -537,6 +537,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   openParticles: {fileID: 7535828560974409548, guid: d8741f7bc7da5864ba93a58d7f4d2b2a, type: 3}
+  _sfxOpen: {fileID: 11400000, guid: 755759e4e4e30204a95442de8d3417ae, type: 2}
 --- !u!1 &1126633014950747960
 GameObject:
   m_ObjectHideFlags: 0

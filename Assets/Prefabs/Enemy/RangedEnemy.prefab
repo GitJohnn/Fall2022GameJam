@@ -495,12 +495,12 @@ MonoBehaviour:
   _useDefaultAttackSettings: 0
   _settings: {fileID: 11400000, guid: 7304c1a167d368f41b66f0a8aabe5424, type: 2}
   _useCustomAttackSettings: 0
-  _meleeDamage: 0
-  _timeBetweenAttacks: 0
-  _includeLayers:
+  _customMeleeDamage: 0
+  _customTimeBetweenAttacks: 0
+  _customIncludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  _attackRange: 0
+  _customAttackRange: 0
   _usePlayerStats: 0
   _playerStats: {fileID: 0}
   _playerIncludeLayers:
@@ -511,7 +511,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _attackPosition: {fileID: 4101765759926129534}
-  _timeBetweenAttack: 0
+  _sfxStaffSwing: {fileID: 11400000, guid: 5f7ee743279ddf945a7946b9a0f9a8ed, type: 2}
+  _timeSinceLastAttack: 0
   projectilePrefab: {fileID: 6945353333335619128, guid: f4c5e0c52534d294ca221164b4c3e57d, type: 3}
   projectileSpeed: 8
 --- !u!114 &2293824224662695761
@@ -529,6 +530,8 @@ MonoBehaviour:
   currentHealth: 0
   isDead: 0
   deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
+  _sfxHit: {fileID: 11400000, guid: af260fca64446ea4b8c4738b7f211414, type: 2}
+  _sfxDeath: {fileID: 11400000, guid: ca85da82c909e51428bb48d5fef55745, type: 2}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:

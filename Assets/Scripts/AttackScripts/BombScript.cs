@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SoundSystem;
 
 public class BombScript : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class BombScript : MonoBehaviour
     [SerializeField] private LayerMask targetLayers;
 
     private float currentExplodeTime;
+
+    [SerializeField] SFXEvent _sfxExplosion;
 
     void Awake()
     {
@@ -35,7 +38,7 @@ public class BombScript : MonoBehaviour
         //Debug.Log("Bomb Explosion!");
 
         yield return new WaitForSeconds(timeToFinishExplotion);
-
+        _sfxExplosion.Play();
         Destroy(gameObject);
     }
 

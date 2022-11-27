@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using SoundSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float dashCoolDown = 1f;
 
     [SerializeField] GameObject _dashParticles;
+    [SerializeField] SFXEvent _sfxDash;
 
     AgentAnimations agentAnimations;
 
@@ -138,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
         currentDashCooldownTime = 0;
 
         Utility.SpawnParticles(_dashParticles, this.gameObject, false);
-
+        _sfxDash.Play();
         while (currentDashTime > 0f)
         {
             currentDashTime -= Time.deltaTime; // Lower the dash timer each frame.
