@@ -11,6 +11,8 @@ public class PortalInteractHandler : TriggerEventHandler
 
     public bool CanInteract { get; set; } = true;
 
+    [SerializeField] GameObject _vfxUsePortal;
+
     private void OnDisable()
     {
         //FadeAnimationScript.OnFade.RemoveListener(OnScreenFadeAction);
@@ -24,6 +26,7 @@ public class PortalInteractHandler : TriggerEventHandler
 
         if(isInsideTrigger && Input.GetKeyDown(interactKeycode))
         {
+            Utility.SpawnParticles(_vfxUsePortal, this.gameObject, false);
             OnInteract?.Invoke();
             //FadeAnimationScript.OnFade.AddListener(OnScreenFadeAction);
             FadeAnimationScript.OnFade += ScreenFadeEventCall;

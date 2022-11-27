@@ -12,7 +12,7 @@ public abstract class HealthBase : MonoBehaviour
     [SerializeField] GameObject deathParticles;
     [SerializeField] SFXEvent _sfxHit;
     [SerializeField] SFXEvent _sfxDeath;
-    
+    [SerializeField] GameObject _vfxHit;
     public UnityEvent<GameObject> OnHitWithReference, OnDeathWithReference;
     public UnityEvent onDontDestroyDeath;
     public event Action OnDeath;
@@ -49,6 +49,7 @@ public abstract class HealthBase : MonoBehaviour
             return;
 
         _sfxHit.Play();
+        Utility.SpawnParticles(_vfxHit, gameObject, false);
         currentHealth -= amount;
 
         if (currentHealth > 0)

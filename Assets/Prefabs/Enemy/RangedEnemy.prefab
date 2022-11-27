@@ -532,6 +532,7 @@ MonoBehaviour:
   deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
   _sfxHit: {fileID: 11400000, guid: af260fca64446ea4b8c4738b7f211414, type: 2}
   _sfxDeath: {fileID: 11400000, guid: ca85da82c909e51428bb48d5fef55745, type: 2}
+  _vfxHit: {fileID: 3274053707080079367, guid: 284d0208fe22d3e45a84632d3324ee8b, type: 3}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
