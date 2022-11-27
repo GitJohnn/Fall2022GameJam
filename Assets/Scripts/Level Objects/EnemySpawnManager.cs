@@ -21,9 +21,9 @@ public class EnemySpawnManager : MonoBehaviour
     [SerializeField] UnityEvent _OnFirstSpawn;
     [SerializeField] UnityEvent _OnFinishedSpawns;
     [SerializeField] UnityEvent _OnAllEnemyDead;
-    public static event Action OnFirstSpawn;
-    public static event Action OnFinishedSpawns;
-    public static event Action OnAllEnemyDead;
+    public /*static*/ event Action OnFirstSpawn;
+	public /*static*/ event Action OnFinishedSpawns;
+	public /*static*/ event Action OnAllEnemyDead;
     [Header("Debug")]
     [SerializeField, ReadOnly] int _enemiesSpawned;
     [SerializeField, ReadOnly] int _enemiesKilled; 
