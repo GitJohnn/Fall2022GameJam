@@ -130,3 +130,5 @@ MonoBehaviour:
       m_Calls: []
   _enemiesSpawned: 0
   _enemiesKilled: 0
+  _vfxSpawnParticles: {fileID: 7535828560974409548, guid: d808e79649db82842ad71dff14aeebe3, type: 3}
+  _sfxSpawn: {fileID: 11400000, guid: 74a476b8b57050d4a9a8ee78d2db9c09, type: 2}

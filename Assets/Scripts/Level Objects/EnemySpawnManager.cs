@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using SoundSystem;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -32,7 +33,8 @@ public class EnemySpawnManager : MonoBehaviour
     bool _runOnce = false;
     bool _runOnce2 = false;
 
-    
+    [SerializeField] GameObject _vfxSpawnParticles;
+    [SerializeField] SFXEvent _sfxSpawn;
 
     void Start()
     {
@@ -120,6 +122,7 @@ public class EnemySpawnManager : MonoBehaviour
 
     void Spawn()
     {
+
         GameObject enemyToSpawn = _enemyObjects[UnityEngine.Random.Range(0, _enemyObjects.Count)];
         float randomXPosition = UnityEngine.Random.Range(_firstTransform.position.x, _secondTransform.position.x);
         float randomYPosition = UnityEngine.Random.Range(_firstTransform.position.y, _secondTransform.position.y);
@@ -130,6 +133,9 @@ public class EnemySpawnManager : MonoBehaviour
         HealthBase enemyHealth = spawnedEnemy.GetComponent<HealthBase>();
         enemyHealth.OnDeath += OnEnemyDeath;
         enemyData.currentTarget = _playerTransform;
+
+        Utility.SpawnParticles(_vfxSpawnParticles, spawnedEnemy, false);
+        _sfxSpawn.Play();
 
         _enemiesSpawned++;
     }
