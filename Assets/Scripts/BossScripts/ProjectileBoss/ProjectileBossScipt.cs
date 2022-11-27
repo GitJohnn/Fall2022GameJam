@@ -58,4 +58,11 @@ public class ProjectileBossScipt : MonoBehaviour
         OnScreenFadeAfterDeath?.Invoke();
     }
 
+    IEnumerator AfterFadeUnsubscribe()
+    {
+        yield return new WaitForSeconds(5f);
+        FadeAnimationScript.OnFaded -= ScreenFadeEvent;
+        gameObject.SetActive(false);
+    }
+
 }

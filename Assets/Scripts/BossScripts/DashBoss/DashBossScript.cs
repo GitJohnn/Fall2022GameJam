@@ -45,7 +45,7 @@ public class DashBossScript : MonoBehaviour
         {
             onBossDeath?.Invoke();
             OnScreenFadeEventSubscription();
-            gameObject.SetActive(false);
+            
             return;
         }                    
     }
@@ -100,6 +100,13 @@ public class DashBossScript : MonoBehaviour
     private void ScreenFadeEvent()
     {
         onScreenFadeAfterDeath?.Invoke();
+    }
+
+    IEnumerator AfterFadeUnsubscribe()
+    {
+        yield return new WaitForSeconds(5f);
+        FadeAnimationScript.OnFaded -= ScreenFadeEvent;
+        gameObject.SetActive(false);
     }
 
 }

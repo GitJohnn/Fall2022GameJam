@@ -63,6 +63,7 @@ public class TowerBossScript : MonoBehaviour
         if (isBossDead)
         {
             FadeAnimationScript.OnFaded += OnScreenFadeAfterDeath.Invoke;
+            StartCoroutine(AfterFadeUnsubscribe());
             return;
         }
 
@@ -168,9 +169,11 @@ public class TowerBossScript : MonoBehaviour
         Debug.Log("Boss has died");
     }
 
-    private void ScreenFadeEventCall()
+    IEnumerator AfterFadeUnsubscribe()
     {
-        OnScreenFadeAfterDeath?.Invoke();
+        yield return new WaitForSeconds(5f);
+        FadeAnimationScript.OnFaded -= OnScreenFadeAfterDeath.Invoke;
+        gameObject.SetActive(false);
     }
 
 }
