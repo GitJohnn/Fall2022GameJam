@@ -664,7 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loot:
   - {fileID: 3300254967095994895, guid: 79a1016d95ee80f4fbd4a9cdfc43564a, type: 3}
-  _dropChance: 75
+  _dropChance: 12
   _enemyHealth: {fileID: 2293824224662695761}
 --- !u!1 &1216985927376123052
 GameObject:
