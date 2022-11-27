@@ -256,6 +256,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
+  _sfxHit: {fileID: 11400000, guid: 438f0f6c31560564aa68d9f8c3a879e6, type: 2}
+  _sfxDeath: {fileID: 11400000, guid: 934ca7888f8a9714bb3973553d96f6e4, type: 2}
+  _vfxHit: {fileID: 3274053707080079367, guid: 284d0208fe22d3e45a84632d3324ee8b, type: 3}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -358,6 +362,9 @@ MonoBehaviour:
   bossCapsuleHealth: {fileID: 562986432401276681}
   healthSlider: {fileID: 562986432297968522}
   OnBossDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnScreenFadeAfterDeath:
     m_PersistentCalls:
       m_Calls: []
   startOnAwake: 1
@@ -465,6 +472,7 @@ MonoBehaviour:
   stopMovementCooldown: 6
   shootingCooldown: 0.75
   phase2ShootCooldown: 2
+  _robotShot: {fileID: 11400000, guid: 543a0ddc7ec1f4e44ac45a678af8ad32, type: 2}
 --- !u!114 &562986431005210586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,6 +851,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
+  _sfxHit: {fileID: 11400000, guid: 438f0f6c31560564aa68d9f8c3a879e6, type: 2}
+  _sfxDeath: {fileID: 11400000, guid: 934ca7888f8a9714bb3973553d96f6e4, type: 2}
+  _vfxHit: {fileID: 3274053707080079367, guid: 284d0208fe22d3e45a84632d3324ee8b, type: 3}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:
@@ -1290,6 +1302,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
+  deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
+  _sfxHit: {fileID: 11400000, guid: 438f0f6c31560564aa68d9f8c3a879e6, type: 2}
+  _sfxDeath: {fileID: 11400000, guid: 934ca7888f8a9714bb3973553d96f6e4, type: 2}
+  _vfxHit: {fileID: 3274053707080079367, guid: 284d0208fe22d3e45a84632d3324ee8b, type: 3}
   OnHitWithReference:
     m_PersistentCalls:
       m_Calls:

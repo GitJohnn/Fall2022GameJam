@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SoundSystem;
 
 public class TowerBossAttack : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class TowerBossAttack : MonoBehaviour
     public Transform playerTransform; 
     private float currentShootingCooldown = 0;
     private bool isPhase2 = false;
+
+    [SerializeField] SFXEvent _spiderShot;
 
     private void Awake()
     {
@@ -46,12 +49,14 @@ public class TowerBossAttack : MonoBehaviour
 
     private void ShootStraight()
     {
+        _spiderShot.Play();
         Rigidbody2D projectile = Instantiate(projectilePrefab, shootingPosition.position, shootingPosition.rotation).GetComponent<Rigidbody2D>();
         projectile.AddForce(shootingPosition.right * projectileSpeed, ForceMode2D.Impulse);
     }
 
     private void ShootPlayer()
     {
+        _spiderShot.Play();
         Vector2 playerDir = (playerTransform.position - shootingPosition.position).normalized;
         Rigidbody2D projectile = Instantiate(projectilePrefab, shootingPosition.position, shootingPosition.rotation).GetComponent<Rigidbody2D>();
         projectile.transform.right = playerDir;
