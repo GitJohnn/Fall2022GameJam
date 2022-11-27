@@ -15,7 +15,7 @@ MonoBehaviour:
   _SFXSound: {fileID: 8300000, guid: 10782f917f89a8449b2c4f94a96d79af, type: 3}
   _mixer: {fileID: 0}
   isLooping: 0
-  Volume: 1
+  Volume: 0.5
   maxPitch: 1
   minPitch: 0.8
   panStereo: 0

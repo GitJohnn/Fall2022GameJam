@@ -20,10 +20,11 @@ public class PotionObject : MonoBehaviour {
     #endregion
 
     [SerializeField] SFXEvent _sfxDrinkPotion;
-
+    [SerializeField] GameObject _vfxDrinkPotion;
     private void Update() {
         if(Input.GetKeyDown(KeyCode.I) && player != null) {
             _sfxDrinkPotion.Play();
+            Utility.SpawnParticles(_vfxDrinkPotion, gameObject, false);
             potion.ApplyPotion(player);
             PotionObjectTaken?.Invoke();
         }
