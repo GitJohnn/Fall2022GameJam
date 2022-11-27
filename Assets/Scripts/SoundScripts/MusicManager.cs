@@ -43,5 +43,11 @@ public class MusicManager : MonoBehaviour
         {
             _instance = this;
         }
+
+        source01.clip = outOfCombat;
+        source02.clip = BossMuisc;
+        source01.Play();
+        source02.Pause();
+
     }
 }

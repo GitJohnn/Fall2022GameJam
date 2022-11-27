@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d4bf446c639ecc46b5102adc0e61f4c, type: 3}
   m_Name: SFX_playerHit
   m_EditorClassIdentifier: 
-  _SFXSound: {fileID: 0}
+  _SFXSound: {fileID: 8300000, guid: 6b17c519cb3b2354a8e3dc1364447508, type: 3}
   _mixer: {fileID: 0}
   isLooping: 0
   Volume: 1
@@ -20,4 +20,4 @@ MonoBehaviour:
   minPitch: 0.8
   panStereo: 0
   _spatialBlend: 0
-  _startTime: 0
+  _startTime: 0.1
