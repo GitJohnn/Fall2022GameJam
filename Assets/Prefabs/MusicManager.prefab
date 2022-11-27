@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 0}
-  outOfCombat: {fileID: 0}
+  outOfCombat: {fileID: 8300000, guid: 737536e79f2f99a40abb68771bc95572, type: 3}
   inCombat: {fileID: 0}
-  BossMuisc: {fileID: 0}
+  BossMuisc: {fileID: 8300000, guid: 0a7d019a61c95ef4c8e1f39f1f9e2267, type: 3}
   source01: {fileID: 2880321015125337543}
   source02: {fileID: 1839734359575078639}
 --- !u!82 &2880321015125337543
@@ -64,9 +64,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -160,9 +160,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

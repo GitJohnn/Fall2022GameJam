@@ -20,4 +20,4 @@ MonoBehaviour:
   minPitch: 0.8
   panStereo: 0
   _spatialBlend: 0
-  _startTime: 0
+  _startTime: 1.5
