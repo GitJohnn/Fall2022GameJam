@@ -68,11 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa14e2dae2b74894d9ed148c551dc66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleOnPickup: {fileID: 0}
-  _soundOnPickup:
-    UseClip: 0
-    Clip: {fileID: 0}
-    Base: {fileID: 0}
+  _particleOnPickup: {fileID: 7535828560974409548, guid: 5eb6700950a8b494b89a27d55ed9156f, type: 3}
+  _soundOnPickup: {fileID: 11400000, guid: 5510e47ae79420746b84226ed35eb493, type: 2}
   _onPickupEvent:
     m_PersistentCalls:
       m_Calls: []
