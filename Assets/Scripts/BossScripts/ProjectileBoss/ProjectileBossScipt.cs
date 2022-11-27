@@ -12,8 +12,9 @@ public class ProjectileBossScipt : MonoBehaviour
     public Slider healthSlider;
 
     public UnityEvent OnBossDeath;
+    public UnityEvent OnScreenFadeAfterDeath;
 
-    public bool startOnAwake = true;
+    public bool startOnAwake = false;
 
     private ProjectileBossAttack projAttackScript;
     private ProjectileBossMovement projMoveScript;
@@ -27,6 +28,11 @@ public class ProjectileBossScipt : MonoBehaviour
             StartBossFight();
     }
 
+    private void OnDisable()
+    {
+        //FadeAnimationScript.OnFaded -= OnScreenFadeSubscription;
+    }
+
     private void Update()
     {
         healthSlider.value = bossCapsuleHealth.GetHealthPercentage();
@@ -34,6 +40,8 @@ public class ProjectileBossScipt : MonoBehaviour
         if (IsBossDead)
         {
             OnBossDeath?.Invoke();
+            Debug.Log("Subscribing to event");
+            FadeAnimationScript.OnFaded += ScreenFadeEvent;
             gameObject.SetActive(false);
         }
     }
@@ -42,6 +50,12 @@ public class ProjectileBossScipt : MonoBehaviour
     {
         projAttackScript.StopAttacking = false;
         projMoveScript.StopMovement = false;
+        projMoveScript.StopRotate = false;
+    }
+
+    private void ScreenFadeEvent()
+    {
+        OnScreenFadeAfterDeath?.Invoke();
     }
 
 }

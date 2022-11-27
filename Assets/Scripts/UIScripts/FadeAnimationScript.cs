@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class FadeAnimationScript : MonoBehaviour
     void Start()
     {
         fadeAnimator = GetComponent<Animator>();
-        StartFade(1);
+        StartFade(0);
     }
 
     public void StartFade(float fadeDuration)

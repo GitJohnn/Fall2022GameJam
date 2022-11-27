@@ -30,6 +30,7 @@ public class ProjectileBossMovement : MonoBehaviour
         if (stopMovement)
             return;
 
+
         distance = Vector3.Distance(bossTransform.position, movePositions[currentPosition].position);
 
         if (distance > stopDistance)
@@ -62,6 +63,7 @@ public class ProjectileBossMovement : MonoBehaviour
     {
         if (stopMovement)
             return;
+
         bossTransform.position += (Vector3)direction * moveSpeed * Time.deltaTime;
     }
 }
