@@ -9,6 +9,7 @@ public class PotionInfoPanel : MonoBehaviour {
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private TextMeshProUGUI buffText;
     [SerializeField] private TextMeshProUGUI debuffText;
+	[SerializeField] private TextMeshProUGUI toxicityText;
 
     private bool panelVisible;
 
@@ -22,6 +23,7 @@ public class PotionInfoPanel : MonoBehaviour {
 
         buffText.text = $"{potion.StatToBuff} +{potion.BuffPercentage}%";
         debuffText.text = $"{potion.StatToDebuff} -{potion.DebuffPercentage}%";
+		toxicityText.text = $"Toxicity +{potion.Toxicity}";
     }
 
 	public void ShowPanel() {

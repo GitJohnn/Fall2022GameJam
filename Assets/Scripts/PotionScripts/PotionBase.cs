@@ -15,6 +15,7 @@ public class PotionBase : ScriptableObject {
     public float BuffPercentage => buffPercentage;
     public PlayerStat StatToDebuff => statToDebuff;
     public float DebuffPercentage => debuffPercentage;
+	public float Toxicity => toxicity;
 
     //TODO: play around with this and figure out how to pass in the stats most efficiently
     public void ApplyPotion(PlayerStats player) {

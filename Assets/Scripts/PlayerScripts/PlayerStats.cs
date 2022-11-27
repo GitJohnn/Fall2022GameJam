@@ -49,8 +49,14 @@ public class PlayerStats : MonoBehaviour {
         InitializeStats();
     }
 
-    //call at the beginning of a dungeon/scene to reset the stats to base levels
-    public void InitializeStats() {
+	private void Update() {
+		if(Input.GetKeyDown(KeyCode.Q)) {
+			ResetStats();
+		}
+	}
+
+	//call at the beginning of a dungeon/scene to reset the stats to base levels
+	public void InitializeStats() {
         maxHealth = maxHealthBase;
         attackPower = attackPowerBase;
         defense = defenseBase;

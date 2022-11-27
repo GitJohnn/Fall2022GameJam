@@ -9,7 +9,7 @@ public class PotionObject : MonoBehaviour {
     private PotionBase potion;
 	private PlayerStats player;
 
-	public static event Action PotionObjectTaken;
+	public event Action PotionObjectTaken;
     #region setup Particles
     [SerializeField] GameObject _waitingVFX;
     private void Start()
