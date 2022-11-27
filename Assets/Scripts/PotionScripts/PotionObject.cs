@@ -19,7 +19,7 @@ public class PotionObject : MonoBehaviour {
     #endregion
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.F) && player != null) {
+        if(Input.GetKeyDown(KeyCode.I) && player != null) {
             potion.ApplyPotion(player);
             PotionObjectTaken?.Invoke();
         }
