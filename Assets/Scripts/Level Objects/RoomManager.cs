@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using SoundSystem;
 
 public class RoomManager : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class RoomManager : MonoBehaviour {
 	private bool roomLockedFlag;
 
 	[SerializeField] private UnityEvent OnPlayerEnter;
+	[SerializeField] SFXEvent _sfxDoorSlam;
+	[SerializeField] SFXEvent _sfxDoorOpen;
 
 	private void Awake() {
 		UnlockRoom();
@@ -26,12 +29,17 @@ public class RoomManager : MonoBehaviour {
 	public void LockRoom() {
 		if(roomLockedFlag) return;
 		roomLockedFlag = true;
+		_sfxDoorSlam.Play();
 		foreach(var d in roomDoors) {
 			d.SetActive(true);
 		}
 	}
 
 	public void UnlockRoom() {
+		if (roomLockedFlag == true)
+		{
+			_sfxDoorOpen.Play();
+		}
 		foreach(var d in roomDoors) {
 			d.SetActive(false);
 		}

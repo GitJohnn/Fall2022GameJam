@@ -101,6 +101,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _sfxDoorSlam: {fileID: 11400000, guid: cdf9740115d5dce47abc59b3eb8168e5, type: 2}
+  _sfxDoorOpen: {fileID: 11400000, guid: 23681f6f11db4ba469631d621cf027e7, type: 2}
 --- !u!1001 &2659997111648300724
 PrefabInstance:
   m_ObjectHideFlags: 0
