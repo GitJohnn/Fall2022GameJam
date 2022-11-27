@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        CanMove = false;
         agentAnimations = GetComponent<AgentAnimations>();
         _rb.centerOfMass = _centerOfMass;
 

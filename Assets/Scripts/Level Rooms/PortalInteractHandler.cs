@@ -11,11 +11,6 @@ public class PortalInteractHandler : TriggerEventHandler
 
     public bool CanInteract { get; set; } = true;
 
-    private void OnEnable()
-    {        
-
-    }
-
     private void OnDisable()
     {
         //FadeAnimationScript.OnFade.RemoveListener(OnScreenFadeAction);
