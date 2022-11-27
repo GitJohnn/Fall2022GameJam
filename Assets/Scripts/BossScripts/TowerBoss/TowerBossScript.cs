@@ -41,6 +41,8 @@ public class TowerBossScript : MonoBehaviour
 
     [SerializeField] UnityEvent onStartMovePlayer;
     [SerializeField] UnityEvent onEndMovePlayer;
+
+    [SerializeField] UnityEvent OnScreenFadeAfterDeath;
     private bool isMovingPlayer = false;
     private float timeToMovePlayer = 2;
     private float currentTimeToMovePlayer = 0;
@@ -59,7 +61,10 @@ public class TowerBossScript : MonoBehaviour
     private void Update()
     {
         if (isBossDead)
+        {
+            FadeAnimationScript.OnFaded += OnScreenFadeAfterDeath.Invoke;
             return;
+        }
 
         towerBossHealthSlider.value = towerBossHealth.GetHealthPercentage();
 
@@ -161,6 +166,11 @@ public class TowerBossScript : MonoBehaviour
         yield return new WaitForSeconds(value);
         OnTowerBossDead?.Invoke();
         Debug.Log("Boss has died");
+    }
+
+    private void ScreenFadeEventCall()
+    {
+        OnScreenFadeAfterDeath?.Invoke();
     }
 
 }
