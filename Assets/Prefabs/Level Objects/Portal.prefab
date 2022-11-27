@@ -300,6 +300,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  _vfxUsePortal: {fileID: 7535828560974409548, guid: dc6aedcbbb036374690b14fb85a5f15f, type: 3}
 --- !u!1 &7089609682920966565
 GameObject:
   m_ObjectHideFlags: 0
