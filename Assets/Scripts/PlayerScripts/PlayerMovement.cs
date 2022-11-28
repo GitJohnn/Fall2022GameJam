@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         if (!canDash)
             return;
         Debug.Log("Dash");
-        if (ScreenShakeController.Instance) ScreenShakeController.Instance.StartShake(0.07f, 0.1f); 
+        if (ScreenShakeController.Instance) ScreenShakeController.Instance.StartShake(0.07f, 0.05f); 
 
         if (useMouseDirection) StartCoroutine(Dash((_mousePosition - (Vector2)transform.position).normalized));
         else StartCoroutine(Dash(_moveDirection));
