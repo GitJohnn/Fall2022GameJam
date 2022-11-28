@@ -89,6 +89,7 @@ public class TowerBossScript : MonoBehaviour
 
     public void StartBossFight()
     {
+        isBossDead = false;
         towerBossMovement.StopMovement = false;
         towerBossAttack.StopAttacking = false;
     }
