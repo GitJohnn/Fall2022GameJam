@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,8 +28,8 @@ public class PauseManager : MonoBehaviour
         if (!CanPause)
             return;
 
-        if ((Input.GetKeyDown(pauseKeycode) || Input.GetKeyDown(secondaryPauseKeycode)) && !isPaused)
-            PauseResponse();
+	    if ((Input.GetKeyDown(pauseKeycode) || Input.GetKeyDown(secondaryPauseKeycode)))
+		    PauseResponse();
 
     }
 
