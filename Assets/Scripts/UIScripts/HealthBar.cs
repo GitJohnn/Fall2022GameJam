@@ -11,12 +11,14 @@ public class HealthBar : StatBarUIBase {
     private void OnEnable() {
         playerStats.MaxHealthChanged += UpdateMaxHealth;
         playerHealth.PlayerHit += UpdateCurrentHealth;
+		playerHealth.PlayerHealed += UpdateCurrentHealth;
     }
 
     private void OnDisable() {
         playerStats.MaxHealthChanged -= UpdateMaxHealth;
         playerHealth.PlayerHit -= UpdateCurrentHealth;
-    }
+		playerHealth.PlayerHealed -= UpdateCurrentHealth;
+	}
 
     protected override void ResetBar() {
         slider.maxValue = playerStats.MaxHealth;
