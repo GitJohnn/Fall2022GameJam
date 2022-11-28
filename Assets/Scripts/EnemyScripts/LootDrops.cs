@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +24,7 @@ public class LootDrops : MonoBehaviour
         if (randNum <= _dropChance)
         {
             GameObject dropped = Instantiate(_loot[Random.Range(0, _loot.Count)], transform.position, Quaternion.identity);
-            Debug.Log($"Created: {dropped}");
+	        //Debug.Log($"Created: {dropped}");
         }
     }
 

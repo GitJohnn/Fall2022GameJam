@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -116,7 +116,7 @@ public class EnemyAI : MonoBehaviour
         if (aiData.currentTarget == null)
         {
             //Stopping Logic
-            Debug.Log("Stopping");
+	        //Debug.Log("Stopping");
             movementInput = Vector2.zero;
             following = false;
             yield break;

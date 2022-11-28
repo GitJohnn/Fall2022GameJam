@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SoundSystem;
@@ -21,7 +21,8 @@ public class BombAttack : Attack
     }
 
     private void Update()
-    {
+	{
+		if (!bombAttackUnlocked) return;
         attackButton.CurrentAbilityCooldown = currentAttackCooldown;
 
 		currentAttackCooldown += Time.deltaTime;
@@ -29,14 +30,16 @@ public class BombAttack : Attack
     }
 
     public void BombUnlocked()
-    {
+	{
+		bombAttackUnlocked = true;
         canAttack = true;
         attackButton.SetTotalcooldown(totalCooldown);
         currentAttackCooldown = totalCooldown;
     }
 
     private void BombLocked()
-    {
+	{
+		bombAttackUnlocked = false;
         canAttack = false;
     }
 
