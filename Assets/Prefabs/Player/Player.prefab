@@ -1227,8 +1227,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -121925141
+  m_SortingLayer: 3
   m_SortingOrder: 25
   m_Sprite: {fileID: 21300000, guid: bfb25f8dc80eaed49a5be3f6d6db2c4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1375,6 +1375,7 @@ MonoBehaviour:
   _dashParticles: {fileID: 7535828560974409548, guid: 5c321518142897346a78f9a4abb748ee, type: 3}
   startTransform: {fileID: 0}
   _sfxDash: {fileID: 11400000, guid: 9f992fd180765764ea88235600ed5c3e, type: 2}
+  currentDashCooldownTime: 0
 --- !u!114 &1452811158880980936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1606,6 +1607,7 @@ MonoBehaviour:
   projectileSpeed: 12
   totalCooldown: 0.8
   _sfxBowShoot: {fileID: 11400000, guid: 5f7ee743279ddf945a7946b9a0f9a8ed, type: 2}
+  currentAttackCooldown: 0
 --- !u!114 &807327558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,6 +1647,7 @@ MonoBehaviour:
   bombAttackUnlocked: 0
   totalCooldown: 2.5
   _sfxBombPlace: {fileID: 11400000, guid: 83e4517dabd7f724cb58e9398b3744ac, type: 2}
+  currentAttackCooldown: 0
 --- !u!114 &1585287823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7290,8 +7293,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -121925141
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a4d8c8b793f6d0042a2c4049b9e7d37b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9057,8 +9060,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -121925141
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 9f133f4af29932f4085a425134976751, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

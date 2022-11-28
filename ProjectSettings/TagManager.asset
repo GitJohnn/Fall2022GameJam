@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Portal
+    uniqueID: 1826777377
+    locked: 0
+  - name: Potion
+    uniqueID: 2237865763
+    locked: 0
+  - name: Player
+    uniqueID: 4173042155
+    locked: 0
+  - name: Enemy
+    uniqueID: 38310229
+    locked: 0
