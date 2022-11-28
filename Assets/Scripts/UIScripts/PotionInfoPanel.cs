@@ -10,6 +10,7 @@ public class PotionInfoPanel : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI buffText;
     [SerializeField] private TextMeshProUGUI debuffText;
 	[SerializeField] private TextMeshProUGUI toxicityText;
+	[SerializeField] private GameObject interactText;
 	
 	private Coroutine _routine;
 
@@ -41,6 +42,14 @@ public class PotionInfoPanel : MonoBehaviour {
 		//toxicity display
 		toxicityText.text = $"Toxicity +{potion.Toxicity}%";
     }
+
+	public void ShowInteractText() {
+		interactText.SetActive(true);
+	}
+
+	public void HideInteractText() {
+		interactText.SetActive(false);
+	}
 
 	public void ShowPanel() {
 		if(panelVisible || !gameObject.activeInHierarchy) return;

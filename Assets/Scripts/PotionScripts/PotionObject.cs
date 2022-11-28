@@ -34,6 +34,7 @@ public class PotionObject : MonoBehaviour {
         player = collision.GetComponent<PlayerStats>();
 		if(player) {
 			potionInfoPanel.ShowPanel();
+			potionInfoPanel.ShowInteractText();
 		}
     }
 
@@ -42,6 +43,7 @@ public class PotionObject : MonoBehaviour {
 		if(thisPlayer) {
 			player = null;
 			potionInfoPanel.HidePanel();
+			potionInfoPanel.HideInteractText();
 		}
     }
 
