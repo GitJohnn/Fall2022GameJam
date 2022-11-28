@@ -15,6 +15,7 @@ public class PlayerHealth : HealthBase {
 	private float toxicityTickTimer;
 
     public event Action<float> PlayerHit;
+	public event Action<float> PlayerHealed;
 
     private void OnEnable() {
 		playerStats.MaxHealthChanged += AddMaxHealth;
@@ -48,6 +49,11 @@ public class PlayerHealth : HealthBase {
 
 	public void HealToFull() {
 		AddHealth(playerStats.MaxHealth - currentHealth);
+	}
+
+	public override void AddHealth(float hp) {
+		base.AddHealth(hp);
+		PlayerHealed?.Invoke(currentHealth);
 	}
 
 	private void AddMaxHealth(float newMaxHealth) {
