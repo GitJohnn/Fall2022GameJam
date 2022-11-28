@@ -31,12 +31,12 @@ public class EndGameBossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            dashBossDead = true;
-            projectileBossDead = true;
-            towerBossDead = true;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha9))
+        //{
+        //    dashBossDead = true;
+        //    projectileBossDead = true;
+        //    towerBossDead = true;
+        //}
 
         if(!isGameDone)
         {
