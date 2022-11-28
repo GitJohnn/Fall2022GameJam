@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -29,7 +29,9 @@ public class Attack : MonoBehaviour
 	[SerializeField] protected UnityEvent _onPrimaryAttack;
 	//[SerializeField] protected UnityEvent _onSecondaryAttack;
 	[SerializeField] protected Transform _attackPosition;
-    [SerializeField] SFXEvent _sfxStaffSwing;
+	[SerializeField] SFXEvent _sfxStaffSwing;
+    
+	[SerializeField, ReadOnly] private bool _canAttack;
 
     private Rigidbody2D _rigidbody2D;
 
@@ -74,7 +76,8 @@ public class Attack : MonoBehaviour
    [SerializeField, ReadOnly] float _timeSinceLastAttack;
 
     private void Awake()
-    {
+	{
+		_canAttack = false;
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
@@ -85,7 +88,7 @@ public class Attack : MonoBehaviour
 
     public virtual void HandlePrimaryAttack()
     {
-        
+	    if (!_canAttack) return;
 		if(_timeSinceLastAttack < TimeBetweenAttacks) return;
         _sfxStaffSwing.Play();
         _onPrimaryAttack?.Invoke();
@@ -97,6 +100,11 @@ public class Attack : MonoBehaviour
         }
 		_timeSinceLastAttack = 0;
     }
+    
+	public void CanAttack()
+	{
+		_canAttack = true;
+	}
 
     //Dash mechanic
     //public virtual void HandleSecondaryAttack()
