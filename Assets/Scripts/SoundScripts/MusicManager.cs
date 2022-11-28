@@ -33,6 +33,9 @@ public class MusicManager : MonoBehaviour
     [SerializeField] AudioSource source01;
     [SerializeField] AudioSource source02;
 
+    bool isPlayerSource01;
+    Coroutine fadeTrackRoutine;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -47,7 +50,44 @@ public class MusicManager : MonoBehaviour
         source01.clip = outOfCombat;
         source02.clip = BossMuisc;
         source01.Play();
-        source02.Pause();
+        source02.Stop();
+        isPlayerSource01 = true;
 
+    }
+
+    public void SwapTrack()
+    {
+       if (fadeTrackRoutine != null) StopCoroutine(fadeTrackRoutine);
+       fadeTrackRoutine = StartCoroutine(FadeTrack());
+    }
+
+    IEnumerator FadeTrack()
+    {
+        float timeToFade = 0.25f;
+        float timeElapsed = 0f;
+        if (isPlayerSource01)
+        {
+            source02.Play();
+            while (timeElapsed < timeToFade)
+            {
+                source02.volume = Mathf.Lerp(0, 0.5f, timeElapsed / timeToFade);
+                source01.volume = Mathf.Lerp(0.5f, 0, timeElapsed / timeToFade);
+                timeElapsed += Time.deltaTime;
+                yield return null;
+            }
+            source01.Stop();
+        }
+        else
+        {
+            source01.Play();
+            while (timeElapsed < timeToFade)
+            {
+                source01.volume = Mathf.Lerp(0, 0.5f, timeElapsed / timeToFade);
+                source02.volume = Mathf.Lerp(0.5f, 0, timeElapsed / timeToFade);
+                timeElapsed += Time.deltaTime;
+                yield return null;
+            }
+            source02.Stop();
+        }
     }
 }

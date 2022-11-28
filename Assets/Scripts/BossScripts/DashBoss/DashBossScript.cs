@@ -62,6 +62,7 @@ public class DashBossScript : MonoBehaviour
     {
         //If tail is destroyed then boss dies
         isBossDead = true;
+        if (MusicManager.Instance) MusicManager.Instance.SwapTrack();
         Debug.Log("Boss dead");
     }
 

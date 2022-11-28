@@ -41,6 +41,7 @@ public class ProjectileBossScipt : MonoBehaviour
 
         if (IsBossDead && !runOnce)
         {
+            if (MusicManager.Instance) MusicManager.Instance.SwapTrack(); 
             runOnce = true;
             OnBossDeath?.Invoke();
             Debug.Log("Subscribing to event");
