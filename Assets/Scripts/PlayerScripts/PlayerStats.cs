@@ -65,6 +65,12 @@ public class PlayerStats : MonoBehaviour {
         speed = speedBase;
         attackDelay = attackDelayBase;
 		toxicityLevel = 0;
+
+		maxHealthPercentageChange = 0;
+		attackPowerPercentageChange = 0;
+		defensePercentageChange = 0;
+		speedPercentageChange = 0;
+		attackDelayPercentageChange = 0;
     }
 
     public void ChangeMaxHealth(float percentageChange) {
