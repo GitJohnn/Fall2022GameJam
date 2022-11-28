@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class TowerBossAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator SpiderAnimator;
+    
+    public void SetSpiderAnimation(bool value)
     {
-        
+        SpiderAnimator.SetBool("isDizzy", value);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -50,7 +50,6 @@ public class EndGameBossManager : MonoBehaviour
     {
         TimeSpan timeSpan = TimeSpan.FromMilliseconds(value);
         return timeSpan.ToString(@"\.hh\\:mm\\:ss\\:fff");
-        //timeSpan.mi
     }
 
     public void ResetAllBosses()
