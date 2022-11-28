@@ -35,6 +35,7 @@ public class LootChest : TriggerEventHandler
     private void Open()
     {
         // TODO: This will be called by the player when they try to open a chest?
+        CanOpen = false;
         _startPos = gameObject.transform.position;
         StartCoroutine(shake());
         _sfxOpen.Play();
