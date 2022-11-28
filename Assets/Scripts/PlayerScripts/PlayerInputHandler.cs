@@ -17,7 +17,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) 
         { 
             _onLeftClick?.Invoke(); 
-            if (ScreenShakeController.Instance) ScreenShakeController.Instance.StartShake(0.07f, 0.02f); 
+            // if (ScreenShakeController.Instance) ScreenShakeController.Instance.StartShake(0.07f, 0.02f); 
         }
         if (Input.GetMouseButtonDown(1)) 
         { 
