@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HealthUp_AttackDelayUp
   m_EditorClassIdentifier: 
   statToBuff: 0
-  buffPercentage: 10
+  buffPercentage: 20
   statToDebuff: 4
-  debuffPercentage: 25
+  debuffPercentage: 30
   toxicity: 15
