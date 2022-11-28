@@ -18,11 +18,25 @@ public class PotionInfoPanel : MonoBehaviour {
 	}
 
 	public void InitializePanel(PotionBase potion) {
-        buffText.color = Color.green;
-        debuffText.color = Color.red;
+		//buff display
+		buffText.text = $"{potion.StatToBuff} ";
+		if(potion.StatToBuff == PlayerStat.AttackDelay) {
+			buffText.text += "-";
+		} else {
+			buffText.text += "+";
+		}
+		buffText.text += $"{potion.BuffPercentage}% ";
 
-        buffText.text = $"{potion.StatToBuff} +{potion.BuffPercentage}%";
-        debuffText.text = $"{potion.StatToDebuff} -{potion.DebuffPercentage}%";
+		//debuff display
+		debuffText.text = $"{potion.StatToDebuff} ";
+		if(potion.StatToDebuff == PlayerStat.AttackDelay) {
+			debuffText.text += "+";
+		} else {
+			debuffText.text += "-";
+		}
+		debuffText.text += $"{potion.DebuffPercentage}% ";
+
+		//toxicity display
 		toxicityText.text = $"Toxicity +{potion.Toxicity}";
     }
 
