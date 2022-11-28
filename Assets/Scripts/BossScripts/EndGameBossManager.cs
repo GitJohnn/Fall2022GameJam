@@ -41,15 +41,15 @@ public class EndGameBossManager : MonoBehaviour
 
         if (isGameDone)
         {
-            endGameText.text = "Final time " + ConvertMillisecondsToFormatTime(currentGameTime);
             OnGameEnd?.Invoke();
+            endGameText.text = "Final time " + ConvertMillisecondsToFormatTime(currentGameTime);
         }
     }
 
     private string ConvertMillisecondsToFormatTime(float value)
     {
         TimeSpan timeSpan = TimeSpan.FromMilliseconds(value);
-        return timeSpan.ToString(@"\.hh\\:mm\\:ss\\:fff");
+        return timeSpan.ToString(@"hh\:mm\:ss\:fff");
     }
 
     public void ResetAllBosses()
