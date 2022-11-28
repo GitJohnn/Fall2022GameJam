@@ -127,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     float currentDashTime;
-    public float currentDashCooldownTime { get; set; }
+	public float currentDashCooldownTime; /*{ get; set; }*/
 
     bool canMove = true;
     bool canDash = true; //Start as true for testing
