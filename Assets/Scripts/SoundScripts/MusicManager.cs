@@ -55,8 +55,10 @@ public class MusicManager : MonoBehaviour
 
     }
 
+    [Button]
     public void SwapTrack()
     {
+        Debug.Log("Swapping");
        if (fadeTrackRoutine != null) StopCoroutine(fadeTrackRoutine);
        fadeTrackRoutine = StartCoroutine(FadeTrack());
     }
@@ -65,7 +67,7 @@ public class MusicManager : MonoBehaviour
     {
         float timeToFade = 0.25f;
         float timeElapsed = 0f;
-        if (isPlayerSource01)
+        if (source01.isPlaying)
         {
             source02.Play();
             while (timeElapsed < timeToFade)
@@ -77,7 +79,7 @@ public class MusicManager : MonoBehaviour
             }
             source01.Stop();
         }
-        else
+        else if (source02.isPlaying)
         {
             source01.Play();
             while (timeElapsed < timeToFade)
@@ -88,6 +90,7 @@ public class MusicManager : MonoBehaviour
                 yield return null;
             }
             source02.Stop();
+            
         }
     }
 }

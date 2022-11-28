@@ -1564,7 +1564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc3c3ad646e81a4486c7f0ad4084a0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useDefaultAttackSettings: 1
+  _useDefaultAttackSettings: 0
   _settings: {fileID: 11400000, guid: 7304c1a167d368f41b66f0a8aabe5424, type: 2}
   _useCustomAttackSettings: 0
   _customMeleeDamage: 0
@@ -1573,12 +1573,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _customAttackRange: 0
-  _usePlayerStats: 0
-  _playerStats: {fileID: 0}
+  _usePlayerStats: 1
+  _playerStats: {fileID: 5966520742072954775}
   _playerIncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
-  _playerAttackRange: 0
+    m_Bits: 1408
+  _playerAttackRange: 500
   _onPrimaryAttack:
     m_PersistentCalls:
       m_Calls:
@@ -1600,6 +1600,8 @@ MonoBehaviour:
   _timeSinceLastAttack: 0
   attackButton: {fileID: 1841940612}
   projectilePrefab: {fileID: 6945353333335619128, guid: 0f6bff58884278b4b9425019fe161385, type: 3}
+  usePlayerStats: 0
+  stats: {fileID: 0}
   rangeAttackUnlocked: 0
   projectileSpeed: 12
   totalCooldown: 0.8

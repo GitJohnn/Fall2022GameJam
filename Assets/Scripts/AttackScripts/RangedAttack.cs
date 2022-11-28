@@ -8,7 +8,8 @@ public class RangedAttack : Attack
 {
     public ButtonCoolDownHandler attackButton;
     public GameObject projectilePrefab;
-
+    public bool usePlayerStats = false;
+    [SerializeField, ShowIf("usePlayerStats")] PlayerStats stats;
     public bool rangeAttackUnlocked = true;
     public float projectileSpeed;
     public float totalCooldown;
@@ -60,6 +61,7 @@ public class RangedAttack : Attack
 
         Rigidbody2D projectile = Instantiate(projectilePrefab, _attackPosition.position, _attackPosition.rotation).GetComponent<Rigidbody2D>();
         projectile.AddForce(_attackPosition.right * projectileSpeed, ForceMode2D.Impulse);
+        if (projectile.gameObject.GetComponent<Projectile>() && usePlayerStats) projectile.gameObject.GetComponent<Projectile>().projectileDamage = Mathf.RoundToInt(stats.AttackPower);
 
         while(currentAttackCooldown <= totalCooldown)
         {
