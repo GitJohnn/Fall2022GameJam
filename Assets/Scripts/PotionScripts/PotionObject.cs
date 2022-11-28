@@ -22,7 +22,7 @@ public class PotionObject : MonoBehaviour {
     [SerializeField] SFXEvent _sfxDrinkPotion;
     [SerializeField] GameObject _vfxDrinkPotion;
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.I) && player != null) {
+        if(Input.GetKeyDown(KeyCode.F) && player != null) {
             _sfxDrinkPotion.Play();
             Utility.SpawnParticles(_vfxDrinkPotion, gameObject, false);
             potion.ApplyPotion(player);
