@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using SoundSystem;
 
 public class BombScript : MonoBehaviour
@@ -9,6 +10,7 @@ public class BombScript : MonoBehaviour
     public float timeToFinishExplotion = 1;
     public float explotionRange = 3f;
     public int damageAmount = 25;
+    public UnityEvent OnExplosion;
     [SerializeField] private LayerMask targetLayers;
 
     private float currentExplodeTime;
@@ -37,6 +39,9 @@ public class BombScript : MonoBehaviour
             HandleHitLogic(collider);
         }
         //Debug.Log("Bomb Explosion!");
+        Utility.SpawnParticles(_vfxExplosion, this.gameObject, false);
+        _sfxExplosion.Play();
+        OnExplosion?.Invoke();
 
 
         _sfxExplosion.Play();

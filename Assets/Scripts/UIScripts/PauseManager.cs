@@ -17,14 +17,14 @@ public class PauseManager : MonoBehaviour
 
     private static bool isPaused = false;
 
+    private void Awake()
+    {
+        childObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (isPaused)
-            childObject.SetActive(true);
-        else
-            childObject.SetActive(false);
-
         if (!CanPause)
             return;
 
@@ -40,11 +40,13 @@ public class PauseManager : MonoBehaviour
         if (isPaused)
         {
             OnPause?.Invoke();
+            childObject.SetActive(true);            
             Time.timeScale = 0;
         }
         else
         {
             OnUnpause?.Invoke();
+            childObject.SetActive(false);
             Time.timeScale = 1;
         }
     }

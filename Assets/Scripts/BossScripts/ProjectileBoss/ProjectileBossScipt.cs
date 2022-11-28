@@ -52,6 +52,7 @@ public class ProjectileBossScipt : MonoBehaviour
 
     public void StartBossFight()
     {
+        IsBossDead = false;
         projAttackScript.StopAttacking = false;
         projMoveScript.StopMovement = false;
         projMoveScript.StopRotate = false;

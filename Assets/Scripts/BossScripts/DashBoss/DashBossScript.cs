@@ -40,6 +40,8 @@ public class DashBossScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(isBossDead);
+
         bossHealthSlider.value = tailHealth.GetHealthPercentage();
 
         if (isBossDead && !runOnce)
@@ -49,11 +51,12 @@ public class DashBossScript : MonoBehaviour
             OnScreenFadeEventSubscription();
             StartCoroutine(AfterFadeUnsubscribe());
             return;
-        }                    
+        }
     }
 
     public void StartBossFight()
     {
+        isBossDead = false;
         dashBossMovement.IsStopped = false;
         //dashBossAttack.CanAttack = false;
     }
