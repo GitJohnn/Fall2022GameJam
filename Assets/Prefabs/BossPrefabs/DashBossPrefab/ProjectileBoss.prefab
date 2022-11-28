@@ -1302,7 +1302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
-  deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
+  deathParticles: {fileID: 7535828560974409548, guid: 6a933f0416ad0c3418d2b04f969bc519, type: 3}
   _sfxHit: {fileID: 11400000, guid: 438f0f6c31560564aa68d9f8c3a879e6, type: 2}
   _sfxDeath: {fileID: 11400000, guid: 934ca7888f8a9714bb3973553d96f6e4, type: 2}
   _vfxHit: {fileID: 3274053707080079367, guid: 284d0208fe22d3e45a84632d3324ee8b, type: 3}
