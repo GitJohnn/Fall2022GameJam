@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +41,7 @@ public class EndGameBossManager : MonoBehaviour
         if(!isGameDone)
         {
             currentGameTime += Time.deltaTime;
-            Debug.Log(currentGameTime);
+	        //Debug.Log(currentGameTime);
         }
 
         if (dashBossDead && projectileBossDead && towerBossDead)
@@ -49,8 +49,8 @@ public class EndGameBossManager : MonoBehaviour
 
         if (isGameDone)
         {
-            OnGameEnd?.Invoke();
-            Debug.Log(currentGameTime);
+	        OnGameEnd?.Invoke();
+	        //Debug.Log(currentGameTime);
             TimeSpan timeSpan = TimeSpan.FromSeconds(currentGameTime);
             endGameText.text = "Final time " + timeSpan.ToString(@"hh\:mm\:ss\:fff");
         }

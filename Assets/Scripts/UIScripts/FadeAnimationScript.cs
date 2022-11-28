@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,7 +50,7 @@ public class FadeAnimationScript : MonoBehaviour
 
         yield return new WaitForSeconds(fadeDuration);
 
-        Debug.Log("Is Faded");
+	    //Debug.Log("Is Faded");
 
         fadeAnimator.SetBool("Fade", false);
         OnFaded = delegate { };
