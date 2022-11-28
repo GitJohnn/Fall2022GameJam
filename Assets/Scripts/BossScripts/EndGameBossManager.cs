@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class EndGameBossManager : MonoBehaviour
 {
     public UnityEvent OnGameEnd;
     public TextMeshProUGUI endGameText;
-    public static bool isGameDone = false;
+    public bool isGameDone = false;
 
     [Header("Boss Prefabs")]
     public GameObject dashBossPrefab;
@@ -30,11 +31,18 @@ public class EndGameBossManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameStart)
-            return;
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            dashBossDead = true;
+            projectileBossDead = true;
+            towerBossDead = true;
+        }
 
         if(!isGameDone)
+        {
             currentGameTime += Time.deltaTime;
+            Debug.Log(currentGameTime);
+        }
 
         if (dashBossDead && projectileBossDead && towerBossDead)
             isGameDone = true;
@@ -42,15 +50,16 @@ public class EndGameBossManager : MonoBehaviour
         if (isGameDone)
         {
             OnGameEnd?.Invoke();
-            endGameText.text = "Final time " + ConvertMillisecondsToFormatTime(currentGameTime);
+            Debug.Log(currentGameTime);
+            TimeSpan timeSpan = TimeSpan.FromSeconds(currentGameTime);
+            endGameText.text = "Final time " + timeSpan.ToString(@"hh\:mm\:ss\:fff");
         }
     }
 
-    private string ConvertMillisecondsToFormatTime(float value)
-    {
-        TimeSpan timeSpan = TimeSpan.FromMilliseconds(value);
-        return timeSpan.ToString(@"hh\:mm\:ss\:fff");
-    }
+    //private string ConvertMillisecondsToFormatTime(float value)
+    //{
+    //    return timeSpan.ToString(@"hh\:mm\:ss\:fff");
+    //}
 
     public void ResetAllBosses()
     {
@@ -60,5 +69,16 @@ public class EndGameBossManager : MonoBehaviour
             Instantiate(projectilePrefab, projetileTransform.position, Quaternion.identity);
         if(!towerBossDead)
             Instantiate(towerPrefab, towerTransform.position, Quaternion.identity);
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
