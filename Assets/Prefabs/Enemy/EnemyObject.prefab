@@ -412,7 +412,7 @@ MonoBehaviour:
       m_Calls: []
   _attackPosition: {fileID: 993724908}
   _sfxStaffSwing: {fileID: 11400000, guid: 645c1321974ca574891560144d060605, type: 2}
-  _canAttack: 0
+  _canAttack: 1
   _timeSinceLastAttack: 0
 --- !u!114 &6539783847676841165
 MonoBehaviour:

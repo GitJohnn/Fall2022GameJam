@@ -31,7 +31,7 @@ public class Attack : MonoBehaviour
 	[SerializeField] protected Transform _attackPosition;
 	[SerializeField] SFXEvent _sfxStaffSwing;
     
-	[SerializeField, ReadOnly] private bool _canAttack;
+	[SerializeField] private bool _canAttack;
 
     private Rigidbody2D _rigidbody2D;
 
@@ -77,7 +77,6 @@ public class Attack : MonoBehaviour
 
     private void Awake()
 	{
-		_canAttack = false;
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
