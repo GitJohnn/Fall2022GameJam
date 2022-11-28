@@ -30,7 +30,7 @@ public class PortalInteractHandler : TriggerEventHandler
             OnInteract?.Invoke();
             //FadeAnimationScript.OnFade.AddListener(OnScreenFadeAction);
             FadeAnimationScript.OnFaded += (ScreenFadeEventCall);
-            Debug.Log("Interacting with " + gameObject.name);
+            //Debug.Log("Interacting with " + gameObject.name);
             CanInteract = false;
         }
     }
@@ -38,7 +38,7 @@ public class PortalInteractHandler : TriggerEventHandler
     private void ScreenFadeEventCall()
     {
         OnScreenFade?.Invoke();
-        Debug.Log("Calling screen fade event");
+        //Debug.Log("Calling screen fade event");
     }
 
 }

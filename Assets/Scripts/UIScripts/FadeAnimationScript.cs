@@ -16,8 +16,9 @@ public class FadeAnimationScript : MonoBehaviour
     private float currentFadeCooldown = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        OnFaded = delegate { };
         fadeAnimator = GetComponent<Animator>();
         StartFade(0);
     }

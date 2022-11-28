@@ -12,6 +12,14 @@ public class EndGameBossManager : MonoBehaviour
     public TextMeshProUGUI endGameText;
     public static bool isGameDone = false;
 
+    [Header("Boss Prefabs")]
+    public GameObject dashBossPrefab;
+    public Transform dashTransform;
+    public GameObject projectilePrefab;
+    public Transform projetileTransform;
+    public GameObject towerPrefab;
+    public Transform towerTransform;
+
     public bool dashBossDead { get; set; } = false;
     public bool projectileBossDead { get; set; } = false;
     public bool towerBossDead { get; set; } = false;
@@ -43,5 +51,15 @@ public class EndGameBossManager : MonoBehaviour
         TimeSpan timeSpan = TimeSpan.FromMilliseconds(value);
         return timeSpan.ToString(@"\.hh\\:mm\\:ss\\:fff");
         //timeSpan.mi
+    }
+
+    public void ResetAllBosses()
+    {
+        if(!dashBossDead)
+            Instantiate(dashBossPrefab, dashTransform.position, Quaternion.identity);
+        if(!projectileBossDead)
+            Instantiate(projectilePrefab, projetileTransform.position, Quaternion.identity);
+        if(!towerBossDead)
+            Instantiate(towerPrefab, towerTransform.position, Quaternion.identity);
     }
 }

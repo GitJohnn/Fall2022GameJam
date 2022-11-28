@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
@@ -55,7 +56,8 @@ public class PauseManager : MonoBehaviour
 
     public void RestartGame()
     {
-
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void QuitGame()

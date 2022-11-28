@@ -18,4 +18,4 @@ MonoBehaviour:
   _includeLayers:
     serializedVersion: 2
     m_Bits: 1408
-  _attackRange: 0.5
+  _attackRange: 1
