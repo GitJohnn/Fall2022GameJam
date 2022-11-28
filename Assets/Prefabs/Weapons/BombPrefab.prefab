@@ -152,8 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToExplode: 3
   timeToFinishExplotion: 1
-  explotionRange: 1.5
-  damageAmount: 13
+  explotionRange: 2
+  damageAmount: 25
   OnExplosion:
     m_PersistentCalls:
       m_Calls:
