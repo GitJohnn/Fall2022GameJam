@@ -171,6 +171,7 @@ public class TowerBossScript : MonoBehaviour
         yield return new WaitForSeconds(value);
         OnTowerBossDead?.Invoke();
         Debug.Log("Boss has died");
+        MusicManager.Instance.SwapTrack();
     }
 
     IEnumerator AfterFadeUnsubscribe()
