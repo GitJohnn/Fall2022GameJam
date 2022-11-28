@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,6 +10,8 @@ public class PotionInfoPanel : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI buffText;
     [SerializeField] private TextMeshProUGUI debuffText;
 	[SerializeField] private TextMeshProUGUI toxicityText;
+	
+	private Coroutine _routine;
 
     private bool panelVisible;
 
@@ -43,13 +45,15 @@ public class PotionInfoPanel : MonoBehaviour {
 	public void ShowPanel() {
 		if(panelVisible || !gameObject.activeInHierarchy) return;
 		panelVisible = true;
-		StartCoroutine(LerpPanelAlpha(1));
+		if (_routine != null) StopCoroutine(_routine);
+		_routine = StartCoroutine(LerpPanelAlpha(1));
 	}
 
 	public void HidePanel() {
 		if(!panelVisible || !gameObject.activeInHierarchy) return;
 		panelVisible = false;
-		StartCoroutine(LerpPanelAlpha(0));
+		if (_routine != null) StopCoroutine(_routine);
+		_routine = StartCoroutine(LerpPanelAlpha(0));
 	}
 
 	private IEnumerator LerpPanelAlpha(float newAlpha) {
@@ -61,5 +65,6 @@ public class PotionInfoPanel : MonoBehaviour {
 			timeElapsed += Time.deltaTime;
 			yield return null;
 		}
+		_routine = null;
 	}
 }
