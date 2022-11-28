@@ -39,7 +39,7 @@ public class PotionInfoPanel : MonoBehaviour {
 		debuffText.text += $"{potion.DebuffPercentage}% ";
 
 		//toxicity display
-		toxicityText.text = $"Toxicity +{potion.Toxicity}";
+		toxicityText.text = $"Toxicity +{potion.Toxicity}%";
     }
 
 	public void ShowPanel() {
