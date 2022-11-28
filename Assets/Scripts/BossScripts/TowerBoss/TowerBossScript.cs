@@ -46,6 +46,7 @@ public class TowerBossScript : MonoBehaviour
     private bool isMovingPlayer = false;
     private float timeToMovePlayer = 2;
     private float currentTimeToMovePlayer = 0;
+    private bool runOnce = false;
 
     private void Awake()
     {
@@ -60,9 +61,10 @@ public class TowerBossScript : MonoBehaviour
 
     private void Update()
     {
-        if (isBossDead)
+        if (isBossDead && !runOnce)
         {
-            FadeAnimationScript.OnFaded += OnScreenFadeAfterDeath.Invoke;
+            runOnce = true;
+            FadeAnimationScript.OnFaded += (OnScreenFadeAfterDeath.Invoke);
             StartCoroutine(AfterFadeUnsubscribe());
             return;
         }
@@ -172,7 +174,8 @@ public class TowerBossScript : MonoBehaviour
     IEnumerator AfterFadeUnsubscribe()
     {
         yield return new WaitForSeconds(5f);
-        FadeAnimationScript.OnFaded -= OnScreenFadeAfterDeath.Invoke;
+        FadeAnimationScript.OnFaded -= (OnScreenFadeAfterDeath.Invoke);
+        Debug.Log("Unsubscribing from event");
         gameObject.SetActive(false);
     }
 

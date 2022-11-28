@@ -45,13 +45,14 @@ public class FadeAnimationScript : MonoBehaviour
             yield return null;
         }
 
-        OnFaded();
+        OnFaded?.Invoke();
 
         yield return new WaitForSeconds(fadeDuration);
 
         Debug.Log("Is Faded");
 
         fadeAnimator.SetBool("Fade", false);
+        OnFaded = delegate { };
     }
 
 

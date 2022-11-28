@@ -7,6 +7,9 @@ public class PauseManager : MonoBehaviour
 {
     public bool CanPause { get; set; } = false;
 
+    public UnityEvent OnPause;
+    public UnityEvent OnUnpause;
+
     public KeyCode pauseKeycode = KeyCode.Escape;
     public KeyCode secondaryPauseKeycode = KeyCode.P;
     public GameObject childObject;
@@ -34,9 +37,15 @@ public class PauseManager : MonoBehaviour
         isPaused = !isPaused;
 
         if (isPaused)
+        {
+            OnPause?.Invoke();
             Time.timeScale = 0;
+        }
         else
+        {
+            OnUnpause?.Invoke();
             Time.timeScale = 1;
+        }
     }
 
     public void ResumeButton()

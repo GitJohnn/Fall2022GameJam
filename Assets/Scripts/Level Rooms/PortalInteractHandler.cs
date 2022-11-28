@@ -16,7 +16,7 @@ public class PortalInteractHandler : TriggerEventHandler
     private void OnDisable()
     {
         //FadeAnimationScript.OnFade.RemoveListener(OnScreenFadeAction);
-        FadeAnimationScript.OnFaded -= ScreenFadeEventCall;
+        FadeAnimationScript.OnFaded -= (ScreenFadeEventCall);
     }
 
     private void Update()
@@ -29,7 +29,7 @@ public class PortalInteractHandler : TriggerEventHandler
             Utility.SpawnParticles(_vfxUsePortal, this.gameObject, false);
             OnInteract?.Invoke();
             //FadeAnimationScript.OnFade.AddListener(OnScreenFadeAction);
-            FadeAnimationScript.OnFaded += ScreenFadeEventCall;
+            FadeAnimationScript.OnFaded += (ScreenFadeEventCall);
             Debug.Log("Interacting with " + gameObject.name);
             CanInteract = false;
         }

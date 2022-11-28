@@ -23,6 +23,7 @@ public class DashBossScript : MonoBehaviour
     public float stopBossCooldown = 4f;
     private float currentBossCooldown = 0;
     private bool stopBossMovement = true;
+    private bool runOnce = false;
     //private DashBossAttack dashBossAttack;
     private DashBossMovement dashBossMovement;
 
@@ -41,11 +42,12 @@ public class DashBossScript : MonoBehaviour
     {
         bossHealthSlider.value = tailHealth.GetHealthPercentage();
 
-        if (isBossDead)
+        if (isBossDead && !runOnce)
         {
+            runOnce = true;
             onBossDeath?.Invoke();
             OnScreenFadeEventSubscription();
-            
+            StartCoroutine(AfterFadeUnsubscribe());
             return;
         }                    
     }
@@ -94,7 +96,7 @@ public class DashBossScript : MonoBehaviour
 
     public void OnScreenFadeEventSubscription()
     {
-        FadeAnimationScript.OnFaded += ScreenFadeEvent;
+        FadeAnimationScript.OnFaded += (ScreenFadeEvent);
     }
 
     private void ScreenFadeEvent()
@@ -105,7 +107,8 @@ public class DashBossScript : MonoBehaviour
     IEnumerator AfterFadeUnsubscribe()
     {
         yield return new WaitForSeconds(5f);
-        FadeAnimationScript.OnFaded -= ScreenFadeEvent;
+        FadeAnimationScript.OnFaded -= (ScreenFadeEvent);
+        Debug.Log("Unsubscribing from event");
         gameObject.SetActive(false);
     }
 
