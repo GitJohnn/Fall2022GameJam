@@ -41,6 +41,7 @@ public class BombScript : MonoBehaviour
 
         _sfxExplosion.Play();
         Utility.SpawnParticles(_vfxExplosion, this.gameObject, false);
+        if (ScreenShakeController.Instance) ScreenShakeController.Instance.StartShake(0.2f, 0.35f); 
         Destroy(gameObject);
         yield return new WaitForSeconds(timeToFinishExplotion);
     }

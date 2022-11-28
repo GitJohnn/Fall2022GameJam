@@ -85,6 +85,7 @@ public class Attack : MonoBehaviour
 
     public virtual void HandlePrimaryAttack()
     {
+        
 		if(_timeSinceLastAttack < TimeBetweenAttacks) return;
         _sfxStaffSwing.Play();
         _onPrimaryAttack?.Invoke();

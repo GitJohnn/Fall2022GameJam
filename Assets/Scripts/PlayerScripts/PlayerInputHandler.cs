@@ -14,10 +14,23 @@ public class PlayerInputHandler : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) _onLeftClick?.Invoke();
-        if (Input.GetMouseButtonDown(1)) _onRightClick?.Invoke();
-        if (Input.GetKeyDown(dashAbilityKey)) _onDashAbility?.Invoke();
-        if (Input.GetKeyDown(bombAbilityKey)) _onBombAbility?.Invoke();
+        if (Input.GetMouseButtonDown(0)) 
+        { 
+            _onLeftClick?.Invoke(); 
+            if (ScreenShakeController.Instance) ScreenShakeController.Instance.StartShake(0.07f, 0.05f); 
+        }
+        if (Input.GetMouseButtonDown(1)) 
+        { 
+            _onRightClick?.Invoke(); 
+        }
+        if (Input.GetKeyDown(dashAbilityKey)) 
+        { 
+            _onDashAbility?.Invoke(); 
+        }
+        if (Input.GetKeyDown(bombAbilityKey)) 
+        { 
+            _onBombAbility?.Invoke(); 
+        }
     }
 
 }
