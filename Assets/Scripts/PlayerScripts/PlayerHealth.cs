@@ -9,13 +9,14 @@ public class PlayerHealth : HealthBase {
     [SerializeField] private PlayerStats playerStats;
 	[SerializeField] private float toxicityDamageAmount;
 	[SerializeField] private float toxicityDamageTickSpeed;
+    [SerializeField] private ParticleSystem _toxicityDamagePS = null;
 
 	private bool toxicityFull;
 	private float toxicityTickTimer;
 
     public event Action<float> PlayerHit;
 
-	private void OnEnable() {
+    private void OnEnable() {
 		playerStats.MaxHealthChanged += AddMaxHealth;
 		playerStats.ToxicityFull += StartToxicityTickDamage;
 		playerStats.StatsReset += EndToxicityTickDamage;
@@ -32,10 +33,11 @@ public class PlayerHealth : HealthBase {
 		toxicityTickTimer = 0;
 	}
 
-	private void Update() {
+    private void Update() {
 		toxicityTickTimer += Time.deltaTime;
 		if(toxicityFull && (toxicityTickTimer >= toxicityDamageTickSpeed)) {
 			GetHit(toxicityDamageAmount, FindObjectOfType<Camera>().gameObject); //just using the camera to guarantee that it's not the same layer
+            _toxicityDamagePS.Play();
 			toxicityTickTimer = 0;
 		}
 	}
