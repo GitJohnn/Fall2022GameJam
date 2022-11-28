@@ -15,7 +15,7 @@ MonoBehaviour:
   _track: {fileID: 8300000, guid: 737536e79f2f99a40abb68771bc95572, type: 3}
   _trackLength: 98.298775
   _volume: 1
-  _mixerGroup: {fileID: 0}
+  _mixerGroup: {fileID: -3791488361019789624, guid: 8b2e3607820214f4fba186d611cf6261, type: 2}
   _startTimeIfLooping: 0
   _fromEndWhenToPlayNextSong: 2.5
   _fromStartWhenToPlayNextSong: 95.798775
