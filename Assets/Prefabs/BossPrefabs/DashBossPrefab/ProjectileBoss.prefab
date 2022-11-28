@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 562986431005210588}
   - component: {fileID: 562986431005210589}
   - component: {fileID: 562986431005210586}
+  - component: {fileID: 6868136827490183972}
   m_Layer: 0
   m_Name: ProjectileBoss
   m_TagString: Untagged
@@ -392,6 +393,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: EndGameBossManager, Assembly-CSharp
         m_MethodName: set_projectileBossDead
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6868136827490183972}
+        m_TargetAssemblyTypeName: SwapMusic, Assembly-CSharp
+        m_MethodName: Swap
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -589,6 +602,18 @@ MonoBehaviour:
   moveSpeed: 3
   stopMovement: 1
   stopRotate: 1
+--- !u!114 &6868136827490183972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562986431005210584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025e49be702f9d64891bd86c73d0b041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &562986431011938449
 GameObject:
   m_ObjectHideFlags: 0

@@ -941,6 +941,7 @@ GameObject:
   - component: {fileID: 5152820502668414031}
   - component: {fileID: 5152820502668414030}
   - component: {fileID: 5152820502668414029}
+  - component: {fileID: 1932832325534693807}
   m_Layer: 0
   m_Name: TowerBombBoss
   m_TagString: Untagged
@@ -1026,6 +1027,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: EndGameBossManager, Assembly-CSharp
         m_MethodName: set_towerBossDead
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1932832325534693807}
+        m_TargetAssemblyTypeName: SwapMusic, Assembly-CSharp
+        m_MethodName: Swap
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1279,6 +1292,18 @@ MonoBehaviour:
   phase2ShootingCoolDown: 1.85
   playerTransform: {fileID: 0}
   _spiderShot: {fileID: 11400000, guid: 9ad22868a67dae4498ad9f0f62f79828, type: 2}
+--- !u!114 &1932832325534693807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152820502668414019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025e49be702f9d64891bd86c73d0b041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5152820502725281909
 GameObject:
   m_ObjectHideFlags: 0

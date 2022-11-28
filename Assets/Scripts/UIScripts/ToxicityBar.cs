@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ToxicityBar : StatBarUIBase {
 
     [SerializeField] private Slider slider;
+	[SerializeField] private TextMeshProUGUI toxicityValueText;
 
     private void OnEnable() {
         playerStats.ToxicityChanged += UpdateToxicityBar;
@@ -18,10 +20,12 @@ public class ToxicityBar : StatBarUIBase {
     protected override void ResetBar() {
         slider.maxValue = playerStats.ToxicityThreshold;
         slider.value = 0;
+		toxicityValueText.text = $"0/{playerStats.ToxicityThreshold}";
     }
 
     private void UpdateToxicityBar(float toxicity) {
         StartCoroutine(LerpToxicityBar(toxicity));
+		toxicityValueText.text = $"{toxicity}/{playerStats.ToxicityThreshold}";
     }
 
     private IEnumerator LerpToxicityBar(float newToxicity) {

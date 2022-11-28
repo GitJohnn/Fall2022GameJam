@@ -65,7 +65,6 @@ public class TowerBossScript : MonoBehaviour
         {
             runOnce = true;
             FadeAnimationScript.OnFaded += (OnScreenFadeAfterDeath.Invoke);
-            if (MusicManager.Instance) MusicManager.Instance.SwapTrack(); 
             StartCoroutine(AfterFadeUnsubscribe());
             return;
         }
@@ -171,7 +170,6 @@ public class TowerBossScript : MonoBehaviour
         yield return new WaitForSeconds(value);
         OnTowerBossDead?.Invoke();
         Debug.Log("Boss has died");
-        MusicManager.Instance.SwapTrack();
     }
 
     IEnumerator AfterFadeUnsubscribe()

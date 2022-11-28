@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour {
     [SerializeField, ReadOnly] private float attackDelay;
     [SerializeField] private float toxicityThreshold;
     [SerializeField, ReadOnly] private float toxicityLevel;
+    [SerializeField] private ParticleSystem _antidotePS;
 
     private float maxHealthPercentageChange = 0;
     private float attackPowerPercentageChange = 0;
@@ -52,7 +53,8 @@ public class PlayerStats : MonoBehaviour {
 	private void Update() {
 		if(Input.GetKeyDown(KeyCode.Q)) {
 			ResetStats();
-		}
+            _antidotePS.Play();
+        }
 	}
 
 	//call at the beginning of a dungeon/scene to reset the stats to base levels

@@ -15,5 +15,5 @@ MonoBehaviour:
   statToBuff: 4
   buffPercentage: 50
   statToDebuff: 0
-  debuffPercentage: 15
+  debuffPercentage: 20
   toxicity: 15
