@@ -53,6 +53,7 @@ public class PlayerHealth : HealthBase {
     public override void GetHit(float amount, GameObject sender) {
 		float actualAmount = amount / (playerStats.Defense / 100);
         base.GetHit(actualAmount, sender);
+		if (ScreenShakeController.Instance) ScreenShakeController.Instance.StartShake(0.15f, 0.25f); 
         PlayerHit?.Invoke(currentHealth);
     }
 

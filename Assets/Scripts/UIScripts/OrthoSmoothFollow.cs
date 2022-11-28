@@ -34,7 +34,7 @@ public class OrthoSmoothFollow : MonoBehaviour
 
             targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime);
 
-            if (!useSmoothDamp) transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.5f);
+            if (!useSmoothDamp) transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.7f);
             else transform.position = Vector3.SmoothDamp(transform.position, targetPos + offset, ref velocity, 0.05f);
             
 
