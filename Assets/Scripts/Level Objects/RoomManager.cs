@@ -22,13 +22,13 @@ public class RoomManager : MonoBehaviour {
 	private void OnTriggerEnter2D(Collider2D collision) {
 		var player = collision.GetComponent<PlayerStats>();
 		if(player) {
+			if(roomLockedFlag) return;
+			roomLockedFlag = true;
 			OnPlayerEnter?.Invoke();
 		}
 	}
 
 	public void LockRoom() {
-		if(roomLockedFlag) return;
-		roomLockedFlag = true;
 		_sfxDoorSlam.Play();
 		foreach(var d in roomDoors) {
 			d.SetActive(true);
