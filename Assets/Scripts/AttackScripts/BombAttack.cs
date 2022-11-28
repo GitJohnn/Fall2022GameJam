@@ -8,7 +8,7 @@ public class BombAttack : Attack
     public GameObject bombPrefab;
 
     public bool bombAttackUnlocked = true;
-    public float totalCooldown;
+    [SerializeField] private float totalCooldown;
 
     [SerializeField] SFXEvent _sfxBombPlace;
 
@@ -23,6 +23,9 @@ public class BombAttack : Attack
     private void Update()
     {
         attackButton.CurrentAbilityCooldown = currentAttackCooldown;
+
+		currentAttackCooldown += Time.deltaTime;
+		if(currentAttackCooldown >= totalCooldown) canAttack = true;
     }
 
     public void BombUnlocked()
@@ -37,15 +40,15 @@ public class BombAttack : Attack
         canAttack = false;
     }
 
-    public float currentAttackCooldown { get; set; }
+	public float currentAttackCooldown; /*{ get; set; }*/
 
     bool canAttack;
 
     public override void HandlePrimaryAttack()
     {
-        if (!canAttack)
-            return;
-        StartCoroutine(RangeAttack());
+        if (!canAttack) return;
+		//StartCoroutine(RangeAttack());
+		SpawnBomb();
         _onPrimaryAttack?.Invoke();
     }
 
@@ -66,4 +69,11 @@ public class BombAttack : Attack
 
         canAttack = true;
     }
+
+	private void SpawnBomb() {
+		_sfxBombPlace.Play();
+		canAttack = false;
+		currentAttackCooldown = 0;
+		Instantiate(bombPrefab, _attackPosition.position, Quaternion.identity);
+	}
 }
