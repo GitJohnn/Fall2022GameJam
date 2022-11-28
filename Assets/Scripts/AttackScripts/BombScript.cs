@@ -38,11 +38,11 @@ public class BombScript : MonoBehaviour
         }
         //Debug.Log("Bomb Explosion!");
 
-        yield return new WaitForSeconds(timeToFinishExplotion);
 
         _sfxExplosion.Play();
         Utility.SpawnParticles(_vfxExplosion, this.gameObject, false);
         Destroy(gameObject);
+        yield return new WaitForSeconds(timeToFinishExplotion);
     }
 
     public virtual void HandleHitLogic(Collider2D collider)
