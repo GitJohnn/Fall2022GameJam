@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpeedUp_DefenseDown
   m_EditorClassIdentifier: 
   statToBuff: 3
-  buffPercentage: 35
+  buffPercentage: 40
   statToDebuff: 2
   debuffPercentage: 25
   toxicity: 15
