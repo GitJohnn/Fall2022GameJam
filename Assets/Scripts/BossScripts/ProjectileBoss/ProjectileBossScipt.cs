@@ -19,6 +19,8 @@ public class ProjectileBossScipt : MonoBehaviour
     private ProjectileBossAttack projAttackScript;
     private ProjectileBossMovement projMoveScript;
 
+    private bool runOnce = false;
+
     private void Awake()
     {
         projAttackScript = GetComponent<ProjectileBossAttack>();
@@ -37,12 +39,13 @@ public class ProjectileBossScipt : MonoBehaviour
     {
         healthSlider.value = bossCapsuleHealth.GetHealthPercentage();
 
-        if (IsBossDead)
+        if (IsBossDead && !runOnce)
         {
+            runOnce = true;
             OnBossDeath?.Invoke();
             Debug.Log("Subscribing to event");
-            FadeAnimationScript.OnFaded += ScreenFadeEvent;
-            gameObject.SetActive(false);
+            FadeAnimationScript.OnFaded += (ScreenFadeEvent);
+            StartCoroutine(AfterFadeUnsubscribe());
         }
     }
 
@@ -61,7 +64,8 @@ public class ProjectileBossScipt : MonoBehaviour
     IEnumerator AfterFadeUnsubscribe()
     {
         yield return new WaitForSeconds(5f);
-        FadeAnimationScript.OnFaded -= ScreenFadeEvent;
+        FadeAnimationScript.OnFaded -= (ScreenFadeEvent);
+        Debug.Log("Unsubscribing from event");
         gameObject.SetActive(false);
     }
 

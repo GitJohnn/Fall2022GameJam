@@ -14,7 +14,7 @@ public class WeaponParent : MonoBehaviour
     private bool attackBlocked;
 
     public bool IsAttacking { get; private set; }
-
+    public bool CanRotate { get; set; } = true;
     //public Transform circleOrigin;
     //public float radius;
 
@@ -25,8 +25,8 @@ public class WeaponParent : MonoBehaviour
 
     private void Update()
     {
-        //if (IsAttacking)
-        //    return;
+        if (!CanRotate)
+            return;
 
         //Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;

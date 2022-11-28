@@ -9,17 +9,19 @@ public class MainMenuScript : MonoBehaviour
 
     private void OnDisable()
     {
-        FadeAnimationScript.OnFaded -= ScreenFadeEventCall;
+        FadeAnimationScript.OnFaded -= (ScreenFadeEventCall);
     }
 
     public void StartGame()
     {
-        FadeAnimationScript.OnFaded += ScreenFadeEventCall;
+        FadeAnimationScript.OnFaded += (ScreenFadeEventCall);
+        Debug.Log("Subscribe to fade event");
     }
 
     public void ScreenFadeEventCall()
     {
         OnScreenFade?.Invoke();
+        Debug.Log("main menu screen fade");
     }
 
     public void QuitGame()
