@@ -2388,7 +2388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   isDead: 0
-  deathParticles: {fileID: 7535828560974409548, guid: 952ea751a10dad94aa1a5490da8e81fd, type: 3}
+  deathParticles: {fileID: 7535828560974409548, guid: 387e0e02909451b44a601899a4b344ab, type: 3}
   _sfxHit: {fileID: 11400000, guid: 9e212569d3eff49448eded193520f39d, type: 2}
   _sfxDeath: {fileID: 11400000, guid: 7e49b804cf7c4c84e81f70e5c06ce45c, type: 2}
   _vfxHit: {fileID: 3274053707080079367, guid: 6c927ca34bf45b84baf46591441a5702, type: 3}

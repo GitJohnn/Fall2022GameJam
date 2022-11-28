@@ -43,10 +43,10 @@ public class BombScript : MonoBehaviour
         _sfxExplosion.Play();
         OnExplosion?.Invoke();
 
-        yield return new WaitForSeconds(timeToFinishExplotion);
 
 
         Destroy(gameObject);
+        yield return new WaitForSeconds(timeToFinishExplotion);
     }
 
     public virtual void HandleHitLogic(Collider2D collider)
