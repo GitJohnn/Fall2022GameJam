@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 
 namespace Game.SoundSystem
@@ -19,13 +19,15 @@ namespace Game.SoundSystem
         public void SetMusicVolume(float volume)
         {
             if (_mixer == null) return;
-            _mixer.SetFloat(_musicVolume, Mathf.Log10(volume) * 20);
+            _mixer.SetFloat(_musicVolume, Convert(volume));
         }
 
         public void SetSfxVolume(float volume)
         {
             if (_mixer == null) return;
-            _mixer.SetFloat(_sfxVolume, Mathf.Log10(volume) * 20);
+            _mixer.SetFloat(_sfxVolume, Convert(volume));
         }
+        
+	    private float Convert(float volume) => volume == 0 ? -80 : Mathf.Log10(volume) * 20;
     }
 }

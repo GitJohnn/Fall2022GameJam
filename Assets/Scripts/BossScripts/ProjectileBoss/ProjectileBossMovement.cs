@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ public class ProjectileBossMovement : MonoBehaviour
     public Transform playerTransfrom;
     public Transform[] movePositions;
     public float moveSpeed = 3f;
+	public float rotSpeed = 3f;
 
     private bool isMoving;
     private int currentPosition = 0;
@@ -56,7 +57,9 @@ public class ProjectileBossMovement : MonoBehaviour
         Vector2 aimDirection = (playerTransfrom.position - bossTransform.position).normalized;
         float angleZ = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        bossTransform.rotation = Quaternion.Euler(0, 0, angleZ + 90);
+	    var rot = bossTransform.rotation;
+	    bossTransform.rotation = Quaternion.Euler(0, 0, angleZ + 90);
+	    bossTransform.rotation = Quaternion.Lerp(rot, bossTransform.rotation, rotSpeed * Time.deltaTime);
     }
 
     private void FixedUpdate()
