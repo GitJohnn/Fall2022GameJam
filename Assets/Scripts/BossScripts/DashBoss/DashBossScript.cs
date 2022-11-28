@@ -49,6 +49,7 @@ public class DashBossScript : MonoBehaviour
             runOnce = true;
             onBossDeath?.Invoke();
             OnScreenFadeEventSubscription();
+            if (MusicManager.Instance) MusicManager.Instance.SwapTrack();
             StartCoroutine(AfterFadeUnsubscribe());
             return;
         }
