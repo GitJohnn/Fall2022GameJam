@@ -70,8 +70,8 @@ public class MusicManager : MonoBehaviour
             source02.Play();
             while (timeElapsed < timeToFade)
             {
-                source02.volume = Mathf.Lerp(0, 0.5f, timeElapsed / timeToFade);
-                source01.volume = Mathf.Lerp(0.5f, 0, timeElapsed / timeToFade);
+                source02.volume = Mathf.Lerp(0, 0.1f, timeElapsed / timeToFade);
+                source01.volume = Mathf.Lerp(0.1f, 0, timeElapsed / timeToFade);
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
@@ -82,8 +82,8 @@ public class MusicManager : MonoBehaviour
             source01.Play();
             while (timeElapsed < timeToFade)
             {
-                source01.volume = Mathf.Lerp(0, 0.5f, timeElapsed / timeToFade);
-                source02.volume = Mathf.Lerp(0.5f, 0, timeElapsed / timeToFade);
+                source01.volume = Mathf.Lerp(0, 0.1f, timeElapsed / timeToFade);
+                source02.volume = Mathf.Lerp(0.1f, 0, timeElapsed / timeToFade);
                 timeElapsed += Time.deltaTime;
                 yield return null;
             }
