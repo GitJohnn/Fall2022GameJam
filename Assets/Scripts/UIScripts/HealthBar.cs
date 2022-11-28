@@ -30,7 +30,7 @@ public class HealthBar : StatBarUIBase {
 
         float healthDifference = newMaxHealth - slider.maxValue;
         slider.maxValue = newMaxHealth;
-        slider.value += healthDifference;
+        if(healthDifference > 0) slider.value += healthDifference;
     }
 
     public void UpdateCurrentHealth(float newHealth) {

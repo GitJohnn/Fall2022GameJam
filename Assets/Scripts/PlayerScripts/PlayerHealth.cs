@@ -44,10 +44,19 @@ public class PlayerHealth : HealthBase {
         InitializeHealth(playerStats.MaxHealth);
     }
 
+	public void HealToFull() {
+		AddHealth(playerStats.MaxHealth - currentHealth);
+	}
+
 	private void AddMaxHealth(float newMaxHealth) {
 		float healthDifference = newMaxHealth - currentMaxHealth;
 		currentMaxHealth = newMaxHealth;
-		AddHealth(healthDifference); //can also take away health if the difference is negative
+		if(healthDifference > 0) {
+			AddHealth(healthDifference);
+		} else if(currentHealth > newMaxHealth) {
+			float healthOverflow = newMaxHealth - currentHealth;
+			AddHealth(healthOverflow); //takes away health so that the current health is equal to the max
+		}
 	}
 
     public override void GetHit(float amount, GameObject sender) {
