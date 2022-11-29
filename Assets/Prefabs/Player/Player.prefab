@@ -1756,6 +1756,8 @@ MonoBehaviour:
   attackButton: {fileID: 1248676875}
   bombPrefab: {fileID: 6035233110517028290, guid: 738262aced3e7604880feeb5a0572adf, type: 3}
   bombAttackUnlocked: 0
+  usePlayerStats: 0
+  stats: {fileID: 0}
   totalCooldown: 2.5
   _sfxBombPlace: {fileID: 11400000, guid: 83e4517dabd7f724cb58e9398b3744ac, type: 2}
   currentAttackCooldown: 0
@@ -13107,8 +13109,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.35686275, g: 0.35686275, b: 0.35686275, a: 1}
+    m_SelectedColor: {r: 0.2264151, g: 0.2253471, b: 0.2253471, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

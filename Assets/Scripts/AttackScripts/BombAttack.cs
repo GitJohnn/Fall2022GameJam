@@ -8,6 +8,8 @@ public class BombAttack : Attack
     public GameObject bombPrefab;
 
     public bool bombAttackUnlocked = true;
+    public bool usePlayerStats = false;
+    [SerializeField, ShowIf("usePlayerStats")] PlayerStats stats;
     [SerializeField] private float totalCooldown;
 
     [SerializeField] SFXEvent _sfxBombPlace;
@@ -77,6 +79,7 @@ public class BombAttack : Attack
 		_sfxBombPlace.Play();
 		canAttack = false;
 		currentAttackCooldown = 0;
-		Instantiate(bombPrefab, _attackPosition.position, Quaternion.identity);
+		GameObject bomb = Instantiate(bombPrefab, _attackPosition.position, Quaternion.identity);
+        bomb.GetComponent<BombScript>().damageAmount = Mathf.RoundToInt(stats.AttackPower);
 	}
 }
